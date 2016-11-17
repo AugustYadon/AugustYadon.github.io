@@ -1,8 +1,4 @@
-#screenFiller {
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    border: 15px solid orange
-}
+
 .container {
 width: 80%;
 height: 80%;
@@ -15,7 +11,17 @@ right:0;
 background-color: #fff;
 }
 
-img {
+.twitchLog {
+width: 4%;
+height: 4%;   
+margin:auto;
+top:0;
+bottom:0;
+left:0;
+right:0;
+}
+
+.dog {
 max-width: 100%;
 max-height: 100%;  
 position: absolute;

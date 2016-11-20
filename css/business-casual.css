@@ -84,6 +84,24 @@ hr {
     display: block;
     margin: 0 auto;
 }
+.twitchLog {
+	width: 4%;
+	height: 4%;   
+	margin:auto;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+}
+.nav>li>a>img {
+	height: 20px;
+	width: 20px;   
+	margin:auto;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+}
 /*!
 *
 */
@@ -216,19 +234,6 @@ footer p {
         border: none;
         background: #000;
         background: rgba(167,198,184,0.2);
-    }
-
-    .nav>li>a {
-        padding: 35px;
-    }
-    .nav>li>a>img {
-        max-height: 20px;
-        max-width: 20px;   
-        margin:auto;
-        top:0;
-        bottom:0;
-        left:0;
-        right:0;
     }
 
     .navbar-nav>li>a {

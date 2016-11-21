@@ -14,10 +14,6 @@
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Twitch live components -->
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script data-interval="60" data-offline-image="/img/twitchlogo_offline.png" data-online-image="/img/twitchlogo_online.png" src="https://cdn.rawgit.com/Fugiman/Twitch-Channel-Status/1d74252edf89110507cbf3088f9c3eaa38fac9d3/twitch-channel-status.min.js"></script>
-
     <!-- Custom CSS -->
     <link href="/css/business-casual.css" rel="stylesheet">
 
@@ -51,7 +47,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.html">Business Casual</a>
+                <a class="navbar-brand" href="/">AuggoDoggo Games</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -102,6 +98,8 @@
         </div>
 
     </div>
+
+    </div>
     <!-- /.container -->
 
     <footer>
@@ -114,11 +112,16 @@
         </div>
     </footer>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <!-- jQuery --> 
+    <script src="/js/jquery.js"></script>
+	
+
+    <!--script type="text/javascript">
+    $.getJSON('https://api.twitch.tv/kraken/streams/auggodoggo?client_id=kscj50xoj5zoo9yl2499w4i6geglxk9').done(function(data){console.log(JSON.stringify(data,null,4))});//.stream?'LIVE NOW':'OFFLINE')})
+    </script-->
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
     <!-- Script to Activate the Carousel -->
     <script>
@@ -126,6 +129,10 @@
         interval: 5000 //changes the speed
     })
     </script>
+
+        <!-- Twitch live components -->
+    <!--script src="https://code.jquery.com/jquery-1.11.1.min.js"></script-->
+    <script data-interval="60" data-offline-image="/img/twitchlogo_offline.png" data-online-image="/img/twitchlogo_online.png" src="/js/twitch-channel-status.js"></script>
 
 </body>
 

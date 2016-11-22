@@ -80,6 +80,10 @@ hr {
 .resumes>p {
     text-align: center;
 }
+.img-gall {
+    border-width:10px;
+    padding: 5px;
+}
 .img-center {
     display: block;
     margin: 0 auto;

@@ -1,3 +1,5 @@
+'use strict';
+
 //node.js 
 
 var MongoClient = require('mongodb').MongoClient
@@ -5,12 +7,11 @@ var MongoClient = require('mongodb').MongoClient
 var boot_time = new Date().getTime() / 1000;
 // Connection URL
 var url = 'mongodb://localhost:27017/twitch';
-var daba;
 // Use connect method to connect to the server
 MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
   console.log("Connected successfully to server");
-  daba = db;
+
   var collection = db.collection('viewers');
   setInterval(function(){onNames(["augu","dogu"],collection)}, 2000);
   //db.close();

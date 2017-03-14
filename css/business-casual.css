@@ -97,6 +97,17 @@ hr {
 	left:0;
 	right:0;
 }
+
+.twitchLogOnPage{
+	height: 20px;
+	width: auto;   
+	margin:auto;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+}
+
 .nav>li>a>img {
 	height: 20px;
 	width: auto;   

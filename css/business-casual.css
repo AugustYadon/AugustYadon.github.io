@@ -99,7 +99,7 @@ hr {
 }
 .nav>li>a>img {
 	height: 20px;
-	width: 20px;   
+	width: auto;   
 	margin:auto;
 	top:0;
 	bottom:0;

@@ -17,6 +17,10 @@
     <!-- Custom CSS -->
     <link href="/css/business-casual.css" rel="stylesheet">
 
+    <!-- lightbox CSS -->
+    <link href="/css/ekko-lightbox.min.css" rel="stylesheet">
+
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
@@ -31,7 +35,6 @@
 </head>
 
 <body>
-
     <div class="brand">AuggoDoggo Games</div>
     <div class="address-bar">Site | in | Development</div>
 
@@ -73,54 +76,26 @@
 
     <div class="container">
         <div class="row">
-            <div>
-                <div class="col-lg-12">
-                    <img class="DogLogo" src="/img/AugDog.png"/>
-                </div>
-            </div>
-        </div>
-        <div id="About" class="row">
             <div class="box">
                 <div class="col-lg-12">
                     <hr>
-                    <h2 class="navbar-brand text-center">About Us
-                    </h2>
-                    <hr>
-                    <img class="img-responsive visible-md visible-lg img-left" src="/img/Dog.png" alt="AuggoDoggo Games">
-                    <p>AuggoDoggo Games is focused on making fun games with interesting and often experimental new mechanics. The games are developed in C# in the Unity3D Engine, and the VR titles make use of as much of Valve's "SteamVR Unity plugin" as is helpful. If you're here looking to contact August, emails can be sent to AuggoDoggoGames@gmail.com, or you can check out the "Contact" section of the site to send a message.</p>
-                    <p>If you're here to see and play games and demos, hold on, because they'll be up soon enough.</p>
-                    <p>Feel free to download my most recent resume below if you're interested in working with me, hiring me to your tight knit indie crew, or if you're just obscenely nosey.</p>
-                </div>
-            </div>
-			            <div class="box">
-                <div class="col-lg-12">
-                    <hr>
-                    <h2 class="navbar-brand text-center">Streaming
-                    </h2>
-                    <hr>
-                    <p>As often as I can (Usually 5 days a week, 4 to 9 hours a day), I will stream every part of the development of my current project. Along with seeing the many successes and [temporary]failures of game development, the audience usually gets to chip in on the project. I appreciate everyone who stops in with encouragement and input (they are far more valuable than they could possibly know). That being said, I do hope to gain more followers and integrate the twitch community into easter eggs and the credits of my game at any opportunities I can. Streaming can be stressful but I'm generally an optimistic, upbeat person and I can handle the pressure whenever I'm doing something I love.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    <hr>
-                    <h2 class="intro-text text-center"><strong>Resume</strong></h2>
+                    <h2 class="intro-text text-center"><strong><a href="/games/sweepyheads">Plvnkvr [Current Project]</a></strong></h2>
                     <hr>
                     <div class="row">
                         <div class="col-sm-4">
-                            <a href="/downloads/AugustYadon_AuggoDoggo_Resume.pdf" target="_blank" ><img class="img-responsive img-center" src="/img/download_icon.png" /><p>Download Game Industry Resume (PDF)</p></a>
-                            <hr class="visible-xs">
+                            <img class="img-responsive img-center" src="/" />
                         </div>
-                        <div class="col-sm-4">
-                            <a href="/downloads/AugustYadon_Resume.pdf" target="_blank" ><img class="img-responsive img-center" src="/img/download_icon.png" /><p>Download Engineering Resume (PDF)</p></a>
-                            <hr class="visible-xs ">
-                        </div>
-                        <div class="col-sm-4">
-                            <img class="img-responsive img-center" src="/img/play_icon.png" /><p>Play Resume in Game Form (Coming Soon)</p>
-                        </div>
+                   
+				   <!-- PLACEHOLDER TEXT BELOW -->
+						<div class="col-sm-6">
+                            <div class="row">
+							<p>A humor based VR experience where you're an undercover air marshal trying to find and eliminate a terrorist with whatever you can find in your surroundings.</p>
+                            </div>
+                        </div>						
+				   
                     </div>
+
+
                     <br/>
                 </div>
                 <br/>
@@ -128,7 +103,6 @@
         </div>
 
     </div>
-    <!-- /.container -->
 
     <footer>
         <div class="container">
@@ -142,20 +116,26 @@
 
     <!-- jQuery --> 
     <script src="/js/jquery.js"></script>
-	
-
-    <!--script type="text/javascript">
-    $.getJSON('https://api.twitch.tv/kraken/streams/auggodoggo?client_id=kscj50xoj5zoo9yl2499w4i6geglxk9').done(function(data){console.log(JSON.stringify(data,null,4))});//.stream?'LIVE NOW':'OFFLINE')})
-    </script-->
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/ekko-lightbox.min.js"></script>
 
     <!-- Script to Activate the Carousel -->
     <script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
+    </script>
+
+    <script type="text/javascript">
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
+        $.fn.ekkoLightbox.defaults;
     </script>
 
         <!-- Twitch live components -->

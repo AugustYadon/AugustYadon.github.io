@@ -6,12 +6,10 @@
 
 body {
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-    background: white;
-    background-image: "/img/Dog.png";
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+    
+    background-image:url("/img/geometry2/geometry2.png");
+    background-repeat: repeat;
+
 }
 
 h1,
@@ -21,14 +19,23 @@ h4,
 h5,
 h6 {
     text-transform: uppercase;
-    font-family: Helvetica,Arial,sans-serif;
+    font-family: "Westmeath",Helvetica,Arial,sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
 }
 
 p {
     font-size: 1.25em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     line-height: 1.6;
+    color: #000;
+}
+
+p>a {
+    font-size: 1.35em;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    line-height: 1.6;
+    font-family: "Westmeath",Helvetica,Arial,sans-serif;
     color: #000;
 }
 
@@ -51,7 +58,6 @@ hr {
 .DogLogo {
     max-width: 100%;
     max-height: 100%;  
-    position: center;
     margin:auto;
     top:0;
     bottom:0;
@@ -108,6 +114,19 @@ hr {
 	right:0;
 }
 
+#auggo-navbar a{
+    color: #efefef;
+}
+
+#auggo-navbar a:hover{
+    color: #212121;
+}
+
+#auggo-navbar a:focus{
+    color: #212121;
+}
+
+
 .nav>li>a>img {
 	height: 20px;
 	width: auto;   
@@ -123,11 +142,13 @@ hr {
 
 .brand,
 .address-bar {
+    font-family: "Westmeath",Helvetica,Arial,sans-serif;
     display: none;
 }
 
 .navbar-brand {
     text-transform: uppercase;
+    font-family: "Westmeath",Helvetica,Arial,sans-serif;
     font-weight: 900;
     letter-spacing: 2px;
 }
@@ -136,6 +157,7 @@ hr {
     text-transform: uppercase;
     font-weight: 400;
     letter-spacing: 3px;
+    color: #efefef
 }
 
 .img-full {
@@ -163,18 +185,20 @@ hr {
 }
 
 .box {
-    margin-bottom: 20px;
-    padding: 30px 15px;
-    background: #9FB4BA;
-        background: rgba(167,198,184,0.2);
+    padding: 20px 15px;
+    background-image:url("/img/congruent_pentagon/congruent_pentagon.png");
+    background-repeat: repeat;
+    
 }
 
 .intro-text {
 	text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     font-size: 2em;
     font-weight: 400;
     letter-spacing: 0px;
     margin-bottom: -.5em;
+    color: #000;
 }
 
 .img-border {
@@ -189,7 +213,7 @@ hr {
 }
 
 footer {
-        background: rgba(167,198,184,0.2);
+        background: rgba(0, 0, 0,0);
 }
 
 footer p {
@@ -204,11 +228,11 @@ footer p {
         padding: 30px 0 10px;
         text-align: center;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-family: "Westmeath","Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
         font-size: 5em;
         font-weight: 700;
         line-height: normal;
-        color: #649F86;
+        color: #7eba83;
     }
 
     .top-divider {
@@ -231,7 +255,6 @@ footer p {
         font-size: 1.25em;
         font-weight: 400;
         letter-spacing: 3px;
-        color: #649F86;
     }
 
     .navbar {
@@ -249,11 +272,12 @@ footer p {
     .navbar-default {
         border: none;
         background: #000;
-        background: rgba(167,198,184,0.2);
+        background: rgba(62, 154, 71,.6);
     }
 
     .navbar-nav>li>a {
         line-height: normal;
+        color: #efefef;
     }
 
     .navbar-nav {

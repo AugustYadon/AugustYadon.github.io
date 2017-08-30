@@ -24,7 +24,7 @@ h6 {
     letter-spacing: 1px;
 }
 
-ul>li>#auggo_text{
+.auggo_text{
     font-size: 1.25em;
     font-family: "Westmeath",Helvetica,Arial,sans-serif;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
@@ -33,7 +33,7 @@ ul>li>#auggo_text{
     text-decoration: none;
 }
 
-ul>li>#auggo_text:hover {
+ul>li>.auggo_text:hover {
     font-size: 1.2em;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
     line-height: 1.6;

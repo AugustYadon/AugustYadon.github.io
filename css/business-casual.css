@@ -31,6 +31,7 @@ h6 {
     line-height: 1.6;
     color: #000;
     text-decoration: none;
+    word-wrap: break-word;
 }
 
 ul>li>.auggo_text:hover {
@@ -40,6 +41,7 @@ ul>li>.auggo_text:hover {
     font-family: "Westmeath",Helvetica,Arial,sans-serif;
     color: #454545;
     text-decoration: none;
+    word-wrap: break-word;
 }
 
 #auggo_icon {

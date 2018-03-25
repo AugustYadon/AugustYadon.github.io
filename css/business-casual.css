@@ -57,6 +57,12 @@ height: 45px;
 margin-bottom: -5px;
 }
 
+@media screen and (min-width: 768px){
+    .auggo-detoggle {
+        display: none!important;
+    }
+}
+
 td {
     font-size: 1.25em;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
@@ -192,12 +198,17 @@ hr {
     max-height: 300px;
 }
 
+#auggo-navbar {
+    box-shadow: 0px 1px 5px black;
+    z-index: 99;
+}
+
 #auggo-navbar a{
     color: #212121;
 }
 
 #auggo-navbar a:hover{
-    color: #7eba83;
+    color: #87b0c3;
 }
 
 #auggo-navbar a:focus{
@@ -237,7 +248,7 @@ hr {
     text-transform: uppercase;
     font-weight: 400;
     letter-spacing: 3px;
-    color: #efefef
+    color: #87b0c3;
 }
 
 .img-full {
@@ -269,8 +280,9 @@ hr {
     background-image:url("/img/congruent_pentagon/congruent_pentagon.png");
     background-repeat: repeat;
     border-style: solid;
-    border-width: 4px;
-    
+    border-width: 2px;
+    border-color: #598da6;
+
 }
 
 .intro-text {
@@ -330,19 +342,20 @@ hr {
 }
 
 
-
 /*/////////////////*/
 /* Dropdown Button */
 /*/////////////////*/
-.dropbtn {
- background-color: Transparent; /* #8bc18f;*/
-     text-transform: uppercase;
 
-    color: #efefef;
+.dropbtn {
+    background-color: Transparent; /* #8bc18f;*/
+    text-transform: uppercase;
+    vertical-align: middle;
+    color: #ffffff;
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
     letter-spacing: 3px;
-    padding: 16px;
-    font-size: 16px;
+    line-height: normal;
+    padding: 15px;
+    padding-top: 0;
     border: none;
 }
 
@@ -350,7 +363,7 @@ hr {
 .dropdown {
     text-transform: uppercase;
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 400;
+    vertical-align: middle;
     letter-spacing: 3px;
     position: relative;
     display: inline-block;
@@ -358,9 +371,12 @@ hr {
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
+
+    font-size: 0.7em;
+    line-height: .8em;
     display: none;
     position: absolute;
-    background-color: #8bc18f;
+    background-color: #87b0c3;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -369,13 +385,13 @@ hr {
 /* Links inside the dropdown */
 .dropdown-content a {
     color: black;
-    padding: 12px 16px;
+    padding: 12px;
     text-decoration: none;
     display: block;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #efefef}
+.dropdown-content a:hover {background-color: #87b0c3}
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
@@ -384,9 +400,41 @@ hr {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-    background-color: #8bc18f;
+    background-color: #87b0c3;
     color: black;
 }
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
+}
+
+.hiddennav {
+    display: none;
+}
+
+.navsub {
+    display: block;
+}
+
+
+
+
+
+
+
 
 
 footer {
@@ -398,19 +446,25 @@ footer p {
     padding: 50px 0;
 }
 
+
+
+
+
+
 @media screen and (min-width:768px) {
     
     #auggo-navbar a{
-        color: #efefef;
+        color: white;
     }
 
     #auggo-navbar a:hover{
-        color: #212121;
+        color: black;
     }
 
     #auggo-navbar a:focus{
-        color: #212121;
+        color: black;
     }
+
 
     .brand {
         display: inherit;
@@ -461,11 +515,13 @@ footer p {
 
     .navbar-default {
         border: none;
-        background: #000;
-        background: rgba(62, 154, 71,.6);
+        background: #87b0c3;
     }
 
+
     .navbar-nav>li>a {
+        padding-top: 0;
+        vertical-align: middle;
         line-height: normal;
         color: #efefef;
     }
@@ -473,9 +529,9 @@ footer p {
     .navbar-nav {
         display: table;
         float: none;
-        margin: 0 auto;
+        margin: auto;
         table-layout: fixed;
-        font-size: 1.25em;
+        font-size: 2.5em;
     }
 }
 
@@ -485,4 +541,15 @@ footer p {
         display: table;
         clear: both;
     }
+
+
+
+
 }
+
+@media screen and (max-width: 767px){
+    .auggo-toggle {
+        display: none!important;
+    }
+}
+

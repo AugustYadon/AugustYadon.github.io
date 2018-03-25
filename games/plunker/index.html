@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Auggo Doggo Games</title>
+    <title>Auggo Doggo | Source</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -32,13 +32,17 @@
 
 <body>
 
-    <div class="brand">Auggo Doggo Games</div>
-    <!--div class="address-bar">Site | in | Development</div -->
+
+    <div id="subnav" class="hiddennav" style="height: 140px">
+               
+    </div>
+
+
+
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
+    <nav id="auggo-navbar" class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -47,19 +51,38 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="/">Auggo Doggo Games</a>
+                <a class="navbar-brand" style="height: 3em; padding: 0px;"  href="/"><img style="height: 3em; padding: 0px;" src="/img/AugDog.png"/></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav" id="auggo-navbar">
+                <ul class="nav navbar-nav"  >
                     <li>
-                        <a style="height: 3em; padding: 0px;" href="/"><img style="height: 3em; padding: 0px;" src="/img/AugDog.png"/></a>
+                        <a class="auggo-toggle" style="height: 3em; padding: 0px;"  href="/"><img style="height: 3em; padding: 0px;" src="/img/AugDog.png"/></a>
                     </li>
                     <li>
-                        <a href="/about/#About">About</a>
+                        <a href="/about">About</a>
                     </li>
                     <li>
-                        <a href="/games">Games</a>
+                        <div class="dropdown auggo-toggle">
+                          <a href="/games"><button class="dropbtn" >games</button></a>
+                          <div class="dropdown-content">
+                            <a href="/games/plunker/">Plunker</a>
+                            <a href="/games/sweepyheads/">Sweepyheads</a>
+                          </div>
+                        </div>
+                        <a href="/games" class="auggo-detoggle">Games</a>
+                    </li>
+                    <li>
+                        <div class="dropdown auggo-toggle">
+                          <a href="/source"><button class="dropbtn" >Source Code</button></a>
+                          <div class="dropdown-content">
+                            <a href="/source/balloon/">Balloons</a>
+                            <a href="/source/pathfinding/">Pathfinding</a>
+                            <a href="/source/terrain-models/">Terrain Model</a>
+                            <a href="/source/vr-utils/">VR Util</a>
+                          </div>
+                        </div>
+                        <a href="/source" class="auggo-detoggle">source code</a>
                     </li>
                     <li>
                         <a href="/press-kit">Press Kit</a>
@@ -67,13 +90,13 @@
                     <li>
                         <a href="/contact">Contact</a>
                     </li>
-                    <li>
+                    <!--li>
                         <a href="http://Twitch.tv/AuggoDoggo">Twitch<img class="twitchLog" data-twitch-channel="auggodoggo"></a>
-                    </li>
+                    </li -->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
-        </div>
+
         <!-- /.container -->
     </nav>
 
@@ -204,11 +227,20 @@
 
     </div>
 
+
+
+
+
+
+    
+
+
+ 
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; Auggo Doggo Games 2017</p>
+                <div style="position: inherit" class="col-lg-12 text-center">
+                    <p>Copyright &copy; Auggo Doggo Games 2018</p>
                 </div>
             </div>
         </div>
@@ -238,9 +270,34 @@
         $.fn.ekkoLightbox.defaults;
     </script>
 
-        <!-- Twitch live components -->
-    <!--script src="https://code.jquery.com/jquery-1.11.1.min.js"></script-->
+    <!-- Twitch live components 
     <script data-interval="60" data-offline-image="/img/twitchlogo_offline_wtext.png" data-online-image="/img/twitchlogo_online.gif" src="/js/twitch-channel-status.js"></script>
+    -->
+
+    <script type="text/javascript">
+        // When the user scrolls the page, execute myFunction 
+        window.onscroll = function() {myFunction()};
+
+        // Get the navbar
+        var navbar = document.getElementById("auggo-navbar");
+        var navsub = document.getElementById("subnav");
+
+        // Get the offset position of the navbar
+        var sticky = navbar.offsetTop;
+
+        // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+        function myFunction() {
+          if (window.pageYOffset > sticky) {
+            navbar.classList.add("sticky")
+            navsub.classList.add("navsub")
+            navsub.classList.remove("hiddennav")
+          } else {
+            navbar.classList.remove("sticky");
+            navsub.classList.remove("navsub")
+            navsub.classList.add("hiddennav")
+          }
+        }
+    </script>
 
 </body>
 

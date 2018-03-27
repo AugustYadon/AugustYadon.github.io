@@ -80,23 +80,19 @@ td>a {
 p {
     font-size: 1.25em;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-    line-height: 1.6;
+    line-height: 1.3;
     color: #000;
 }
 
 p>a {
-    font-size: 1.2em;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-    line-height: 1.6;
-    font-family: "Westmeath",Helvetica,Arial,sans-serif;
+    font-weight: 650;
     color: #000;
 }
 
 p>a:hover {
-    font-size: 1.2em;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-    line-height: 1.6;
-    font-family: "Westmeath",Helvetica,Arial,sans-serif;
+    font-weight: 650;
     color: #454545;
     text-decoration: none;
 }
@@ -216,8 +212,6 @@ hr {
 }
 
 
-
-
 .nav>li>a>img {
 	height: 20px;
 	width: auto;   
@@ -226,35 +220,6 @@ hr {
 	bottom:0;
 	left:0;
 	right:0;
-}
-.code{
-    
-
-}
-
-pre.code {
-  white-space: pre-wrap;
-    margin-right: 1.3em;
-    margin-left: 1.3em;
-}
-
-pre.code:before {
-  counter-reset: listing;
-}
-
-pre.code code {
-  counter-increment: listing;
-  text-align: left;
-  float: left;
-  clear: left;
-}
-
-pre.code code::before {
-  content: counter(listing) ". ";
-  display: inline-block;
-  float: left;
-  height: 1em;
-  text-align: right;
 }
 
 

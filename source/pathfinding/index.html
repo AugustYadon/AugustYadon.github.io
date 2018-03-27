@@ -16,6 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="/css/business-casual.css" rel="stylesheet">
+    <link href="/css/auggodoggo.css" rel="stylesheet">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
@@ -33,7 +34,7 @@
 <body>
 
 
-    <div id="subnav" class="hiddennav" style="height: 140px">
+    <div id="subnav" class="hiddennav" style="height: 100px">
                
     </div>
 
@@ -115,7 +116,7 @@
                         </p>
 
                         <h3 style="color: black">Features</h3>
-                        <p>This code builds a network of connected nodes that are processed as waypoints for the fastest path from node a to node b. Every single path from every node to every other node will be stored in an array. This way, you can pre-process the fastest paths and then look them up often without burning processing power. Almost immediately after booting, you can query the <i>Node Network</i> for the fastest path between two transforms that can readily see one of the nodes. In other words, if your player is in a maze, running from enemies, the enemy can call NodeNetwork.FastestPath(Player.transform, Enemy.transform) some raycasting will be done to determine which nodes are visible to the player character and the enemy character. The output is an array of waypoints that you can use in your enemy script.
+                        <p>This code builds a network of connected nodes that are processed as waypoints for the fastest path from node <i>A</i> to node <i>B</i>. Every single path from every node to every other node will be stored in an array. This way, you can pre-process the fastest paths and then look them up often without burning processing power. Almost immediately after booting, you can query the <i>Node Network</i> for the fastest path between two transforms that can readily see one of the nodes. In other words, if your player is in a maze, running from enemies, the enemy can call NodeNetwork.FastestPath(Player.transform, Enemy.transform) some raycasting will be done to determine which nodes are visible to the player character and the enemy character. The output is an array of waypoints that you can use in your enemy script.
                         </p>
                     </div>
                 </div>
@@ -130,28 +131,41 @@
             <div class="box">
                 <div class="col-lg-12 ">
                     <br>
-                    <img class="img-responsive img-center" style="max-height: 600px; border-style: solid; border-width: 2px;" src="/img/pathfinding/nodeintro.png" />
-                    <div class="row" style="font-size:18px">
+                    <img class="img-responsive img-center" alt="Creating empty game objects to serve as nodes - pink cubes added to them for visibility" style="max-height: 600px; border-style: solid; border-width: 2px;" src="/img/pathfinding/pinknodes.png" />
+                    <div class="row" style="font-size:14px">
                         <br><hr>
-                        <h3 style="color: black">Theory</h3>
-                        <p>Djikstra
+                        <h3 style="color: black">Theory - Dijkstra</h3>
+                        <p>When finding the fastest path in a 3D environment, one may hear mention of something called <a href="https://en.wikipedia.org/wiki/A*_search_algorithm">A-Star search algorithms</a>. This is an abstract extension of Dijkstra's algorithm for finding the fastest path between two nodes using heuristics. I'm going to focus on my own implementation of <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"> Dijkstra's Algorithm</a>. School teaches you algoritms like these in a conceptual way, but often you realize that the concepts require a lot of work to apply to real life niche solutions. Dijkstra wasn't thinking of massive sand creatures navigating a maze to hunt down a player character on their own, but because his conceptual algorithm is abstract and vague, it can be applied to many things with some thought and work. I won't explain <i>Dijkstra's</i> in detail, since there's an entire wikipedia page that explains it.<br><br>
+                            <img class="img-responsive img-center" style="max-height: 600px; border-style: solid; border-width: 2px;" src="/img/pathfinding/dijkstra_animation.gif" \>
                         </p>
-
-                        <h3 style="color: black">Code examples</h3>
+                        <h3 style="color: black">Application</h3>
+                        <p>To apply these ideas to our implementation the first thing we need is a formal <b>reference</b> to everything we are using in our algorithms. The DijkNode (below) is a way to capture all information in a convenient chunk of data (Notice at the bottom of the code sample we define a 2D array). Our 2D array can be thought of as a lookup table where the first row (newwork[0,x]) will be a list of DijkNodes that contain info on each nodes relation to node 0. If this is confusing I will explain it further. <br>
+                        <br>
+                        <i>network[0,1]</i> is a single Dijknode. Each Dijknode stored in the first row (network[<b>0</b>,<i>somenumber</i>]) has information on that <b>x</b> node only as it relates to the <b>0th</b> node. In otherwords <b>network[4,9].min_dist</b> would tell you the minimum distance that it would take to get <i>to</i> the 9th node <i>from</i> the 4th node. So once we've filled out this entire 2D array we will be able to look up the fastest path between two nodes in terms of waypoints of other nodes. Example of how you would grab the fastest path is at the bottom, it won't work until we've constructed a network and filled the 2D array out though.</p>
                         <p>
-                            <pre class="code">
-                            <code>first line</code>
-                            <code>   indented line followed by empty line</code>
-                            <code></code>
-                            <code>the following line consists of one single space</code>
-                            <code> </code>
-                            <code>this line has a space at the end </code>
-                            <code>&#9;and one leading and ending tab&#9;</code>
-                            <code>fill to</code>
-                            <code>ten</code>
-                            <code>lines</code>
-                            </pre>
+                            <figure>
+                                <figcaption id="example1-caption">DijkNode</figcaption>
+                                <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
+                                    <code  contenteditable="true" tabindex="0" spellcheck="false"
+                                    >struct DijkNode
+{
+    public List<<i></i>int> nodes; //List of indicies of nodes that have physically unblocked line of sight to this referenced node
+    public Transform trans; //Transform is used for a point in worldspace but a Vector3 is a fair replacement for a simple implementation
+    public bool finalized;  //To mark that this node's min_dist has been finalized for certain
+    public float min_dist;  //The total distance of the minimum set of nodes between Start(this row) and Finish(this node)
+    public List<<i></i>Transform> min_path; //The actual list of nodes, in order, forming the shortest path between Start(this row) and Finish(this node)
+}
+
+DijkNode[,] network;
+
+//would access this for stored/processed info
+//Transform[] fastest_path_between_start_and_finish = network[start_node_index,finish_node_index].min_path.toArray();</code>
+                                </pre>
+                            </figure>
+                        </p><br>
+                        <p> If you look back at this image, you'll see all of the <b>nodes</b> (empty game objects with pink cubes added for visibility) that I've placed in the stone/sand maze in Plunker. These are hand placed but at the end of this guide, I'll explain how one would automate the node placement.
                         </p>
+                            <img class="img-responsive img-center" alt="Creating empty game objects to serve as nodes - pink cubes added to them for visibility" style="max-height: 250px; border-style: solid; border-width: 2px;" src="/img/pathfinding/pinknodes.png" />
                     </div>
                 </div>
                 <br/>
@@ -163,19 +177,22 @@
 
     <div class="container">
         <div class="row">
-            <h2 class="intro-text text-left" id="auggoH2">Pathfinding</h2>
+            <h2 class="intro-text text-left" id="auggoH2">Suggestions and ideas for Alteration</h2>
             <div class="box">
                 <div class="col-lg-12 ">
                     <br>
-                    <img class="img-responsive img-center" style="max-height: 600px; border-style: solid; border-width: 2px;" src="/img/pathfinding/nodeintro.png" />
-                    <div class="row" style="font-size:18px">
+                    <div class="row" style="font-size:16px">
                         <br><hr>
-                        <h3 style="color: black">Intro</h3>
-                        <p>If you'd like to use a pathfinding algorithm that uses minimal realtime processing power, and you've got a bit of programming experience, this is a great place to both learn and snag a sharp piece of a code for your 3D game. If you can't follow everything I'm posting here, then feel free to contact me and ask questions. All code here is 100% free to use for any purpose. If you'd like to support me, tell your friends about Plunker, and buy it!
+                        <h3 style="color: black">Multi-target pathfinding</h3>
+                        <p>find closest target and chase them
                         </p>
 
-                        <h3 style="color: black">Features</h3>
-                        <p>This code builds a network of connected nodes that are processed as waypoints for the fastest path from node a to node b. Every single path from every node to every other node will be stored in an array. This way, you can pre-process the fastest paths and then look them up often without burning processing power. Almost immediately after booting, you can query the <i>Node Network</i> for the fastest path between two transforms that can readily see one of the nodes. In other words, if your player is in a maze, running from enemies, the enemy can call NodeNetwork.FastestPath(Player.transform, Enemy.transform) some raycasting will be done to determine which nodes are visible to the player character and the enemy character. The output is an array of waypoints that you can use in your enemy script.
+                        <h3 style="color: black">multi-type paths between nodes</h3>
+                        <p>upon connection of nodes, denote if it crosses water or leaps over a short wall, and then different character types can access diffferent path dbs
+                        </p>
+
+                        <h3 style="color: black">static vs non-static nodes</h3>
+                        <p>Add a function that rebuilds smaller parts of the network whenever a non-static node moves (use .nodes to find which other nodes to change)
                         </p>
                     </div>
                 </div>
@@ -223,9 +240,53 @@
         $.fn.ekkoLightbox.defaults;
     </script>
 
-    <!-- Twitch live components 
-    <script data-interval="60" data-offline-image="/img/twitchlogo_offline_wtext.png" data-online-image="/img/twitchlogo_online.gif" src="/js/twitch-channel-status.js"></script>
-    -->
+
+    <script type="text/javascript">
+    (function()
+    {
+        for(var tags = ['main','figure','figcaption'], i = 0; i < tags.length; i ++)
+        {
+            document.createElement(tags[i]);
+        }
+    })();
+    </script>
+
+<script type="text/javascript">
+    (function()
+    {
+        if(typeof(window.getComputedStyle) == 'undefined') 
+        { 
+            return; 
+        }
+        
+        var pre = document.getElementsByTagName('pre');
+        
+        for(var len = pre.length, i = 0; i < len; i ++)
+        {
+            var code = pre[i].getElementsByTagName('code').item(0);
+            if(!code)
+            {
+                code = pre[i].getElementsByTagName('samp').item(0);
+                if(!code)
+                {
+                    continue;
+                }
+            }
+            
+            var column = document.createElement('div');
+            column.setAttribute('aria-hidden', 'true');
+            
+            for(var n = 0; n < code.innerHTML.split(/[\n\r]/g).length; n ++)
+            {
+                column.appendChild(document.createElement('span'));
+            }
+            
+            pre[i].insertBefore(column, code);
+            pre[i].className = 'line-numbers';
+        }   
+    
+    })();
+    </script>
 
     <script type="text/javascript">
         // When the user scrolls the page, execute myFunction 

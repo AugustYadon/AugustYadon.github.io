@@ -136,12 +136,12 @@
                         <br><hr>
                         <h3 style="color: black">Theory - Dijkstra</h3>
                         <p>When finding the fastest path in a 3D environment, one may hear mention of something called <a href="https://en.wikipedia.org/wiki/A*_search_algorithm">A-Star search algorithms</a>. This is an abstract extension of Dijkstra's algorithm for finding the fastest path between two nodes using heuristics. I'm going to focus on my own implementation of <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"> Dijkstra's Algorithm</a>. School teaches you algoritms like these in a conceptual way, but often you realize that the concepts require a lot of work to apply to real life niche solutions. Dijkstra wasn't thinking of massive sand creatures navigating a maze to hunt down a player character on their own, but because his conceptual algorithm is abstract and vague, it can be applied to many things with some thought and work. I won't explain <i>Dijkstra's</i> in detail, since there's an entire wikipedia page that explains it.<br><br>
-                            <img class="img-responsive img-center" style="max-height: 600px; border-style: solid; border-width: 2px;" src="/img/pathfinding/dijkstra_animation.gif" \>
+                            <img class="img-responsive img-center" style="max-height: 600px; border-style: solid; border-width: 2px;" src="/img/pathfinding/dijkstra.gif" \>
                         </p>
                         <h3 style="color: black">Application</h3>
                         <p>To apply these ideas to our implementation the first thing we need is a formal <b>reference</b> to everything we are using in our algorithms. The DijkNode (below) is a way to capture all information in a convenient chunk of data (Notice at the bottom of the code sample we define a 2D array). Our 2D array can be thought of as a lookup table where the first row (newwork[0,x]) will be a list of DijkNodes that contain info on each nodes relation to node 0. If this is confusing I will explain it further. <br>
                         <br>
-                        <i>network[0,1]</i> is a single Dijknode. Each Dijknode stored in the first row (network[<b>0</b>,<i>somenumber</i>]) has information on that <b>x</b> node only as it relates to the <b>0th</b> node. In otherwords <b>network[4,9].min_dist</b> would tell you the minimum distance that it would take to get <i>to</i> the 9th node <i>from</i> the 4th node. So once we've filled out this entire 2D array we will be able to look up the fastest path between two nodes in terms of waypoints of other nodes. Example of how you would grab the fastest path is at the bottom, it won't work until we've constructed a network and filled the 2D array out though.</p>
+                        <i>network[0,1]</i> is a single Dijknode. Each Dijknode stored in the first row (network[<b>0</b>,<i>somenumber</i>]) has information on that <b>x</b> node only as it relates to the <b>0th</b> node. In otherwords <b>network[4,9].min_dist</b> would tell you the minimum distance that it would take to get <i>to</i> the 9th node <i>from</i> the 4th node. So once we've filled out this entire 2D array we will be able to look up the fastest path between two nodes in terms of waypoints of other nodes. Example of how you would grab the fastest path is at the bottom, it won't work until we've constructed a network and filled the 2D array out though. This is where Dijkstra's algorithm comes in, we would implement it to fill in our data table.</p>
                         <p>
                             <figure>
                                 <figcaption id="example1-caption">DijkNode</figcaption>
@@ -165,7 +165,9 @@ DijkNode[,] network;
                         </p><br>
                         <p> If you look back at this image, you'll see all of the <b>nodes</b> (empty game objects with pink cubes added for visibility) that I've placed in the stone/sand maze in Plunker. These are hand placed but at the end of this guide, I'll explain how one would automate the node placement.
                         </p>
-                            <img class="img-responsive img-center" alt="Creating empty game objects to serve as nodes - pink cubes added to them for visibility" style="max-height: 250px; border-style: solid; border-width: 2px;" src="/img/pathfinding/pinknodes.png" />
+                        <p><img class="img-responsive img-center" alt="Creating empty game objects to serve as nodes - pink cubes added to them for visibility" style="max-height: 250px; border-style: solid; border-width: 2px;" src="/img/pathfinding/pinknodes.png" />
+                        </p>
+                        <p>In order to fill in our DijkNode table with an algorithm, we need the transforms of these as well as a way to see which nodes "connect" directly. If we can reference these, then we can literally achieve everything else through our algorithms. Below I'll place an image of a visualisation of all node connections</p>
                     </div>
                 </div>
                 <br/>

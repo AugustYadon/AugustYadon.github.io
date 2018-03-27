@@ -104,7 +104,7 @@
 
 <div class="container">
         <div class="row">
-            <h2 class="intro-text text-left" id="auggoH2">Pathfinding</h2>
+            <h2 class="intro-text text-left" id="auggoH2">Pathfinding in Plunker</h2>
             <div class="box">
                 <div class="col-lg-12 ">
                     <br>
@@ -112,7 +112,7 @@
                     <div class="row" style="font-size:18px">
                         <br><hr>
                         <h3 style="color: black">Intro</h3>
-                        <p>If you'd like to use a pathfinding algorithm that uses minimal realtime processing power, and you've got a bit of programming experience, this is a great place to both learn and snag a sharp piece of a code for your 3D game. If you can't follow everything I'm posting here, then feel free to contact me and ask questions. All code here is 100% free to use for any purpose. If you'd like to support me, tell your friends about Plunker, and buy it!
+                        <p>If you'd like to use a pathfinding algorithm that uses minimal realtime processing power, and you've got a bit of programming experience, this is a great place to both learn and snag a sharp piece of a code for your 3D game. If you can't follow everything I'm posting here, then feel free to contact me and ask questions. All code here is 100% free to use for any purpose. If you'd like to support me, tell your friends about Plunker, and buy it! I'm not going to package this in a friendly drag an drop Unity Asset, I'm going to upload the source code and guide you through how to use it in your own game and you'll probably want to alter it to fit your needs. If you can follow how I made this then I'm confident that you can make much use of it.
                         </p>
 
                         <h3 style="color: black">Features</h3>
@@ -124,7 +124,7 @@
             </div>
         </div>
     </div>
-
+<br>
    <div class="container">
         <div class="row">
             <h2 class="intro-text text-left" id="auggoH2">How it works</h2>
@@ -138,10 +138,24 @@
                         <p>When finding the fastest path in a 3D environment, one may hear mention of something called <a href="https://en.wikipedia.org/wiki/A*_search_algorithm">A-Star search algorithms</a>. This is an abstract extension of Dijkstra's algorithm for finding the fastest path between two nodes using heuristics. I'm going to focus on my own implementation of <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"> Dijkstra's Algorithm</a>. School teaches you algoritms like these in a conceptual way, but often you realize that the concepts require a lot of work to apply to real life niche solutions. Dijkstra wasn't thinking of massive sand creatures navigating a maze to hunt down a player character on their own, but because his conceptual algorithm is abstract and vague, it can be applied to many things with some thought and work. I won't explain <i>Dijkstra's</i> in detail, since there's an entire wikipedia page that explains it.<br><br>
                             <img class="img-responsive img-center" style="max-height: 600px; border-style: solid; border-width: 2px;" src="/img/pathfinding/dijkstra.gif" \>
                         </p>
-                        <h3 style="color: black">Application</h3>
-                        <p>To apply these ideas to our implementation the first thing we need is a formal <b>reference</b> to everything we are using in our algorithms. The DijkNode (below) is a way to capture all information in a convenient chunk of data (Notice at the bottom of the code sample we define a 2D array). Our 2D array can be thought of as a lookup table where the first row (newwork[0,x]) will be a list of DijkNodes that contain info on each nodes relation to node 0. If this is confusing I will explain it further. <br>
-                        <br>
-                        <i>network[0,1]</i> is a single Dijknode. Each Dijknode stored in the first row (network[<b>0</b>,<i>somenumber</i>]) has information on that <b>x</b> node only as it relates to the <b>0th</b> node. In otherwords <b>network[4,9].min_dist</b> would tell you the minimum distance that it would take to get <i>to</i> the 9th node <i>from</i> the 4th node. So once we've filled out this entire 2D array we will be able to look up the fastest path between two nodes in terms of waypoints of other nodes. Example of how you would grab the fastest path is at the bottom, it won't work until we've constructed a network and filled the 2D array out though. This is where Dijkstra's algorithm comes in, we would implement it to fill in our data table.</p>
+                        <p>To apply these ideas to our implementation the first thing we need is a formal <b>reference</b> to everything we are using in our algorithms. The DijkNode (below) is a way to capture all information in a convenient chunk of data (Notice at the bottom of the code sample we define a 2D array). Our 2D array, or our <i>network</i> as defcan be thought of as a lookup table where the first row (newwork[0,x]) will be a list of DijkNodes that contain info on each nodes relation to node 0. If this is confusing I will explain it further.</p>
+                    </div>
+                </div>
+                <br/>
+            </div>
+        </div>
+    </div>
+
+<br>
+
+   <div class="container">
+        <div class="row">
+            <h2 class="intro-text text-left" id="auggoH2">Application</h2>
+            <div class="box">
+                <div class="col-lg-12 ">
+                    <div class="row" style="font-size:14px">
+                        <h3 style="color: black">Data Structure - DijkNode</h3>
+                        <p><i>network[0,1]</i> is a single Dijknode. Each Dijknode stored in the first row (network[<b>0</b>,<i>somenumber</i>]) has information on that <b>x</b> node only as it relates to the <b>0th</b> node. In otherwords <b>network[4,9].min_dist</b> would tell you the minimum distance that it would take to get <i>to</i> the 9th node <i>from</i> the 4th node. So once we've filled out this entire 2D array we will be able to look up the fastest path between two nodes in terms of waypoints of other nodes. Example of how you would grab the fastest path is at the bottom, it won't work until we've constructed a network and filled the 2D array out though. This is where Dijkstra's algorithm comes in, we would implement it to fill in our data table.</p>
                         <p>
                             <figure>
                                 <figcaption id="example1-caption">DijkNode</figcaption>
@@ -165,37 +179,284 @@ DijkNode[,] network;
                         </p><br>
                         <p> If you look back at this image, you'll see all of the <b>nodes</b> (empty game objects with pink cubes added for visibility) that I've placed in the stone/sand maze in Plunker. These are hand placed but at the end of this guide, I'll explain how one would automate the node placement.
                         </p>
+                        <hr>
                         <p><img class="img-responsive img-center" alt="Creating empty game objects to serve as nodes - pink cubes added to them for visibility" style="max-height: 250px; border-style: solid; border-width: 2px;" src="/img/pathfinding/pinknodes.png" />
                         </p>
-                        <p>In order to fill in our DijkNode table with an algorithm, we need the transforms of these as well as a way to see which nodes "connect" directly. If we can reference these, then we can literally achieve everything else through our algorithms. Below I'll place an image of a visualisation of all node connections</p>
+                        <hr>
+                        <p>In order to fill in our DijkNode table with an algorithm, we need the transforms of these nodes as well as a way to see which nodes "connect" directly. If we can reference these, then we can literally achieve everything else through our algorithms. Below I'll place an image of a visualisation of all node connections.
+                        </p>
+                        <hr>
+                        <p><img class="img-responsive img-center" alt="Creating empty game objects to serve as nodes - pink cubes added to them for visibility" style="max-height: 450px; border-style: solid; border-width: 2px;" src="/img/pathfinding/connectednodes.png" />
+                        </p>
+                        <hr>
+                        <h3 style="color: black">Beam Casting (Wide Ray Casting)</h3>
+                        <p> If we simply ray cast from node to node, we will have a connection, but when we think further about what this connection means, then we see some problems with this approach. A ray cast from one point to another identifies that an infinitely thin space exists between two nodes, but as far as we know it could be a pinhole, which is not going to be a path at all unless your AI character is a tiny fly or a speck of dust. Of course for the case of carefully setting up your own nodes, you can easily say, "hey I'll never do anything stupid or lazy like that, I'll put my nodes exactly where they need to go". Even so, we'll be efficiently raycasting a lot to find our character the correct closest nodes, so lets use this function I've cooked up for easy checks for connections that are wide enough for our characters to get through. 
+                        </p>
+                        <p>
+                            <figure>
+                                <figcaption id="example1-caption">Beamcast</figcaption>
+                                <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
+                                    <code  contenteditable="true" tabindex="0" spellcheck="false"
+                                    >public bool BeamCast(Transform target, Transform origin, float width)
+{
+    width = width / 2;
+    RaycastHit rch;
+    Ray close_ray;
+
+    Vector3 ray_direction = target.position - origin.position;
+
+    close_ray = new Ray(origin.position + Vector3.Cross(ray_direction, Vector3.up).normalized * width, ray_direction);
+    if (!Physics.Raycast(close_ray, out rch, Vector3.Distance(origin.position, target.position), layermask_all, QueryTriggerInteraction.Ignore))
+    {
+        close_ray = new Ray(origin.position + Vector3.Cross(ray_direction, Vector3.down).normalized * width, ray_direction);
+        if (!Physics.Raycast(close_ray, out rch, Vector3.Distance(origin.position, target.position), layermask_all, QueryTriggerInteraction.Ignore))
+        {
+            return false; //beam not obstructed
+        }
+    }
+
+    return true; //beam obstructed
+}</code>
+                                </pre>
+                            </figure>
+                        </p><br>
+                        <p>The creatures in Plunker are generally pretty huge, so I start with 2f as the width, but this function will do two raycasts parallel with the Y(upward) plane. Imagine the rays being the edges of a beam like the light bridges in portal. If the entire beam can make an uninterupted connection, then we can say that the characters of a similar width can also walk that path. Lets take a look at how we use this to iterate through all of the possible node connections in a one time initialization. 
+                        </p><hr><p><img class="img-responsive img-center" alt="portal style beam bridge" style="max-height: 400px; border-style: solid; border-width: 2px;" src="/img/pathfinding/portal.jpg" /></p><hr><br>
+                        <p>The following code block is the first half of the initialization function for our DijkNode table/database of shortest paths. The first thing we do is set references of transforms to each DijkNode, and initialize Lists. At the same time, we check on line 16 there if we are at a DjikNode referencing it's own node. Remember each DijkNode is exists only to describe the connection between two nodes. If our indicies are the same, like the DijkNode located at <b>network[x,x]</b>, then we will have a <b>min_dist</b> that describes the distance of the minimum path between node x and itself. This should always be 0. We will use this to help us in the next section. We also initialize our min_path saying that the path from x to x is one node, x. </p> 
+                        <p>Next, we iterate through them and BeamCast between each. When there is an uninterrupted beam, we add to a list of indicies on our DjikNodes that can be connected. Notice how we have setup the for loops to only check each connection from one direction. This almost halves the work for the computer, remember this for later when I highlight how we could do the same elsewhere.
+                        </p>
+                        <br>
+                        <p>
+                            <figure>
+                                <figcaption id="example1-caption">FillPaths() - initialize</figcaption>
+                                <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
+                                    <code  contenteditable="true" tabindex="0" spellcheck="false"
+                                    >void FillPaths()
+{
+    //instantiate square matrix, contains x^2 total nodes, where x is the number of nodes to start with
+    network = new DijkNode[NLength, NLength];
+    
+    //initialize DijkNodes
+    for (int i = 0; i < NLength; i++)                       
+    {
+        for (int j = 0; j < NLength; j++)                   
+        {
+            network[i, j].trans = node_network[j];
+            network[i, j].min_path = new List<<i></i>Transform>();
+            network[i, j].nodes = new List<<i></i>int>();
+
+            //in each row, we have one starting node. Hence the min_dist should be 0. 
+            if (i == j)                                              
+            {
+                network[i, j].min_dist = 0;
+                network[i, j].min_path.Add(network[i, j].trans);
+            }
+            else { network[i, j].min_dist = float.MaxValue; }
+        }
+    }
+
+
+    //find connections between intialized nodes
+    for (int i = 0; i < NLength; i++)
+    {
+        for (int j = i + 1; j < NLength; j++)
+        {
+
+            if (!BeamCast(node_network[i], node_network[j], 2f))
+            { 
+                for (int k = 0; k < NLength; k++)
+                {
+                    network[k, i].nodes.Add(j);
+                    network[k, j].nodes.Add(i);
+                }
+                //This is where you'd draw the line with a line_rendering function
+            }
+        }
+    }</code>
+                                </pre>
+                            </figure>
+                        </p><br>
+                        <h3 style="color: black">Applying Dijkstra</h3><p>
+                            At this stage, we have information and can easily plug everything into a Djikstra style fastest path algorithm. I'll paste this gif again in hopes that you see the steps in both the gif and the code.
+                            <img class="img-responsive img-center" style="max-height: 600px; border-style: solid; border-width: 2px;" src="/img/pathfinding/dijkstra.gif" \>
+                        </p><p>
+                        We'll iterate through each row of DijkNodes, in this way we'll find the fastest path to each of the DijkNodes from whichever row we're on. Row 0 will be an Array of DijkNodes that contain the fastest paths from node 0 to node x where x is the index of each other DijkNode. We want to process each node exactly once, but we do not want to process them in numerical order of their indicies. For row 0, we'll start at DjikNode 0 and crawl outward based on connected nodes. Each time we process a DjikNode we look at it's connected nodes, current min_dist, current min_path, and we update the connected nodes with new minimum distances from the start node along with min_path that we have stored at each node.
+                        </p><p>How do we crawl outward? It seems like a simple problem for a human eyes but when you think of using nodes as references you can think yourself in absolute circles. We start with a loop, only operating on the node with the current lowest minimum distance from the starting node (remember untouched nodes have a min_dist of float.MaxValue), and one that has not been chosen. When we finish processing, we update all of the connected nodes and mark this node as processed. We then loop back to see a couple new nearby(no longer MaxValue) nodes with distance information that have not yet been marked as processed/finalized. So long as all of the nodes have some connection to the rest, each one will be processed once and the loop will end having processed the entire network. Each node should have been updated with the fastest path and distance values.</p>
+                        <p>It's ok if this takes some time/effort to sink in. Maybe even some clarification on my part, but I hope you can see that by the time we pass through the whole table, we can now use it as a look up table like this: "network[startnode,endnode].min_path".
+                        </p><br><p>
+                            <figure>
+                                <figcaption id="example1-caption">FillPaths() - Dijkstra fill</figcaption>
+                                <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
+                                    <code  contenteditable="true" tabindex="0" spellcheck="false"
+                                    >    //Dijkstra inspired algoritm 
+    for (int k = 0; k < NLength; k++) 
+    {
+        //loop NLength times on each row
+        for (int c = 0; c < NLength; c++) 
+        {
+            //initialize values
+            int closest_index = -1;
+            float closest_dist = float.MaxValue; 
+            //Find the current closest node to k-node that has not been processed 
+            //(this is why we set k,k min_dist of 0 and all others in the row with MaxValue earlier)
+            for (int i = 0; i < NLength; i++)
+            {
+                if (!network[k, i].finalized && network[k, i].min_dist < closest_dist)
+                {
+                    closest_dist = network[k, i].min_dist;
+                    closest_index = i;
+                }
+
+            }
+            if (closest_index == -1) { Debug.LogError("Problem with finding path for " + this.gameObject.name); break; } //If this comes up, something is setup wrong...
+
+            for (int a = 0; a < network[k, closest_index].nodes.Count; a++) //iterate through the nodes that have a direct connection
+            {
+                //This code can get extremely complex if you don't place values into variables to break up and contain the logic
+                int connected_node_index = network[k, closest_index].nodes[a]; 
+                Vector3 point_A = network[k, closest_index].trans.position;
+                Vector3 point_B = network[k, connected_node_index].trans.position;
+
+                float new_min = network[k, closest_index].min_dist + Vector3.Distance(point_A, point_B);
+                //make sure to set all info on all connected nodes so the closest one can be processed next
+                if (!network[k, connected_node_index].finalized && network[k, connected_node_index].min_dist > new_min) 
+                {
+                    network[k, connected_node_index].min_dist = new_min;
+                    network[k, connected_node_index].min_path = new List<<i></i>Transform>(network[k, closest_index].min_path);
+                    network[k, connected_node_index].min_path.Add(network[k, connected_node_index].trans);
+                }
+            }
+
+            network[k, closest_index].finalized = true; //mark that it has been processed
+        }
+    }
+}</code>
+                                </pre>
+                            </figure>
+                        </p><br>  
                     </div>
                 </div>
                 <br/>
             </div>
         </div>
     </div>
+
+<br>
+
+    <div class="container">
+        <div class="row">
+            <h2 class="intro-text text-left" id="auggoH2">Using the code at runtime</h2>
+            <div class="box">
+                <div class="col-lg-12 style="font-size:16px">
+                        <img class="img-responsive img-center" style="max-height: 700px; border-style: solid; border-width: 2px;" src="/img/pathfinding/fastestpath.png" \>         
+                        <h3 style="color: black">Accessing the data at runtime</h3>
+                        
+                        
+
+                        <p>I know what you're thinking. What good is all of this if you need to be at a node to find where the nearest node to the player is? In this last chunk of code, we take in two transforms and find a path between them using the nodes as waypoints. Keep in mind that to use this, your entire open area needs to have nodes visible. Think of the nodes as torches that connect, and "illuminate" the entire space so that there are no spaces that cannot be seen by a node. As long as both the target and the user are within sight of some node, the function will return a valid path. I'll allow you to create characters and program how they move and also how they make use of these waypoint arrays. As a hint, FindPath() is meant to be used less than once per frame. I have mine set to iterate through a list of 7 creatures and have them call FindPath once every few seconds. Each time they call it, they have an entire path to follow, and it is unlikely to change dramatically until they get close to the target, at which point they will see the target directly and you should be writing code to move toward the target if it is visible rather than following a path.</p>
+                        <br><p>
+                            <figure>
+                                <figcaption id="example1-caption">FindPath(start_point, end_point)</figcaption>
+                                <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
+                                    <code  contenteditable="true" tabindex="0" spellcheck="false"
+                                    >public Transform[] FindPath(Transform Target, Transform Agent)
+{
+    //take target as where the agent wants to go (end node), and the agent is the starting position (start node)
+    float closest_start_node_dist = float.MaxValue;
+    int start_node_index = -1;
+    float closest_end_node_dist = float.MaxValue;
+    int end_node_index = -1;
+
+    bool player_in_sight_of_node = false;
+
+
+    //First find the closest node to the target transform whether it is visible or not.
+    //priority always given to nodes that have line of sight to the target.
+    for (int m = 0; m < NLength; m++)
+    { 
+        
+        float distance_between = (Target.position - node_network[m].position).sqrMagnitude;
+        if (!BeamCast(Target, node_network[m],2f))
+        {
+            if (!player_in_sight_of_node || closest_end_node_dist > distance_between)
+            {
+                player_in_sight_of_node = true;
+                closest_end_node_dist = distance_between;
+                end_node_index = m;
+            }
+
+        }
+        else if(!player_in_sight_of_node) //if player has glitched through wall, just find the closest node to them
+        {
+            if (closest_end_node_dist > distance_between)
+            {
+                closest_end_node_dist = distance_between;
+                end_node_index = m;
+            }
+        }
+
+    }
+
+    if(end_node_index == -1) { return new Transform[] {Agent}; }
+
+    for (int n = 0; n < NLength; n++)
+    {
+        if (!BeamCast(Agent, node_network[n], 2f))
+        {
+            Debug.Log("n: "+n);
+            if (closest_start_node_dist > network[n,end_node_index].min_dist)
+            {
+                closest_start_node_dist = network[n, end_node_index].min_dist;
+                start_node_index = n;
+            }
+        }
+    }
+
+    if(start_node_index == -1) { return new Transform[] {Agent}; }
+
+    return network[start_node_index, end_node_index].min_path.ToArray();
+}</code>
+                                </pre>
+                            </figure>
+                        </p>
+                </div>
+                <br/>
+            </div>
+        </div>
+    </div>
     
-    
+    <br>
 
     <div class="container">
         <div class="row">
             <h2 class="intro-text text-left" id="auggoH2">Suggestions and ideas for Alteration</h2>
             <div class="box">
                 <div class="col-lg-12 ">
-                    <br>
-                    <div class="row" style="font-size:16px">
-                        <br><hr>
+                    <div class="row" style="font-size:14px">
+                        <p>These suggestions will not make your code any better but they're things that I might have done if the situation called for it, as well as ideas for if you're using this as a learning tool and you want to take your tutorial creation further.
+                        </p>
+
+                        <br>
                         <h3 style="color: black">Multi-target pathfinding</h3>
-                        <p>find closest target and chase them
+                        <p>If you want multiple targets for the enemy or follower character to follow, you can check multiple fastest paths each time you FindPath and take the fastest path between the two.
                         </p>
-
-                        <h3 style="color: black">multi-type paths between nodes</h3>
-                        <p>upon connection of nodes, denote if it crosses water or leaps over a short wall, and then different character types can access diffferent path dbs
+                        <hr>
+                        <h3 style="color: black">path-types and feature data between nodes</h3>
+                        <p>You might add more info to the DijkNode struct such as if the path is clear or maybe if it is a section that the player moves more slowly through, or maybe they take damage if they walk through fire, so you'd want to add that in and calculate at the end to make sure they don't take too much total damage by the end of the path.
                         </p>
-
+                        <hr>
                         <h3 style="color: black">static vs non-static nodes</h3>
-                        <p>Add a function that rebuilds smaller parts of the network whenever a non-static node moves (use .nodes to find which other nodes to change)
+                        <p>If you've got a lot of moving platforms or shifting landscapes, or obstacles that can move, you may want to determine which connections will not be interupted so that you can update more hazardous regions more efficiently.
                         </p>
+                        <hr>
+                        <h3 style="color: black">Using smart Dijkstra algorithms to further optimize</h3>
+                        <p>The path from A to B is the same distance and an exact reverse of the path from B to A. We can use this relatively easily to make the construction of the table faster. We would only care to do this if our entire network became too large or we were reprocessing it at runtime.
+                        </p>
+                        <hr>
+                        <h3 style="color: black">Sub Networks</h3>
+                        <p>You could create pockets of nodes that connect through only one doorway each to each other so that entire sections can be calculated separately and then cross sub-network calculations can still happen. This would help the calculations that FindPath makes when it is finding which nodes are closest to the follower and to the target. If you had a smaller pool of nodes to check then you might save some power when you have a lot of nodes.
+                        </p>
+
                     </div>
                 </div>
                 <br/>
@@ -203,6 +464,25 @@ DijkNode[,] network;
         </div>
     </div>
 
+
+
+
+    <div class="container">
+        <div class="row">
+            <h2 class="intro-text text-left" id="auggoH2">Q&A</h2>
+            <div class="box">
+                <div class="col-lg-12 ">
+                    <div class="row" style="font-size:16px">
+                        <img class="img-responsive img-center" style="max-height: 400px;" src="/img/augdoglc.png" \>
+                        <p>
+                            If you felt any part of this guide was awkwardly paced, or hard to follow, please send me an email at <b>August@AuggoDoggoGames.com</b> and give me a chance to clear it up and improve at sharing my code creations. In the future, this is where I'll post answers to specific questions that aren't simply answered by updating a portion of the guide.
+                        </p>
+                    </div>
+                </div>
+                <br/>
+            </div>
+        </div>
+    </div>
 
 
 

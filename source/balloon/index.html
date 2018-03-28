@@ -103,65 +103,67 @@
     
     
 
-<div class="container">
+    <div class="container">
         <div class="row">
             <h2 class="intro-text text-left" id="auggoH2">Jiggly Balloons</h2>
             <div class="box">
                 <div class="col-lg-12 ">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="row">
-                            <br>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <p>
-                                    It's important in any art form to identify a focal point and spend extra time adding an appropriate amount of detail and extra work to it in order to bring life and personality to your project. The main difference I've noticed between AAA titles and indie games is the massive amount of detail that they add to objects that are not focal points, like pots or small bits of foliage just because they have the artists to do it. This is not necesary to make a game better, it's purpose is almost always to make a game "feel" more full and polished. That's not a bad thing at all, but if you're a small company or team, it's not efficient for you to add things to make the game "seem" more full before you have the resources to polish the focal points of the game. Please take this all as opinion and please contact me with your own opinions and experiences, I'd love to discuss all things "game development" with anyone who has something to share!
-                                </p>
-                                <p>
-                                    In VR, the focal points are usually objects you're able to pick up, or characters that come toward you. To make the player feel like there is something deeper that a flat lifeless 3D model, often you want to add animations, interaction scripts, and most importantly haptic feedback(controller vibration feedback usually). Seeing a sword clank against another sword with "clanking" sounds and physics is one thing, but to feel your sword grinding against a metal surface (or the increasing tension in your bowstring) is on another level. It's the layer of feedback that pushes you over the edge, where you allow yourself in a certain respect, to believe the ruse.
-                                </p>
-                                <p>
-                                    I'm not writing a book here, so I'll get on with the water balloon explanation/guide now that you know why this can be such an important piece of game. When you shake a balloon it should jiggle, it should deform from the water sinking on one side or the other based on gravity and how the player is tilting it, and it should pop is a satisfying way. We don't throw water balloons in real life so that we can get things wet. If we wanted to get things wet we'd use a bucket or a hose. Water balloons are just so satisfying to pop. Keep that in mind when you're desigining things based on 'satisfying feelings', what is it that is satisfying, what is suposed to be enjoyable about this thing? 
-                                </p>
-                                <p>In this section I'm going to teach you how to make the balloons that I use in plunker in 3 steps. 
-                                    <ul>
-                                        <li>Creating the model, paticle effects, and animations</li>
-                                        <li>Interaction with the SteamVR Plugin for holding/sloping/jiggling</li>
-                                        <li>Pop, respawn, throw, and deal damage to other objects</li>
-                                    </ul>
-                                </p>
-                            </div>
-                        </div>
+                    <br>
+                    <img class="img-responsive img-center" style="max-height: 600px; border-style: solid; border-width: 2px;" src="/img/pathfinding/nodeintro.png" />
+                    <div class="row" style="font-size:16px">
+                        <br><hr>
+                        <h3 style="color: black">Intro</h3>
+                        <p> 
+                            It's important in any art form to identify a focal point and spend extra time adding an appropriate amount of detail and extra work to it in order to bring life and personality to your project. The main difference I've noticed between AAA titles and indie games is the massive amount of detail that they add to objects that are not focal points, like pots or small bits of foliage just because they have the artists to do it. This is not necesary to make a game better, it's purpose is almost always to make a game "feel" more full and polished. That's not a bad thing at all, but if you're a small company or team, it's not efficient for you to add things to make the game "seem" more full before you have the resources to polish the focal points of the game. Please take this all as opinion and please contact me with your own opinions and experiences, I'd love to discuss all things "game development" with anyone who has something to share!
+                        </p>
+                        <p>
+                            In VR, the focal points are usually objects you're able to pick up, or characters that come toward you. To make the player feel like there is something deeper that a flat lifeless 3D model, often you want to add animations, interaction scripts, and most importantly haptic feedback(controller vibration feedback usually). Seeing a sword clank against another sword with "clanking" sounds and physics is one thing, but to feel your sword grinding against a metal surface (or the increasing tension in your bowstring) is on another level. It's the layer of feedback that pushes you over the edge, where you allow yourself in a certain respect, to believe the ruse.
+                        </p>
+                        <p>
+                            I'm not writing a book here, so I'll get on with the water balloon explanation/guide now that you know why this can be such an important piece of game. When you shake a balloon it should jiggle, it should deform from the water sinking on one side or the other based on gravity and how the player is tilting it, and it should pop is a satisfying way. We don't throw water balloons in real life so that we can get things wet. If we wanted to get things wet we'd use a bucket or a hose. Water balloons are just so satisfying to pop. Keep that in mind when you're desigining things based on 'satisfying feelings', what is it that is satisfying, what is suposed to be enjoyable about this thing? 
+                        </p>
+                        <p>In this section I'm going to teach you how to make the balloons that I use in plunker in 3 steps. 
+                            <ul>
+                                <li>Creating the model, paticle effects, and animations</li>
+                                <li>Interaction with the SteamVR Plugin for holding/sloping/jiggling</li>
+                                <li>Pop, respawn, throw, and deal damage to other objects</li>
+                            </ul>
+                        </p>
                     </div>
                 </div>
                 <br/>
             </div>
         </div>
-    </div>c
+    </div>
 
     <div class="container">
         <div class="row">
-            <h2 class="intro-text text-left" id="auggoH2">Model/Particle Effects/Animations</h2>
+            <h2 class="intro-text text-left" id="auggoH2">Creating the look</h2>
             <div class="box">
                 <div class="col-lg-12 ">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="row">
-                            <br>pic
+                    <div class="row" style="font-size:14px">
+                        <br><hr>
+                        <h3 style="color: black">Making the model</h3>
+                        <div class="col-lg-6 ">
+                            <div class="img-responsive img-center" style="padding:10px;">
+                                <img class="img-responsive img-center" style="max-height: 500px; border-style: solid; border-width: 2px;" src="/img/balloon/balloon-zmesh.png" />
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <p>Making the model:... lots of pics
-                                </p>
-
-                                <p>Particle System: not my forte</p>
-
-                                <p>Animations: balloons with bones</p>
+                        <div class="col-lg-6 ">
+                            <div class="img-responsive img-center" style="padding:10px;">
+                                <img class="img-responsive img-center" style="max-height: 500px; border-style: solid; border-width: 2px;" src="/img/balloon/balloon-smoothmesh.png" />
                             </div>
                         </div>
+                    </div>
+                    <div class="row" style="font-size:14px">
+                        <p>Making the model:... </p>
+
+                        <h3 style="color: black">Bones and animations</h3>
+                        <img class="img-responsive img-center" style="max-height: 500px; border-style: solid; border-width: 2px;" src="/img/balloon/balloon-bones.png" />
+                        <p>Animations: balloons with bones</p>
+
+                        <h3 style="color: black">Particle System</h3>
+                        <p>Particle System: not my forte</p>
                     </div>
                 </div>
                 <br/>
@@ -176,22 +178,18 @@
             <h2 class="intro-text text-left" id="auggoH2">Interaction with the SteamVR Plugin for holding/sloping/jiggling</h2>
             <div class="box">
                 <div class="col-lg-12 ">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="row">
-                            <br>pic
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <p>SteamVR basics, holding the balloons, droping the balloons</p>
+                    <div class="row" style="font-size:14px">
+                        
+                        <h3 style="color: black">SteamVR basics, holding the balloons, droping the balloons</h3>
+                        <p>SteamVR basics, holding the balloons, droping the balloons</p>
 
-                                <p>haptics - vibrations, sounds, jiggling</p>
-                            </div>
-                        </div>
-                    </div>
+                        <h3 style="color: black">haptics - vibrations, sounds, jiggling</h3>
+                        <p>haptics - vibrations, sounds, jiggling</p>
+
+                        <h3 style="color: black">haptics - vibrations, sounds, jiggling</h3>
+                        <p>interaction with other objects, respawn</p>
+
                 </div>
-                <br/>
             </div>
         </div>
     </div>
@@ -209,7 +207,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="row">
-                                <p>interaction with other objects, respawn</p>
+                                
 
                                 <p>Take it a step further - Damage Transfer</p>
                             </div>

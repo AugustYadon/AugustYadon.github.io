@@ -9,8 +9,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Auggo Doggo | Source | Balloons</title>
-
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
@@ -22,25 +20,10 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body>
-
-
-    <div id="subnav" class="hiddennav" style="height: 100px">
-               
-    </div>
-
-
-
-
+    <div id="subnav" class="hiddennav" style="height: 80px" ></div>
     <!-- Navigation -->
     <nav id="auggo-navbar" class="navbar navbar-default" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -57,25 +40,18 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav"  >
-                    <li>
-                        <a class="auggo-toggle" style="height: 2.5em; padding: 0px; margin-top: -20px; margin-bottom: -5px"  href="/"><img style="height: 2.5em; padding: 0px;" src="/img/AugDog.png"/></a>
-                    </li>
-                    <li>
-                        <a href="/about">About</a>
-                    </li>
-                    <li>
-                        <div class="dropdown auggo-toggle">
+                    <li><a class="auggo-toggle" style="height: 2.5em; padding: 0px; margin-top: -12px; margin-bottom: -5px"  href="/"><img style="height: 2.5em; padding: 0px;" src="/img/AugDog.png"/></a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><div class="dropdown auggo-toggle">
                           <a href="/games"><button class="dropbtn" >games</button></a>
                           <div class="dropdown-content">
                             <a href="/games/plunker/">Plunker</a>
                             <a href="/games/sweepyheads/">Sweepyheads</a>
                           </div>
                         </div>
-                        <a href="/games" class="auggo-detoggle">Games</a>
-                    </li>
-                    <li>
-                        <div class="dropdown auggo-toggle">
-                          <a href="/source"><button class="dropbtn" >Source Code</button></a>
+                        <a href="/games" class="auggo-detoggle">Games</a></li>
+                    <li><div class="dropdown auggo-toggle">
+                          <a href="/source"><button class="dropbtn" >Code Walkthrough</button></a>
                           <div class="dropdown-content">
                             <a href="/source/balloon/">Balloons</a>
                             <a href="/source/pathfinding/">Pathfinding</a>
@@ -83,48 +59,39 @@
                             <a href="/source/vr-utils/">VR Util</a>
                           </div>
                         </div>
-                        <a href="/source" class="auggo-detoggle">source code</a>
-                    </li>
-                    <li>
-                        <a href="/press-kit">Press Kit</a>
-                    </li>
-                    <li>
-                        <a href="/contact">Contact</a>
-                    </li>
-                    <!--li>
-                        <a href="http://Twitch.tv/AuggoDoggo">Twitch<img class="twitchLog" data-twitch-channel="auggodoggo"></a>
-                    </li -->
+                        <a href="/source" class="auggo-detoggle">Code Walkthrough</a></li>
+                    <li><a href="/press-kit">Press Kit</a></li>
+                    <li><a href="/contact">Contact</a></li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
-
-        <!-- /.container -->
     </nav>
-    
-    
 
+    <title>Auggo Doggo | Walkthrough | Balloon</title>
     <div class="container">
         <div class="row">
             <h2 class="intro-text text-left" id="auggoH2">Jiggly Balloons</h2>
             <div class="box">
                 <div class="col-lg-12 ">
                     <br>
-                    <img class="img-responsive img-center" style="max-height: 600px; border-style: solid; border-width: 2px;" src="/img/pathfinding/nodeintro.png" />
-                    <div class="row" style="font-size:16px">
+                    <img class="img-responsive img-center" style="max-height: 600px; border-style: solid; border-width: 2px;" src="/img/balloon/jiggle.gif" />
+                    <div class="row" style="font-size:14px">
                         <br><hr>
-                        <h3 style="color: black">Intro</h3>
+                        <h3 style="color: black">Focal Points - Game polish</h3>
                         <p> 
-                            It's important in any art form to identify a focal point and spend extra time adding an appropriate amount of detail and extra work to it in order to bring life and personality to your project. The main difference I've noticed between AAA titles and indie games is the massive amount of detail that they add to objects that are not focal points, like pots or small bits of foliage just because they have the artists to do it. This is not necesary to make a game better, it's purpose is almost always to make a game "feel" more full and polished. That's not a bad thing at all, but if you're a small company or team, it's not efficient for you to add things to make the game "seem" more full before you have the resources to polish the focal points of the game. Please take this all as opinion and please contact me with your own opinions and experiences, I'd love to discuss all things "game development" with anyone who has something to share!
+                            In any art-form, it's important to identify a focal point and spend extra time adding an appropriate amount of detail and work to it in order to bring life and personality to your project. In game development we call this "polish". You can polish every little part of your project until your eyes bleed but it's not going serve much purpose if you don't spend most of your time working on the foundations of your game. If you finish a piece of code and you're sure that it's not going to change much throughout the remainder of the game, you can polish early. Otherwise, try to put it off as long as you can. There are going to be times where you're going to toss entire game mechanics. It's obviously better not to polish those pieces until you've decided. It's all about timing, and no one is perfect at that, but everyone gets better with experience.
                         </p>
                         <p>
-                            In VR, the focal points are usually objects you're able to pick up, or characters that come toward you. To make the player feel like there is something deeper that a flat lifeless 3D model, often you want to add animations, interaction scripts, and most importantly haptic feedback(controller vibration feedback usually). Seeing a sword clank against another sword with "clanking" sounds and physics is one thing, but to feel your sword grinding against a metal surface (or the increasing tension in your bowstring) is on another level. It's the layer of feedback that pushes you over the edge, where you allow yourself in a certain respect, to believe the ruse.
+                            In VR, the focal points are usually objects you're able to pick up, or characters that interact with you. To make the player feel like there is something deeper than a flat lifeless 3D model, you should add animations, interaction scripts, and haptic feedback(controller vibration)*. For example, seeing swords collide with "clanking" sounds and physics is one thing, but to feel your sword grinding against a metal surface (or the increasing tension in your bowstring) is on another level. It's the layer of feedback that pushes you over the edge, where you allow yourself in a certain respect, to believe the ruse.
                         </p>
+                        <img class="img-responsive img-center" style="max-height: 250px; border-style: solid; border-width: 2px;" src="/img/balloon/labbow.gif" />
+                        <br>
+                        <h3 style="color: black">What is important in a VR water balloon?</h3>
                         <p>
-                            I'm not writing a book here, so I'll get on with the water balloon explanation/guide now that you know why this can be such an important piece of game. When you shake a balloon it should jiggle, it should deform from the water sinking on one side or the other based on gravity and how the player is tilting it, and it should pop is a satisfying way. We don't throw water balloons in real life so that we can get things wet. If we wanted to get things wet we'd use a bucket or a hose. Water balloons are just so satisfying to pop. Keep that in mind when you're desigining things based on 'satisfying feelings', what is it that is satisfying, what is suposed to be enjoyable about this thing? 
+                            When you shake a balloon it should jiggle, it should deform from the water sinking on one side or the other based on gravity and how the player is tilting it, and it should pop in a satisfying way. Water balloons are satisfying to pop. Keep that in mind when you're designing things based on 'satisfying feelings', what is it that is satisfying, what is supposed to be enjoyable about this thing? 
                         </p>
-                        <p>In this section I'm going to teach you how to make the balloons that I use in plunker in 3 steps. 
-                            <ul>
-                                <li>Creating the model, paticle effects, and animations</li>
+                        <p>In this section I'm going to walk you through the parts of the water balloons in Plunker in 3 sections. 
+                            <ul style="font-size: 14px">
+                                <li>Creating the model, animations, and particle effects</li>
                                 <li>Interaction with the SteamVR Plugin for holding/sloping/jiggling</li>
                                 <li>Pop, respawn, throw, and deal damage to other objects</li>
                             </ul>
@@ -142,28 +109,31 @@
             <div class="box">
                 <div class="col-lg-12 ">
                     <div class="row" style="font-size:14px">
-                        <br><hr>
+                        <h3 style="color: black">A quick note before we begin:</h3>
+                        <p>Notice that everything we're doing is basically polish, but when I was first creating this balloon mechanic I grey-boxed everything first. "Grey-boxing is the traditional technique of blocking out the level with simple shapes to see if the level design supports the gameplay before creating the final art assets for the level". If you end up not liking how the scripts and interactions turn out, this is where you may decide to toss something. Try to always grey-box things first (or make very quick minimal models if you feel like you <i>need</i> to).</p>
+                        <img class="img-responsive img-center" style="max-height: 500px; border-style: solid; border-width: 2px;" src="/img/balloon/jigglebox.gif" /><br>
+                        <p>When beginning this balloon mechanic, I first thought of it as an interactive object which means that it has multiple states and transitions between them. The model we're creating below is what you hold and throw, most of the time it will be "popped" or basically non existent. We can talk more about the transitions and states in the 2nd section since they are mostly code. But just keep in mind that I'm only walking through this section first because it's more visually appealing for the walkthrough.</p>
+                        <br> <br><hr> <br>
                         <h3 style="color: black">Making the model</h3>
-                        <div class="col-lg-6 ">
-                            <div class="img-responsive img-center" style="padding:10px;">
-                                <img class="img-responsive img-center" style="max-height: 500px; border-style: solid; border-width: 2px;" src="/img/balloon/balloon-zmesh.png" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6 ">
-                            <div class="img-responsive img-center" style="padding:10px;">
-                                <img class="img-responsive img-center" style="max-height: 500px; border-style: solid; border-width: 2px;" src="/img/balloon/balloon-smoothmesh.png" />
-                            </div>
-                        </div>
+                        <p>If you're not familiar with 3D modeling, it's not the end of the world, although it is a major limiting factor on your indie-dev life. I've toyed around with Blender (a free 3D modeling program) for about 3 years. It's fairly easy to learn how to make geometric or simple objects and I highly suggest making it a priority to understand the basics of 3D modeling. There isn't otherwise much to be said about this model. It's simple. One thing I might make note of is how many vertices this mesh has (around 750). If the balloon were a side object on a shelf or otherwise, I may have used less verts, but since it's going to deform, and it is a focal point of this section in Plunker, it's nice to have more.</p>
+                        <div class="col-lg-6 "><img class="img-responsive img-center" style="max-height: 525px; border-style: solid; border-width: 2px;" src="/img/balloon/balloon-zmesh.png" /></div>
+                        <div class="col-lg-6 "><img class="img-responsive img-center" style="max-height: 525px; border-style: solid; border-width: 2px;" src="/img/balloon/balloon-smoothmesh.png" /></div>
                     </div>
                     <div class="row" style="font-size:14px">
-                        <p>Making the model:... </p>
-
+                        <br><br><br><br>
                         <h3 style="color: black">Bones and animations</h3>
-                        <img class="img-responsive img-center" style="max-height: 500px; border-style: solid; border-width: 2px;" src="/img/balloon/balloon-bones.png" />
-                        <p>Animations: balloons with bones</p>
+                        <p><a href="https://en.wikipedia.org/wiki/Skeletal_animation">Rigging</a> is a term in game development that refers to adding bones to a 3D model. If you're not familiar with rigging, this is another important point I would highly suggest committing some time and energy into. You won't need to learn to the extents that I have, but if you have a basic understanding then you'll be able to work well on a team and communicate with artists on a better level.</p><br>
+                        <img class="img-responsive img-center" style="max-height: 400px; border-style: solid; border-width: 2px;" src="/img/balloon/balloon-bones.png" />
+                        <br>
+
+                        <p>One notable thing you can see in this picture is how small the bones are. The ends don't even touch. This is because I'm mostly using <i>automatic weighting</i> and if the bones are smaller, the edges are more evenly weighted around the bone. This makes for easy animation when we need a body of water to jiggle around a central point. You can make animations in blender, but you'll want to use Mechanim&copy; in Unity to fine tune things. Either way its just a matter of making the bones scale and rotate in a way that looks satisfying. Once you've got that done, you'll have a pretty juicy looking balloon.</p>
+                         <img class="img-responsive img-center" style="max-height: 500px; border-style: solid; border-width: 2px;" src="/img/balloon/jiggle.gif" />
 
                         <h3 style="color: black">Particle System</h3>
-                        <p>Particle System: not my forte</p>
+                        <p>We'll want to create a popping animation to transition between a "<i>thrown</i> state" and a "<i>popped</i> state". The popped state won't have anything rendered at all, we'll just pretend that the water and the remaining rubber flew everywhere. The unity particle system is great for making animations like this, and it's usually necessary if you want to polish your game. There are several layers to our "sploosh" animation. There's the spray of water as it mists into the air, as well as the thicker explosion of water near the center. There's also a very quick flash of red balloon rubber. If you'd like to learn more about making particle systems <a href="https://www.youtube.com/watch?v=rR_bm8f8rVE">here</a> is where I learned a lot.</p>
+                        <img class="img-responsive img-center" style="max-height: 500px; border-style: solid; border-width: 2px;" src="/img/balloon/throwpop.gif" />
+                        <br>
+                        <p>In case you haven't noticed by now, art is a very minor skill of mine. In the next section we'll move onto more programming which I'll lead you through in more in depth.<br>
                     </div>
                 </div>
                 <br/>
@@ -172,27 +142,94 @@
     </div>
     
     
-
     <div class="container">
         <div class="row">
-            <h2 class="intro-text text-left" id="auggoH2">Interaction with the SteamVR Plugin for holding/sloping/jiggling</h2>
+            <h2 class="intro-text text-left" id="auggoH2">Behavior Programming</h2>
             <div class="box">
                 <div class="col-lg-12 ">
                     <div class="row" style="font-size:14px">
+                        <h3 style="color: black">Where to start</h3>
+                        <div class="col-lg-8">
+                        <p>SteamVR has a plugin for Unity where they provide some C# example scripts that save a lot of effort and time. If you're writing your code in C# from scratch then you're wasting a lot of time. Instead I suggest altering the provided scripts to your needs. In our case we're simply taking advantage of the basic <i>Throwable.cs</i> and it's easy to access <i>OnPickup()</i> and <i>OnDrop()</i> events to call our own functions when the player grabs or lets go of the balloons.</p>
+                        <p><b>OnPickUp()</b> calls a behavior function called SpawnBalloon(). This is because the balloon starts and ends in a sleep/popped state where it is an invisible object waiting to be picked up.</p>
+                        <p><b>OnDrop()</b> calls a behavior function called Throw(). This sets the balloon into a state where it knows that it has been thrown and it's only waiting for a collision to <i>pop</i> it.</p>
+                        <p><b>Jiggle()</b> Triggers a jiggling animation on all of the fake balloons in the bucket to make it look like you interacted with the bucket itself.</p>
+                        <p> Now I'll show you some of the code as examples</p>
+                        </div>
+                        <div class="col-lg-4 ">
+                            <div class=img-responsive img-center"><img class="img-responsive img-center" style="max-height: 500px; border-style: solid; border-width: 2px;" src="/img/balloon/throwable-script.png" /></div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-size:14px">
+                        <br>
                         
-                        <h3 style="color: black">SteamVR basics, holding the balloons, droping the balloons</h3>
-                        <p>SteamVR basics, holding the balloons, droping the balloons</p>
+                        <h3 style="color: black">Grabbing and Throwing</h3>
+                            <figure>
+                                <figcaption id="example1-caption">Spawn() and Throw()</figcaption>
+                                <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
+                                    <code  contenteditable="true" tabindex="0" spellcheck="false"
+                                    >public void SpawnBalloon()
+{
+    popped = false;
+    thrown = false; anim.SetBool(thrown_bool, false);
+    balloon_renderer.enabled = true;
+    pop.SetActive(false);
+}
 
-                        <h3 style="color: black">haptics - vibrations, sounds, jiggling</h3>
-                        <p>haptics - vibrations, sounds, jiggling</p>
+public void Throw()
+{
+    thrown = true;
+    rb.isKinematic = false;
+    rb.angularVelocity = Random.insideUnitSphere * rb.velocity.sqrMagnitude/10f;
+    anim.SetBool(thrown_bool, true);
+    anim.SetBool(smoothside_bool, false);
+    anim.SetBool(knotside_bool, false);
+}</code>
+                                </pre>
+                            </figure>
+                        <br>
+                        <h3 style="color: black">Popping correctly</h3>
+                            <figure>
+                                <figcaption id="example1-caption">Pop()</figcaption>
+                                <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
+                                    <code  contenteditable="true" tabindex="0" spellcheck="false"
+                                    >private void OnTriggerEnter(Collider col)
+{
+    if (!popped && thrown)
+    {
+        popped = true; thrown = false; anim.SetBool(thrown_bool, false);
+        StartCoroutine(Pop());
+        RecieveDamage rd = col.GetComponent<RecieveDamage>();
+        if (rd) { rd.Damage(); }
+    }
 
-                        <h3 style="color: black">haptics - vibrations, sounds, jiggling</h3>
-                        <p>interaction with other objects, respawn</p>
+}
 
+IEnumerator Pop()
+{
+    pop.SetActive(true);
+    popsound.Play();
+    yield return null;
+
+    rb.isKinematic = true;
+    rb.velocity = Vector3.zero;
+    rb.angularVelocity = Vector3.zero;
+    balloon_renderer.enabled = false;
+
+    yield return new WaitForSeconds(1f);
+
+    this.transform.position = barrel_script.balloon_slot.transform.position;
+}</code>
+                                </pre>
+                            </figure>
+
+                        <h3 style="color: black">jiggling with animation layers</h3>
+                        <p></p>
                 </div>
             </div>
         </div>
     </div>
+
 
     <div class="container">
         <div class="row">
@@ -208,7 +245,8 @@
                         <div class="col-sm-6">
                             <div class="row">
                                 
-
+                        <h3 style="color: black">haptics - vibrations, sounds, jiggling</h3>
+                        <p>interaction with other objects, respawn</p>
                                 <p>Take it a step further - Damage Transfer</p>
                             </div>
                         </div>
@@ -259,10 +297,6 @@
         });
         $.fn.ekkoLightbox.defaults;
     </script>
-
-    <!-- Twitch live components 
-    <script data-interval="60" data-offline-image="/img/twitchlogo_offline_wtext.png" data-online-image="/img/twitchlogo_online.gif" src="/js/twitch-channel-status.js"></script>
-    -->
 
     <script type="text/javascript">
         // When the user scrolls the page, execute myFunction 

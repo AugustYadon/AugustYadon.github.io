@@ -12,6 +12,12 @@
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Gif Stuff  -->
+    <link rel="stylesheet" type="text/css" href="/css/gifplayer.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.gifplayer.js"></script>
+
+
     <!-- Custom CSS -->
     <link href="/css/business-casual.css" rel="stylesheet">
     <link href="/css/auggodoggo.css" rel="stylesheet">
@@ -83,7 +89,7 @@
                         <p>
                             In VR, the focal points are usually objects you're able to pick up, or characters that interact with you. To make the player feel like there is something deeper than a flat lifeless 3D model, you should add animations, interaction scripts, and haptic feedback(controller vibration)*. For example, seeing swords collide with "clanking" sounds and physics is one thing, but to feel your sword grinding against a metal surface (or the increasing tension in your bowstring) is on another level. It's the layer of feedback that pushes you over the edge, where you allow yourself in a certain respect, to believe the ruse.
                         </p>
-                        <img class="img-responsive img-center" style="max-height: 250px; border-style: solid; border-width: 2px;" src="/img/balloon/labbow.gif" />
+                        <img class="gif" style="max-height: 250px" data-gif="/img/balloon/labbow.gif" src="/img/balloon/labbow.png" />
                         <br>
                         <h3 style="color: black">What is important in a VR water balloon?</h3>
                         <p>
@@ -111,7 +117,7 @@
                     <div class="row" style="font-size:14px">
                         <h3 style="color: black">A quick note before we begin:</h3>
                         <p>Notice that everything we're doing is basically polish, but when I was first creating this balloon mechanic I grey-boxed everything first. "Grey-boxing is the traditional technique of blocking out the level with simple shapes to see if the level design supports the gameplay before creating the final art assets for the level". If you end up not liking how the scripts and interactions turn out, this is where you may decide to toss something. Try to always grey-box things first (or make very quick minimal models if you feel like you <i>need</i> to).</p>
-                        <img class="img-responsive img-center" style="max-height: 500px; border-style: solid; border-width: 2px;" src="/img/balloon/jigglebox.gif" /><br>
+                        <img class="gif" style="max-height: 500px" data-gif="/img/balloon/jigglebox.gif" src="/img/balloon/jigglebox.png" /><br>
                         <p>When beginning this balloon mechanic, I first thought of it as an interactive object which means that it has multiple states and transitions between them. The model we're creating below is what you hold and throw, most of the time it will be "popped" or basically non existent. We can talk more about the transitions and states in the 2nd section since they are mostly code. But just keep in mind that I'm only walking through this section first because it's more visually appealing for the walkthrough.</p>
                         <br> <br><hr> <br>
                         <h3 style="color: black">Making the model</h3>
@@ -127,13 +133,30 @@
                         <br>
 
                         <p>One notable thing you can see in this picture is how small the bones are. The ends don't even touch. This is because I'm mostly using <i>automatic weighting</i> and if the bones are smaller, the edges are more evenly weighted around the bone. This makes for easy animation when we need a body of water to jiggle around a central point. You can make animations in blender, but you'll want to use Mechanim&copy; in Unity to fine tune things. Either way its just a matter of making the bones scale and rotate in a way that looks satisfying. Once you've got that done, you'll have a pretty juicy looking balloon.</p>
-                         <img class="img-responsive img-center" style="max-height: 500px; border-style: solid; border-width: 2px;" src="/img/balloon/jiggle.gif" />
+                         <img class="gif" data-gif="/img/balloon/jiggle.gif" src="/img/balloon/jiggle.png" />
 
                         <h3 style="color: black">Particle System</h3>
                         <p>We'll want to create a popping animation to transition between a "<i>thrown</i> state" and a "<i>popped</i> state". The popped state won't have anything rendered at all, we'll just pretend that the water and the remaining rubber flew everywhere. The unity particle system is great for making animations like this, and it's usually necessary if you want to polish your game. There are several layers to our "sploosh" animation. There's the spray of water as it mists into the air, as well as the thicker explosion of water near the center. There's also a very quick flash of red balloon rubber. If you'd like to learn more about making particle systems <a href="https://www.youtube.com/watch?v=rR_bm8f8rVE">here</a> is where I learned a lot.</p>
-                        <img class="img-responsive img-center" style="max-height: 500px; border-style: solid; border-width: 2px;" src="/img/balloon/throwpop.gif" />
+                        <p> start with the central spray like this.</p><br>
+
+                        <img class="gif" data-gif="/img/balloon/pop1.gif" src="/img/balloon/pop1.png" />
+
                         <br>
-                        <p>In case you haven't noticed by now, art is a very minor skill of mine. In the next section we'll move onto more programming which I'll lead you through in more in depth.<br>
+                        <p>Then you'll add a different type of splash particle. It's all about layering. Everything looks better with a few layers of different content.</p><br>
+                        
+                        <img class="gif" data-gif="/img/balloon/pop2.gif" src="/img/balloon/pop2.png" /><br>
+
+                        <p>Once the splashes are in place, you'll want a flash of red rubber to bridge the gap of the balloon disappearing.</p><br>
+
+                        <img class="gif" data-gif="/img/balloon/pop3.gif" src="/img/balloon/pop3.png" /> <br>
+
+                        <p>Once all of the pieces are looking ok, you can put them together. (make sure to place them under each other in a hierarchy and simulate in world space so that they scale properly and they all play together at the same time - on wake).</p><br>
+                        
+                        <img class="gif" data-gif="/img/balloon/fullpop.gif" src="/img/balloon/fullpop.png" /><br>
+
+                        <br>
+                        <p>Layering and taking the extra time to tweak your particle systems can make parts of your game stand out in a memorable, striking way. This makes a massive difference to the look of the game, for little cost. <br>
+                            <hr><hr>
                     </div>
                 </div>
                 <br/>
@@ -148,6 +171,9 @@
             <div class="box">
                 <div class="col-lg-12 ">
                     <div class="row" style="font-size:14px">
+                        
+                        <img class="gif" data-gif="/img/balloon/throwpop.gif" src="/img/balloon/throwpop.png" />
+                        <br>
                         <h3 style="color: black">Where to start</h3>
                         <div class="col-lg-8">
                         <p>SteamVR has a plugin for Unity where they provide some C# example scripts that save a lot of effort and time. If you're writing your code in C# from scratch then you're wasting a lot of time. Instead I suggest altering the provided scripts to your needs. In our case we're simply taking advantage of the basic <i>Throwable.cs</i> and it's easy to access <i>OnPickup()</i> and <i>OnDrop()</i> events to call our own functions when the player grabs or lets go of the balloons.</p>
@@ -157,7 +183,7 @@
                         <p> Now I'll show you some of the code as examples</p>
                         </div>
                         <div class="col-lg-4 ">
-                            <div class=img-responsive img-center"><img class="img-responsive img-center" style="max-height: 500px; border-style: solid; border-width: 2px;" src="/img/balloon/throwable-script.png" /></div>
+                            <div class="img-responsive img-center"><img class="img-responsive img-center" style="max-height: 500px; border-style: solid; border-width: 2px;" src="/img/balloon/throwable-script.png" /></div>
                         </div>
                     </div>
                     <div class="row" style="font-size:14px">
@@ -275,7 +301,7 @@ IEnumerator Pop()
     </footer>
 
     <!-- jQuery --> 
-    <script src="/js/jquery.js"></script>
+    <!--script src="/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
@@ -321,6 +347,18 @@ IEnumerator Pop()
             navsub.classList.add("hiddennav")
           }
         }
+    </script>
+
+    <script>
+          $(document).ready( function() {
+
+            $('.gif').gifplayer();
+
+            setTimeout(function(){
+              $('.share').fadeIn('slow');
+            }, 1000);
+
+          });
     </script>
 
 </body>

@@ -120,6 +120,14 @@ hr {
 
 }
 
+.auggo-gif {
+    animation-play-state: paused;
+}
+
+.auggo-gif:hover {
+    animation-play-state: running;
+}
+
 /*! Custom additions */
 .dog {
     max-width: 100%;

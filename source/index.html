@@ -12,6 +12,11 @@
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Gif Stuff  -->
+    <link rel="stylesheet" type="text/css" href="/css/gifplayer.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.gifplayer.js"></script>
+
     <!-- Custom CSS -->
     <link href="/css/business-casual.css" rel="stylesheet">
     <link href="/css/auggodoggo.css" rel="stylesheet">
@@ -21,7 +26,6 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 
 </head>
-
 <body>
     <div id="subnav" class="hiddennav" style="height: 80px" ></div>
     <!-- Navigation -->
@@ -46,7 +50,7 @@
                           <a href="/games"><button class="dropbtn" >games</button></a>
                           <div class="dropdown-content">
                             <a href="/games/plunker/">Plunker</a>
-                            <a href="/games/sweepyheads/">Sweepyheads</a>
+                            <a href="/games">Sweepyheads</a>
                           </div>
                         </div>
                         <a href="/games" class="auggo-detoggle">Games</a></li>
@@ -55,8 +59,6 @@
                           <div class="dropdown-content">
                             <a href="/source/balloon/">Balloons</a>
                             <a href="/source/pathfinding/">Pathfinding</a>
-                            <a href="/source/terrain-models/">Terrain Model</a>
-                            <a href="/source/vr-utils/">VR Util</a>
                           </div>
                         </div>
                         <a href="/source" class="auggo-detoggle">Code Walkthrough</a></li>
@@ -71,10 +73,10 @@
     <div class="container">
         <div class="row">
 		    <h2 class="intro-text text-left" id="auggoH2">Code Walkthroughs</h2>
-            <div class="box">
-                <div  class="col-lg-12">
-                    <div class="row">
-						<p></p>
+            <div class="box" >
+                <div  class="col-lg-12" style="background-color: rgba(221, 233, 238, .4)">
+                    <div class="row" style="font-weight: 500; font-size: 18px; padding:15px 25px; border-color: #444; border-style: solid; border-width: 2px;">
+						<p>I'm devoting this section of my website to promote Plunker through helpful code walk-throughs for anyone that wants to see some of my source code and how it works. You're free to use anything I've provided in your own projects. I hope that reading through some of these walk-throughs will also serve as a brief portfolio that highlights just a few of my solo developer accomplishments. Please note that everything I am releasing here only accounts for a very small portion of Plunker and I am not afraid of anyone stealing or competing with my games by using this. My philosophy is that even if someone made a game with all of the provided source, it won't capture the important defining features of Plunker and that it can only ever make someone else's game better.</p>
                     </div>
                 </div>
                 <br/>
@@ -90,7 +92,7 @@
                     <div class="row">
                         <div  class="col-sm-6" >
                             <div class="img-responsive img-center" style="padding:10px;">
-                            <a href="/source/pathfinding/"><img class="img-responsive img-center" style="max-height: 300px; border-style: solid; border-width: 2px;" src="/img/pathfinding/nodeintro.png" /></a>
+                            <a href="/source/pathfinding/"><img class="img-responsive img-center" style="max-height: 300px; border-color: #444; border-style: solid; border-width: 2px;" src="/img/pathfinding/nodeintro.png" /></a>
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -114,13 +116,13 @@
                     <div class="row">
                         <div  class="col-sm-6" >
                             <div class="img-responsive img-center" style="padding:10px;">
-                            <a href="/source/balloon/"><img class="img-responsive img-center" style="max-height: 300px; border-style: solid; border-width: 2px;" src="/img/balloon/jiggle.gif" /></a>
+                            <a href="/source/balloon/"><img class="img-responsive img-center" style="max-height: 300px; border-color: #444; border-style: solid; border-width: 2px;" src="/img/balloon/jiggle.gif" /></a>
                             </div>
                         </div>
                         <div  class="col-sm-6">
                             <div class="row">
                                 <p>
-                                    "In any art-form, it's important to identify a focal point and spend extra time adding an appropriate amount of detail and work to it in order to bring life and personality to your project..."<br><br> "When you shake a balloon it should jiggle, it should deform from the water sinking on one side or the other based on gravity and how the player is tilting it, and it should pop in a satisfying way. Water balloons are satisfying to pop. Keep that in mind when you're designing things based on 'satisfying feelings', what is it that is satisfying, what is supposed to be enjoyable about this thing? "</p>
+                                    "In any art-form, it's important to identify a focal point and spend extra time adding an appropriate amount of detail and work to it in order to bring life and personality to your project..."<br><br> "When you shake a balloon it should jiggle, it should deform from the water sinking on one side or the other based on gravity and how the player is tilting it, and it should pop in a satisfying way. Water balloons are satisfying to pop. Keep that in mind when you're designing things based on 'satisfying feelings', what is it that is satisfying, what is supposed to be enjoyable about this thing? "</p><p>This section is mostly completed</p>
                             </div>
                         </div>
                     </div>
@@ -132,19 +134,20 @@
 <br><br>    
     <div class="container">
         <div class="row">
-            <h2 class="intro-text text-left" id="auggoH2"><a href="/source/terrain-models/">Terrain Slicing</a></h2>
+            <h2 class="intro-text text-left" id="auggoH2"><a href="/source/">Terrain Slicing</a></h2>
             <div class="box">
                 <div   class="col-lg-12 ">
                     <div class="row">
                         <div  class="col-sm-6" >
                             <div class="img-responsive img-center" style="padding:10px;">
-                            <a href="/source/pathfinding/"><img class="img-responsive img-center" style="max-height: 300px; border-style: solid; border-width: 2px;" src="/img/pathfinding/nodeintro.png" /></a>
+                            <a href="/source/"><video autoplay loop class="img-responsive img-center" style="max-height: 300px; border-color: #444; border-style: solid; border-width: 2px;" ><source src="https://i.imgur.com/VOfwMUx.mp4" type="video/mp4"> </video>
+                            </a>
                             </div>
                         </div>
                         <div  class="col-sm-6">
                             <div class="row">
-                                <p>
-                                    "..."</p>
+                                <p>"Often times one will need to slice out a piece of terrain since it is not stored or processed as a 3D model in Unity. You may want to make models that will be place somewhere in your level and may need to build around exact measurements to get the right fit (Example: a cave in a mountain that blends into the terrain). You may need to get a section of terrain saved as a high poly model so that you can make an extremely low poly version that can be used as a mesh collider teleport surface for VR which is what I was using it for. This is a fantastic example of an editor tool that saves a lot of time (an estimated 80% of relevant modeling time) with trial and error. This also highlights my understanding of creating useful tools that can be distributed to a team and used all over the place. As a solo developer, sadly this didn't get as much use as it could have, but I hope that whoever views this guide will make more use out of it now."</p>
+                                <p>This section will be completed next</p>
                             </div>
                         </div>
                     </div>
@@ -162,13 +165,13 @@
                     <div class="row">
                         <div  class="col-sm-6" >
                             <div class="img-responsive img-center" style="padding:10px;">
-                            <a href="/source/pathfinding/"><img class="img-responsive img-center" style="max-height: 300px; border-style: solid; border-width: 2px;" src="/img/pathfinding/nodeintro.png" /></a>
+                            <a href="/source/pathfinding/"><img class="img-responsive img-center" style="max-height: 300px; border-color: #444; border-style: solid; border-width: 2px;" src="/img/pathfinding/nodeintro.png" /></a>
                             </div>
                         </div>
                         <div  class="col-sm-6">
                             <div class="row">
                                 <p>
-                                    "..."</p>
+                                    "This section will offer various tools and insigts in VR game development and useful functions that I find myself using all the time to speed up testing and development."</p>
                             </div>
                         </div>
                     </div>
@@ -182,38 +185,26 @@
 
 
 
-
-
-    
-
-
- 
     <footer>
         <div class="container">
             <div class="row">
-                <div  class="col-lg-12 text-center">
+                <div style="position: inherit" class="col-lg-12 text-center">
                     <p>Copyright &copy; Auggo Doggo Games 2018</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- jQuery --> 
-    <script src="/js/jquery.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
+    <!-- ekko -->
     <script src="/js/ekko-lightbox.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
     <script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
     </script>
-
     <script type="text/javascript">
         $(document).on('click', '[data-toggle="lightbox"]', function(event) {
             event.preventDefault();
@@ -222,21 +213,47 @@
         $.fn.ekkoLightbox.defaults;
     </script>
 
-    <!-- Twitch live components 
-    <script data-interval="60" data-offline-image="/img/twitchlogo_offline_wtext.png" data-online-image="/img/twitchlogo_online.gif" src="/js/twitch-channel-status.js"></script>
-    -->
+    <!-- code display stuff -->
+    <script type="text/javascript">
+    (function()
+    {
+        for(var tags = ['main','figure','figcaption'], i = 0; i < tags.length; i ++)
+        {
+            document.createElement(tags[i]);
+        }
+    })();
+    </script>
+    <script type="text/javascript">
+        (function(){
+            if(typeof(window.getComputedStyle) == 'undefined') 
+            { 
+                return; 
+            }
+            var pre = document.getElementsByTagName('pre');
+            for(var len = pre.length, i = 0; i < len; i ++)
+            {
+                var code = pre[i].getElementsByTagName('code').item(0);
+                if(!code){code = pre[i].getElementsByTagName('samp').item(0);if(!code){continue;}}
+                var column = document.createElement('div');
+                column.setAttribute('aria-hidden', 'true');
+                for(var n = 0; n < code.innerHTML.split(/[\n\r]/g).length; n ++)
+                {
+                    column.appendChild(document.createElement('span'));
+                }
+                pre[i].insertBefore(column, code);
+                pre[i].className = 'line-numbers';
+            }})();
+    </script>
 
+    <!-- navbarstuff -->
     <script type="text/javascript">
         // When the user scrolls the page, execute myFunction 
         window.onscroll = function() {myFunction()};
-
         // Get the navbar
         var navbar = document.getElementById("auggo-navbar");
         var navsub = document.getElementById("subnav");
-
         // Get the offset position of the navbar
         var sticky = navbar.offsetTop;
-
         // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
         function myFunction() {
           if (window.pageYOffset > sticky) {
@@ -251,6 +268,15 @@
         }
     </script>
 
-</body>
+    <!-- gifplayer -->
+    <script>
+          $(document).ready( function() {
+            $('.gif').gifplayer();
+            setTimeout(function(){
+              $('.share').fadeIn('slow');
+            }, 1000);
 
+          });
+    </script>
+</body>
 </html>

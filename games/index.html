@@ -12,6 +12,11 @@
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Gif Stuff  -->
+    <link rel="stylesheet" type="text/css" href="/css/gifplayer.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.gifplayer.js"></script>
+
     <!-- Custom CSS -->
     <link href="/css/business-casual.css" rel="stylesheet">
     <link href="/css/auggodoggo.css" rel="stylesheet">
@@ -21,7 +26,6 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 
 </head>
-
 <body>
     <div id="subnav" class="hiddennav" style="height: 80px" ></div>
     <!-- Navigation -->
@@ -46,7 +50,7 @@
                           <a href="/games"><button class="dropbtn" >games</button></a>
                           <div class="dropdown-content">
                             <a href="/games/plunker/">Plunker</a>
-                            <a href="/games/sweepyheads/">Sweepyheads</a>
+                            <a href="/games">Sweepyheads</a>
                           </div>
                         </div>
                         <a href="/games" class="auggo-detoggle">Games</a></li>
@@ -55,8 +59,6 @@
                           <div class="dropdown-content">
                             <a href="/source/balloon/">Balloons</a>
                             <a href="/source/pathfinding/">Pathfinding</a>
-                            <a href="/source/terrain-models/">Terrain Model</a>
-                            <a href="/source/vr-utils/">VR Util</a>
                           </div>
                         </div>
                         <a href="/source" class="auggo-detoggle">Code Walkthrough</a></li>
@@ -178,10 +180,6 @@
 
 
  
-    
-
-
- 
     <footer>
         <div class="container">
             <div class="row">
@@ -192,22 +190,16 @@
         </div>
     </footer>
 
-    <!-- jQuery --> 
-    <script src="/js/jquery.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
+    <!-- ekko -->
     <script src="/js/ekko-lightbox.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
     <script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
     </script>
-
     <script type="text/javascript">
         $(document).on('click', '[data-toggle="lightbox"]', function(event) {
             event.preventDefault();
@@ -216,21 +208,47 @@
         $.fn.ekkoLightbox.defaults;
     </script>
 
-    <!-- Twitch live components 
-    <script data-interval="60" data-offline-image="/img/twitchlogo_offline_wtext.png" data-online-image="/img/twitchlogo_online.gif" src="/js/twitch-channel-status.js"></script>
-    -->
+    <!-- code display stuff -->
+    <script type="text/javascript">
+    (function()
+    {
+        for(var tags = ['main','figure','figcaption'], i = 0; i < tags.length; i ++)
+        {
+            document.createElement(tags[i]);
+        }
+    })();
+    </script>
+    <script type="text/javascript">
+        (function(){
+            if(typeof(window.getComputedStyle) == 'undefined') 
+            { 
+                return; 
+            }
+            var pre = document.getElementsByTagName('pre');
+            for(var len = pre.length, i = 0; i < len; i ++)
+            {
+                var code = pre[i].getElementsByTagName('code').item(0);
+                if(!code){code = pre[i].getElementsByTagName('samp').item(0);if(!code){continue;}}
+                var column = document.createElement('div');
+                column.setAttribute('aria-hidden', 'true');
+                for(var n = 0; n < code.innerHTML.split(/[\n\r]/g).length; n ++)
+                {
+                    column.appendChild(document.createElement('span'));
+                }
+                pre[i].insertBefore(column, code);
+                pre[i].className = 'line-numbers';
+            }})();
+    </script>
 
+    <!-- navbarstuff -->
     <script type="text/javascript">
         // When the user scrolls the page, execute myFunction 
         window.onscroll = function() {myFunction()};
-
         // Get the navbar
         var navbar = document.getElementById("auggo-navbar");
         var navsub = document.getElementById("subnav");
-
         // Get the offset position of the navbar
         var sticky = navbar.offsetTop;
-
         // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
         function myFunction() {
           if (window.pageYOffset > sticky) {
@@ -245,6 +263,15 @@
         }
     </script>
 
-</body>
+    <!-- gifplayer -->
+    <script>
+          $(document).ready( function() {
+            $('.gif').gifplayer();
+            setTimeout(function(){
+              $('.share').fadeIn('slow');
+            }, 1000);
 
+          });
+    </script>
+</body>
 </html>

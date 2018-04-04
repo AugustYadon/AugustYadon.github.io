@@ -43,14 +43,14 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav"  >
                     <li><a class="auggo-toggle" style="height: 2.5em; padding: 0px; margin-top: -12px; margin-bottom: -5px"  href="/"><img style="height: 2.5em; padding: 0px;" src="/img/AugDog.png"/></a></li>
                     <li><a href="/about">About</a></li>
                     <li><div class="dropdown auggo-toggle">
                           <a href="/games"><button class="dropbtn" >games</button></a>
                           <div class="dropdown-content">
                             <a href="/games/plunker/">Plunker</a>
-                            <a href="/games/sweepyheads/">Sweepyheads</a>
+                            <a href="/games">Sweepyheads</a>
                           </div>
                         </div>
                         <a href="/games" class="auggo-detoggle">Games</a></li>
@@ -59,8 +59,6 @@
                           <div class="dropdown-content">
                             <a href="/source/balloon/">Balloons</a>
                             <a href="/source/pathfinding/">Pathfinding</a>
-                            <a href="/source/terrain-models/">Terrain Model</a>
-                            <a href="/source/vr-utils/">VR Util</a>
                           </div>
                         </div>
                         <a href="/source" class="auggo-detoggle">Code Walkthrough</a></li>
@@ -465,9 +463,6 @@ DijkNode[,] network;
     </div>
 
 
-
-
- 
     <footer>
         <div class="container">
             <div class="row">
@@ -478,22 +473,16 @@ DijkNode[,] network;
         </div>
     </footer>
 
-    <!-- jQuery > 
-    <script src="/js/jquery.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
+    <!-- ekko -->
     <script src="/js/ekko-lightbox.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
     <script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
     </script>
-
     <script type="text/javascript">
         $(document).on('click', '[data-toggle="lightbox"]', function(event) {
             event.preventDefault();
@@ -502,7 +491,7 @@ DijkNode[,] network;
         $.fn.ekkoLightbox.defaults;
     </script>
 
-
+    <!-- code display stuff -->
     <script type="text/javascript">
     (function()
     {
@@ -512,55 +501,37 @@ DijkNode[,] network;
         }
     })();
     </script>
-
     <script type="text/javascript">
-        (function()
-        {
+        (function(){
             if(typeof(window.getComputedStyle) == 'undefined') 
             { 
                 return; 
             }
-            
             var pre = document.getElementsByTagName('pre');
-            
             for(var len = pre.length, i = 0; i < len; i ++)
             {
                 var code = pre[i].getElementsByTagName('code').item(0);
-                if(!code)
-                {
-                    code = pre[i].getElementsByTagName('samp').item(0);
-                    if(!code)
-                    {
-                        continue;
-                    }
-                }
-                
+                if(!code){code = pre[i].getElementsByTagName('samp').item(0);if(!code){continue;}}
                 var column = document.createElement('div');
                 column.setAttribute('aria-hidden', 'true');
-                
                 for(var n = 0; n < code.innerHTML.split(/[\n\r]/g).length; n ++)
                 {
                     column.appendChild(document.createElement('span'));
                 }
-                
                 pre[i].insertBefore(column, code);
                 pre[i].className = 'line-numbers';
-            }   
-        
-        })();
+            }})();
     </script>
 
+    <!-- navbarstuff -->
     <script type="text/javascript">
         // When the user scrolls the page, execute myFunction 
         window.onscroll = function() {myFunction()};
-
         // Get the navbar
         var navbar = document.getElementById("auggo-navbar");
         var navsub = document.getElementById("subnav");
-
         // Get the offset position of the navbar
         var sticky = navbar.offsetTop;
-
         // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
         function myFunction() {
           if (window.pageYOffset > sticky) {
@@ -575,18 +546,15 @@ DijkNode[,] network;
         }
     </script>
 
-        <script>
+    <!-- gifplayer -->
+    <script>
           $(document).ready( function() {
-
             $('.gif').gifplayer();
-
             setTimeout(function(){
               $('.share').fadeIn('slow');
             }, 1000);
 
           });
     </script>
-
 </body>
-
 </html>

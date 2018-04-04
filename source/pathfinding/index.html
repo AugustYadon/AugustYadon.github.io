@@ -12,6 +12,11 @@
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Gif Stuff  -->
+    <link rel="stylesheet" type="text/css" href="/css/gifplayer.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.gifplayer.js"></script>
+
     <!-- Custom CSS -->
     <link href="/css/business-casual.css" rel="stylesheet">
     <link href="/css/auggodoggo.css" rel="stylesheet">
@@ -21,7 +26,6 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 
 </head>
-
 <body>
     <div id="subnav" class="hiddennav" style="height: 80px" ></div>
     <!-- Navigation -->
@@ -39,7 +43,7 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav"  >
+                <ul class="nav navbar-nav">
                     <li><a class="auggo-toggle" style="height: 2.5em; padding: 0px; margin-top: -12px; margin-bottom: -5px"  href="/"><img style="height: 2.5em; padding: 0px;" src="/img/AugDog.png"/></a></li>
                     <li><a href="/about">About</a></li>
                     <li><div class="dropdown auggo-toggle">
@@ -384,7 +388,18 @@ DijkNode[,] network;
                                 </pre>
                             </figure>
                         </p>
-                </div>
+                        <h3 style="color: black">End Results</h3>
+                        <p>
+                            Here is a quick video of one of my sand-people enemies finding their way through an entire maze to where the player's marker is. Much more terrifying in regular speed.
+                        </p>
+                        <img class="gif" data-mode="video" data-mp4="https://i.imgur.com/hzRfJbV.mp4" src="/img/pathfinding/followpath.jpg"/>
+
+                        <audio class="img-center" controls>
+                                <source src="/audio/benny-hill.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                        </audio>
+                        
+                    </div>
                 <br/>
             </div>
         </div>
@@ -463,7 +478,7 @@ DijkNode[,] network;
         </div>
     </footer>
 
-    <!-- jQuery --> 
+    <!-- jQuery > 
     <script src="/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
@@ -498,41 +513,41 @@ DijkNode[,] network;
     })();
     </script>
 
-<script type="text/javascript">
-    (function()
-    {
-        if(typeof(window.getComputedStyle) == 'undefined') 
-        { 
-            return; 
-        }
-        
-        var pre = document.getElementsByTagName('pre');
-        
-        for(var len = pre.length, i = 0; i < len; i ++)
+    <script type="text/javascript">
+        (function()
         {
-            var code = pre[i].getElementsByTagName('code').item(0);
-            if(!code)
+            if(typeof(window.getComputedStyle) == 'undefined') 
+            { 
+                return; 
+            }
+            
+            var pre = document.getElementsByTagName('pre');
+            
+            for(var len = pre.length, i = 0; i < len; i ++)
             {
-                code = pre[i].getElementsByTagName('samp').item(0);
+                var code = pre[i].getElementsByTagName('code').item(0);
                 if(!code)
                 {
-                    continue;
+                    code = pre[i].getElementsByTagName('samp').item(0);
+                    if(!code)
+                    {
+                        continue;
+                    }
                 }
-            }
-            
-            var column = document.createElement('div');
-            column.setAttribute('aria-hidden', 'true');
-            
-            for(var n = 0; n < code.innerHTML.split(/[\n\r]/g).length; n ++)
-            {
-                column.appendChild(document.createElement('span'));
-            }
-            
-            pre[i].insertBefore(column, code);
-            pre[i].className = 'line-numbers';
-        }   
-    
-    })();
+                
+                var column = document.createElement('div');
+                column.setAttribute('aria-hidden', 'true');
+                
+                for(var n = 0; n < code.innerHTML.split(/[\n\r]/g).length; n ++)
+                {
+                    column.appendChild(document.createElement('span'));
+                }
+                
+                pre[i].insertBefore(column, code);
+                pre[i].className = 'line-numbers';
+            }   
+        
+        })();
     </script>
 
     <script type="text/javascript">
@@ -558,6 +573,18 @@ DijkNode[,] network;
             navsub.classList.add("hiddennav")
           }
         }
+    </script>
+
+        <script>
+          $(document).ready( function() {
+
+            $('.gif').gifplayer();
+
+            setTimeout(function(){
+              $('.share').fadeIn('slow');
+            }, 1000);
+
+          });
     </script>
 
 </body>

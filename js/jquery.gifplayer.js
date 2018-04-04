@@ -42,6 +42,8 @@
 
 		wrap: function(){
 			this.previewElement.addClass('gifplayer-ready');
+			this.previewElement.addClass('img-responsive');
+			this.previewElement.addClass('img-center');
 			this.wrapper = this.previewElement.wrap("<div class='img-responsive img-center gifplayer-wrapper'></div>").parent();
 			this.wrapper.css('width', this.previewElement.width());
 			this.wrapper.css('height', this.previewElement.height());

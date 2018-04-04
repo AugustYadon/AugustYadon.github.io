@@ -9,36 +9,29 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Auggo Doggo Games</title>
-
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Gif Stuff  -->
+    <link rel="stylesheet" type="text/css" href="/css/gifplayer.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.gifplayer.js"></script>
+
+
     <!-- Custom CSS -->
     <link href="/css/business-casual.css" rel="stylesheet">
+    <link href="/css/auggodoggo.css" rel="stylesheet">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
-
 <body>
-
-    <div class="brand">Auggo Doggo Games</div>
-    <!--div class="address-bar">Site | in | Development</div -->
-
+    <div id="subnav" class="hiddennav" style="height: 80px" ></div>
     <!-- Navigation -->
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
+    <nav id="auggo-navbar" class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -47,50 +40,67 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="/">Auggo Doggo Games</a>
+                <a class="navbar-brand" style="height: 3em; padding: 0px;"  href="/"><img style="height: 3em; padding: 0px;" src="/img/AugDog.png"/></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav" id="auggo-navbar">
-                    <li>
-                        <a style="height: 3em; padding: 0px;" href="/"><img style="height: 3em; padding: 0px;" src="/img/AugDog.png"/></a>
-                    </li>
-                    <li>
-                        <a href="/about/#About">About</a>
-                    </li>
-                    <li>
-                        <a href="/games">Games</a>
-                    </li>
-                    <li>
-                        <a href="/press-kit">Press Kit</a>
-                    </li>
-                    <li>
-                        <a href="/contact">Contact</a>
-                    </li>
-                    <li>
-                        <a href="http://Twitch.tv/AuggoDoggo">Twitch<img class="twitchLog" data-twitch-channel="auggodoggo"></a>
-                    </li>
+                <ul class="nav navbar-nav"  >
+                    <li><a class="auggo-toggle" style="height: 2.5em; padding: 0px; margin-top: -12px; margin-bottom: -5px"  href="/"><img style="height: 2.5em; padding: 0px;" src="/img/AugDog.png"/></a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><div class="dropdown auggo-toggle">
+                          <a href="/games"><button class="dropbtn" >games</button></a>
+                          <div class="dropdown-content">
+                            <a href="/games/plunker/">Plunker</a>
+                            <a href="/games/sweepyheads/">Sweepyheads</a>
+                          </div>
+                        </div>
+                        <a href="/games" class="auggo-detoggle">Games</a></li>
+                    <li><div class="dropdown auggo-toggle">
+                          <a href="/source"><button class="dropbtn" >Code Walkthrough</button></a>
+                          <div class="dropdown-content">
+                            <a href="/source/balloon/">Balloons</a>
+                            <a href="/source/pathfinding/">Pathfinding</a>
+                            <a href="/source/terrain-models/">Terrain Model</a>
+                            <a href="/source/vr-utils/">VR Util</a>
+                          </div>
+                        </div>
+                        <a href="/source" class="auggo-detoggle">Code Walkthrough</a></li>
+                    <li><a href="/press-kit">Press Kit</a></li>
+                    <li><a href="/contact">Contact</a></li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
     </nav>
-	
-	
 
+    <title>Auggo Doggo | Walkthrough | Terrain</title>
     <div class="container">
         <div class="row">
-		    <h2 class="intro-text text-center" id="auggoH2">Press Kit - Plunker</h2>
+            <h2 class="intro-text text-left" id="auggoH2">Jiggly Balloons</h2>
             <div class="box">
-                <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col-lg-12 text-center" style="margin-top: 15px; margin-bottom: 15px;">
-                            <img class="img-responsive img-center" style="max-height: 800px; border-style: solid; border-width: 2px" src="/img/plunkplaneposter.png"/>
-                        </div>
-                    </div>
-                    <div class="row">
-						<p><strong>Welcome</strong> to the press page for Plunker, this is where you'll find as much relevant info about the project and team as humanly possible as well as any media packages you might want and/or need for various purposes. We can be reached at <strong>Contact@AuggoDoggoGames.com</strong></p>
+                <div class="col-lg-12 ">
+                    <br>
+                    <img class="img-responsive img-center" style="max-height: 600px; border-style: solid; border-width: 2px;" src="/img/balloon/jiggle.gif" />
+                    <div class="row" style="font-size:14px">
+                        <br><hr>
+                        <h3 style="color: black">Focal Points - Game polish</h3>
+                        <p> 
+                            In any art-form, it's important to identify a focal point and spend extra time adding an appropriate amount of detail and work to it in order to bring life and personality to your project. In game development we call this "polish". You can polish every little part of your project until your eyes bleed but it's not going serve much purpose if you don't spend most of your time working on the foundations of your game. If you finish a piece of code and you're sure that it's not going to change much throughout the remainder of the game, you can polish early. Otherwise, try to put it off as long as you can. There are going to be times where you're going to toss entire game mechanics. It's obviously better not to polish those pieces until you've decided. It's all about timing, and no one is perfect at that, but everyone gets better with experience.
+                        </p>
+                        <p>
+                            In VR, the focal points are usually objects you're able to pick up, or characters that interact with you. To make the player feel like there is something deeper than a flat lifeless 3D model, you should add animations, interaction scripts, and haptic feedback(controller vibration)*. For example, seeing swords collide with "clanking" sounds and physics is one thing, but to feel your sword grinding against a metal surface (or the increasing tension in your bowstring) is on another level. It's the layer of feedback that pushes you over the edge, where you allow yourself in a certain respect, to believe the ruse.
+                        </p>
+                        <img class="gif" style="max-height: 250px" data-gif="/img/balloon/labbow.gif" src="/img/balloon/labbow.png" />
+                        <br>
+                        <h3 style="color: black">What is important in a VR water balloon?</h3>
+                        <p>
+                            When you shake a balloon it should jiggle, it should deform from the water sinking on one side or the other based on gravity and how the player is tilting it, and it should pop in a satisfying way. Water balloons are satisfying to pop. Keep that in mind when you're designing things based on 'satisfying feelings', what is it that is satisfying, what is supposed to be enjoyable about this thing? 
+                        </p>
+                        <p>In this section I'm going to walk you through the parts of the water balloons in Plunker in 3 sections. 
+                            <ul style="font-size: 14px">
+                                <li>Creating the model, animations, and particle effects</li>
+                                <li>Interaction with the SteamVR Plugin for holding/sloping/jiggling</li>
+                                <li>Pop, respawn, throw, and deal damage to other objects</li>
+                            </ul>
+                        </p>
                     </div>
                 </div>
                 <br/>
@@ -100,39 +110,52 @@
 
     <div class="container">
         <div class="row">
-            <h2 class="intro-text text-center" id="auggoH2">Related Facts</h2>
+            <h2 class="intro-text text-left" id="auggoH2">Creating the look</h2>
             <div class="box">
                 <div class="col-lg-12 ">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="row">
-                            <br>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <ul style="font-size:1.3em;text-shadow: 1px 1px 2px rgba(0,0,0,0.5);line-height: 1.6;color: #000;">
-                                    <li ><strong>Developer:</strong> Auggo Doggo Games Co., Based in Cleveland, OH</li>
-                                    <li><strong>Release Date (Estimated):</strong> Q1 2018</li>
-                                    <li><strong>Platforms:</strong> PC Only, HTC Vive with plans for the Oculus Rift</li>
-                                    <li><strong>Website:</strong> www.AuggoDoggoGames.com</li>
-                                    <li><strong>Availability:</strong> Digital Download</li>
-                                    <li><strong>Languages:</strong> English</li>
-                                    <li><strong>Press Contact:</strong> Contact@AuggoDoggoGames.com</li>
-                                    <li id="auggo_icon"><strong>Social:</strong> <a href="http://Twitch.tv/AuggoDoggo"><img  src="/img/TwitchICO.svg"/></a> 
-                                    <a href="http://Instagram.com/AuggoDoggoGames"><img src="/img/InstagramICO.svg"/></a> 
-                                    <a href="https://www.facebook.com/auggodoggogames/"><img src="/img/facebookICO.svg"/></a> 
-                                    <a href="https://discord.gg/E8dfXfx"><img s src="/img/DiscordICO.svg"/></a>
-                                    <a href="https://auggodoggo.itch.io/plunker"><img src="/img/itch.png"/></a> 
-                                    </li>
-                                </ul>
-                                <br><br>
-                                <p style="font-size:1.3em;"><strong>Auggo Doggo Games</strong> presents a hilarious virtual reality experience full of characters and minigames that will stick with you for life!
-                                </p><br><p style="font-size:1.3em;">
-                                <strong>Agent Plunker</strong> finds himself on an airplane where there is a rumored terrorist attack. Luckily he's equipped with a spy watch and intuition to stop the terrorist with arguably minimal casualties. There are plenty of surprises for the average gamer and even more for the gamer that checks every little nook. Replayability is through the roof due to the nonlinear paths of play, and the minigames are unlockable so that you can play the golden parts in a competetive or zen mode afterwards.
-                                </p>
-                            </div>
-                        </div>
+                    <div class="row" style="font-size:14px">
+                        <h3 style="color: black">A quick note before we begin:</h3>
+                        <p>Notice that everything we're doing is basically polish, but when I was first creating this balloon mechanic I grey-boxed everything first. "Grey-boxing is the traditional technique of blocking out the level with simple shapes to see if the level design supports the gameplay before creating the final art assets for the level". If you end up not liking how the scripts and interactions turn out, this is where you may decide to toss something. Try to always grey-box things first (or make very quick minimal models if you feel like you <i>need</i> to).</p>
+                        <img class="gif" style="max-height: 500px" data-gif="/img/balloon/jigglebox.gif" src="/img/balloon/jigglebox.png" /><br>
+                        <p>When beginning this balloon mechanic, I first thought of it as an interactive object which means that it has multiple states and transitions between them. The model we're creating below is what you hold and throw, most of the time it will be "popped" or basically non existent. We can talk more about the transitions and states in the 2nd section since they are mostly code. But just keep in mind that I'm only walking through this section first because it's more visually appealing for the walkthrough.</p>
+                        <br> <br><hr> <br>
+                        <h3 style="color: black">Making the model</h3>
+                        <p>If you're not familiar with 3D modeling, it's not the end of the world, although it is a major limiting factor on your indie-dev life. I've toyed around with Blender (a free 3D modeling program) for about 3 years. It's fairly easy to learn how to make geometric or simple objects and I highly suggest making it a priority to understand the basics of 3D modeling. There isn't otherwise much to be said about this model. It's simple. One thing I might make note of is how many vertices this mesh has (around 750). If the balloon were a side object on a shelf or otherwise, I may have used less verts, but since it's going to deform, and it is a focal point of this section in Plunker, it's nice to have more.</p>
+                        <div class="col-lg-6 "><img class="img-responsive img-center" style="max-height: 525px; border-style: solid; border-width: 2px;" src="/img/balloon/balloon-zmesh.png" /></div>
+                        <div class="col-lg-6 "><img class="img-responsive img-center" style="max-height: 525px; border-style: solid; border-width: 2px;" src="/img/balloon/balloon-smoothmesh.png" /></div>
+                    </div>
+                    <div class="row" style="font-size:14px">
+                        <br><br><br><br>
+                        <h3 style="color: black">Bones and animations</h3>
+                        <p><a href="https://en.wikipedia.org/wiki/Skeletal_animation">Rigging</a> is a term in game development that refers to adding bones to a 3D model. If you're not familiar with rigging, this is another important point I would highly suggest committing some time and energy into. You won't need to learn to the extents that I have, but if you have a basic understanding then you'll be able to work well on a team and communicate with artists on a better level.</p><br>
+                        <img class="img-responsive img-center" style="max-height: 400px; border-style: solid; border-width: 2px;" src="/img/balloon/balloon-bones.png" />
+                        <br>
+
+                        <p>One notable thing you can see in this picture is how small the bones are. The ends don't even touch. This is because I'm mostly using <i>automatic weighting</i> and if the bones are smaller, the edges are more evenly weighted around the bone. This makes for easy animation when we need a body of water to jiggle around a central point. You can make animations in blender, but you'll want to use Mechanim&copy; in Unity to fine tune things. Either way its just a matter of making the bones scale and rotate in a way that looks satisfying. Once you've got that done, you'll have a pretty juicy looking balloon.</p>
+                        <img class="gif" data-gif="/img/balloon/jiggle.gif" src="/img/balloon/jiggle.png" />
+
+                        <h3 style="color: black">Particle System</h3>
+                        <p>We'll want to create a popping animation to transition between a "<i>thrown</i> state" and a "<i>popped</i> state". The popped state won't have anything rendered at all, we'll just pretend that the water and the remaining rubber flew everywhere. The unity particle system is great for making animations like this, and it's usually necessary if you want to polish your game. There are several layers to our "sploosh" animation. There's the spray of water as it mists into the air, as well as the thicker explosion of water near the center. There's also a very quick flash of red balloon rubber. If you'd like to learn more about making particle systems <a href="https://www.youtube.com/watch?v=rR_bm8f8rVE">here</a> is where I learned a lot.</p>
+                        <p> start with the central spray like this.</p><br>
+
+                        <img class="gif" data-gif="/img/balloon/pop1.gif" src="/img/balloon/pop1.png" />
+
+                        <br>
+                        <p>Then you'll add a different type of splash particle. It's all about layering. Everything looks better with a few layers of different content.</p><br>
+                        
+                        <img class="gif" data-gif="/img/balloon/pop2.gif" src="/img/balloon/pop2.png" /><br>
+
+                        <p>Once the splashes are in place, you'll want a flash of red rubber to bridge the gap of the balloon disappearing.</p><br>
+
+                        <img class="gif" data-gif="/img/balloon/pop3.gif" src="/img/balloon/pop3.png" /> <br>
+
+                        <p>Once all of the pieces are looking ok, you can put them together. (make sure to place them under each other in a hierarchy and simulate in world space so that they scale properly and they all play together at the same time - on wake).</p><br>
+                        
+                        <img class="gif" data-gif="/img/balloon/fullpop.gif" src="/img/balloon/fullpop.png" /><br>
+
+                        <br>
+                        <p>Layering and taking the extra time to tweak your particle systems can make parts of your game stand out in a memorable, striking way. This makes a massive difference to the look of the game, for little cost. <br>
+                            <hr><hr>
                     </div>
                 </div>
                 <br/>
@@ -140,113 +163,123 @@
         </div>
     </div>
     
+    
     <div class="container">
         <div class="row">
-            <h2 class="intro-text text-center" id="auggoH2">Game Features</h2>
+            <h2 class="intro-text text-left" id="auggoH2">Behavior Programming</h2>
+            <div class="box">
+                <div class="col-lg-12 ">
+                    <div class="row" style="font-size:14px">
+                        
+                        <img class="gif" data-gif="/img/balloon/throwpop.gif" src="/img/balloon/throwpop.png" />
+                        <br>
+                        <h3 style="color: black">Where to start</h3>
+                        <div class="col-lg-8">
+                        <p>SteamVR has a plugin for Unity where they provide some C# example scripts that save a lot of effort and time. If you're writing your code in C# from scratch then you're wasting a lot of time. Instead I suggest altering the provided scripts to your needs. In our case we're simply taking advantage of the basic <i>Throwable.cs</i> and it's easy to access <i>OnPickup()</i> and <i>OnDrop()</i> events to call our own functions when the player grabs or lets go of the balloons. If you're making a VR game, you should study these scripts to understand how they're working. I go into more detail on VR interaction in the VR-Util guide.</p>
+                        <p><b>OnPickUp()</b> calls a behavior function called SpawnBalloon(). This is because the balloon starts and ends in a sleep/popped state where it is an invisible object in a "balloon basket" waiting to be picked up.</p>
+                        <p><b>OnDrop()</b> calls a behavior function called Throw(). This sets the balloon into a state where it knows that it has been thrown and it's only waiting for a collision to <i>pop</i> it.</p>
+                        <p><b>Jiggle()</b> Triggers a jiggling animation on all of the fake balloons in the bucket to make it look like you interacted with the bucket itself.</p>
+                        <p> Now I'll show you some of the code as examples</p>
+                        </div>
+                        <div class="col-lg-4 ">
+                            <div class="img-responsive img-center"><img class="img-responsive img-center" style="max-height: 500px; border-style: solid; border-width: 2px;" src="/img/balloon/throwable-script.png" /></div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-size:14px">
+                        <br>
+                        
+                        <h3 style="color: black">Grabbing and Throwing</h3>
+                            <figure>
+                                <figcaption id="example1-caption">Spawn() and Throw()</figcaption>
+                                <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
+                                    <code  contenteditable="true" tabindex="0" spellcheck="false"
+                                    >public void SpawnBalloon()
+{
+    popped = false; //used to keep track of if the balloon is currently in a popped state
+    thrown = false; anim.SetBool(thrown_bool, false); //used keep track of if the balloon is in a thrown state and the same thing but for the animator's use
+    balloon_renderer.enabled = true; //Show the balloon 
+    pop.SetActive(false); //deactivate popping so that it can be reactivated and "play on awake"
+}
+
+public void Throw()
+{
+    thrown = true; //used to keep track of if the balloon is currently in a thrown state
+    anim.SetBool(thrown_bool, true); //same thing but for the animator
+    anim.SetBool(smoothside_bool, false); //make sure balloon is not sloping to one side or another while thrown
+    anim.SetBool(knotside_bool, false); // ||
+
+    rb.isKinematic = false; //let the physics engine move the balloon non-kinematically 
+    rb.angularVelocity = Random.insideUnitSphere * rb.velocity.sqrMagnitude/10f; //give it some random spin, this is satisfying
+}</code>
+                                </pre>
+                            </figure>
+                        <br>
+                        <h3 style="color: black">Popping correctly</h3>
+                            <figure>
+                                <figcaption id="example1-caption">Pop()</figcaption>
+                                <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
+                                    <code  contenteditable="true" tabindex="0" spellcheck="false"
+                                    >private void OnTriggerEnter(Collider col)
+{
+    if (!popped && thrown) //on collision, check whether or not balloon is in a poppable state
+    {
+        popped = true; thrown = false; anim.SetBool(thrown_bool, false); //update what state the balloon is in with bools and the animator
+        StartCoroutine(Pop()); //we use a coroutine, this is just an asynchronous function that allows us to pop and then move the object when the balloon is finished popping.
+        RecieveDamage rd = col.GetComponent<RecieveDamage>(); //this looks for a script that would indicate that this is an enemy or destructible object.
+        if (rd) { rd.Damage(); }
+    }
+
+}
+
+IEnumerator Pop()
+{
+    pop.SetActive(true); //
+    popsound.Play();
+    yield return null;
+
+    rb.isKinematic = true;
+    rb.velocity = Vector3.zero;
+    rb.angularVelocity = Vector3.zero;
+    balloon_renderer.enabled = false;
+
+    yield return new WaitForSeconds(1f);
+
+    this.transform.position = barrel_script.balloon_slot.transform.position;
+}</code>
+                                </pre>
+                            </figure>
+                        <p>Below you can hear the audio sound that is played. Satisfying.</p>
+                        <div class="img-center img-responsive">
+                            <audio controls>
+                                <source src="/audio/splashballoon.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                        <h3 style="color: black">jiggling with animation layers</h3>
+                        <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <h2 class="intro-text text-left" id="auggoH2">Interaction with the SteamVR Plugin for holding/sloping/jiggling</h2>
             <div class="box">
                 <div class="col-lg-12 ">
                     <div class="row">
                         <div class="col-sm-3">
                             <div class="row">
-                            <br>
+                            <br>pic
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="row">
-                                <ul style="font-weight: 600; font-size:1.3em; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);line-height: 1.6;color: #000;">
-                                    <li> A main campaign that leads you along a nonlinear adventure where you have to survive and conquer story story based puzzles.</li>
-                                    <li>So much comic relief that you will be 100% relieved throughout the entire game and not even know what the relief is from.</li>
-                                    <li>VR parachuting through targets.</li>
-                                    <li>Bocce ball.</li>
-                                    <li>A massive two hand minigun turret where you get to annihilate huge sand creatures.</li>
-                                    <li>Building sand castles with your hands.</li>
-                                    <li>VR punching people.</li>
-                                    <li>Soundtracked by members of Cleveland garage/punk/rock band, <a id="auggo_text" href="https://www.facebook.com/Sweepyheads/">Sweepyheads</a>, along with cameo character voices and narration.</li>
-                                    <li>Memorable and hilarious characters with voices done by known comedians such as <a id="auggo_text" href="https://www.youtube.com/channel/UCnlAHphUjtM2xn-WNDpv1Ng">Thomas Birdeno</a>.</li>
-                                    <li>Characters that interact with the player are actually a rarity in a lot of indie VR titles, which is disappointing since all of the most memorable games are just so because of their characters. I've tried as hard as I could to fully shape my main characters to be something players will like.</li>
-                                    <li>I've avoided adding the default "bow and arrow" package that every game seems to have simply because valve supplies this code open source. Instead, I've written all of my own mechanics from the bottom up in a valiant effort to find out what makes being in virtual reality so darn fun. 
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br/>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <h2 class="intro-text text-center" id="auggoH2">The "Team"</h2>
-            <div class="box">
-                <div class="col-lg-12 ">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="row">
-                                <br><br><img class="img-responsive text-center" style="max-height: 300px; margin: auto; border-style: solid; border-width: 3px;"  src="/img/laughingman.png"/>
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="row">
-                                </p><br><p>
-
-                                    <strong>August Yadon</strong> (Twitch personality AuggoDoggo) has been developing Plunker live on Twitch every day since early 2017. August makes all of the decisions, code, art, story, characters, noises and whatever else you want to throw in the whole "indie game" trunk. Although the reason that "Team" (above) is in quotes is not entirely because August is the sole developer on this project but because there are other people who have contributed voice lines, 3D artwork, music, pixel art, and loads and loads of fantastic ideas over <a href="Twitch.tv/AuggoDoggo">Twitch</a> and <a href="https://discord.gg/E8dfXfx">Discord</a>.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br/>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <h2 class="intro-text text-center" id="auggoH2">Trailer</h2>
-            <div class="box">
-                <div class="col-lg-12 ">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="row">
-                            <br>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div style="position: relative;padding-bottom: 56.25%;padding-top: 25px;height: 0;">
-                            <iframe style="position: absolute;top: 0;left: 0; width: 100%;height: 100%;" src="https://player.vimeo.com/video/231614170" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br/>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="container">
-        <div class="row">
-            <h2 class="intro-text text-center" id="auggoH2">Download and Play</h2>
-            <div class="box">
-                <div class="col-lg-12 ">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="row">
-                            <br>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="row text-center">
                                 
-                                    <a href="https://auggodoggo.itch.io/plunker" target="_blank" >
-                                        <img class="img-responsive text-center"  src="/img/itch.png" style="max-height: 300px; padding-top: 50px; margin: auto;"/></a>
-                                
-                            </div>
-                            <div class="row">
-                            <p style="font-size: 1.5em;">
-                               You can download the Demo for free here. If you're really wanting to dig in, just give the demo a play. It's a limited version of what you'll get to play in the end. If you would like to have an unlimited version, just say so and I can send that as well.</p>
+                        <h3 style="color: black">haptics - vibrations, sounds, jiggling</h3>
+                        <p>interaction with other objects, respawn</p>
+                                <p>Take it a step further - Damage Transfer</p>
                             </div>
                         </div>
                     </div>
@@ -255,89 +288,6 @@
             </div>
         </div>
     </div>
-
-
-
-    <div class="container">
-        <div class="row">
-            <h2 class="intro-text text-center" id="auggoH2">Screencaps</h2>
-            <div class="box">
-                <div class="col-lg-12 ">
-                    <div class="row">
-                        <div class="col-sm-4 text-center">
-                            <div class="row">
-                                <img class="img-responsive text-center" style="max-height: 300px; padding: 50px; padding-bottom: 40px; margin: auto;"  src="/img/auggod4.png"/>
-                            </div>
-                        </div>
-                        <div class="col-sm-4 text-center">
-                            <div class="row">
-                                <img class="img-responsive text-center" style="max-height: 300px; padding: 50px; padding-bottom: 40px; margin: auto;"  src="/img/auggod14.png"/>
-                            </div>
-                        </div>
-                        <div class="col-sm-4 text-center">
-                            <div class="row">
-                                <img class="img-responsive text-center" style="max-height: 300px; padding: 50px; padding-bottom: 40px; margin: auto;"  src="/img/auggod17.png"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 ">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="row text-center" >
-                                <p>
-                                    <a style="font-size: 1.5em;" href="/downloads/auggo_doggo-plunker_screencaps.zip" >Download these screencaps and more in a zip file.</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br/>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="container">
-        <div class="row">
-            <h2 class="intro-text text-center" id="auggoH2">Logos/Identities</h2>
-            <div class="box">
-                <div class="col-lg-12 ">
-                    <div class="row">
-                        <div class="col-sm-4 text-center">
-                            <div class="row">
-                                <img class="img-responsive text-center" style="max-height: 300px; padding: 50px; padding-bottom: 40px; margin: auto;"  src="/img/AugDog.png"/>
-                            </div>
-                        </div>
-                        <div class="col-sm-4 text-center">
-                            <div class="row">
-                                <img class="img-responsive text-center" style="max-height: 300px; padding: 50px; padding-bottom: 40px; margin: auto;"  src="/img/auggodoggo_ iconlogo-white.png"/>
-                            </div>
-                        </div>
-                        <div class="col-sm-4 text-center">
-                            <div class="row">
-                                <img class="img-responsive text-center" style="max-height: 300px; padding: 50px; padding-bottom: 40px; margin: auto;"  src="/img/plunker_watch_transparent_bg.png"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 ">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="row text-center" >
-                                <p>
-                                    <a style="font-size: 1.5em;" href="/downloads/auggo_doggo-logos.zip" >Download these icons in a zip file.</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br/>
-            </div>
-        </div>
-    </div>
-
-
 
 
 
@@ -357,7 +307,7 @@
     </footer>
 
     <!-- jQuery --> 
-    <script src="/js/jquery.js"></script>
+    <!--script src="/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
@@ -379,10 +329,6 @@
         });
         $.fn.ekkoLightbox.defaults;
     </script>
-
-    <!-- Twitch live components 
-    <script data-interval="60" data-offline-image="/img/twitchlogo_offline_wtext.png" data-online-image="/img/twitchlogo_online.gif" src="/js/twitch-channel-status.js"></script>
-    -->
 
     <script type="text/javascript">
         // When the user scrolls the page, execute myFunction 
@@ -407,6 +353,18 @@
             navsub.classList.add("hiddennav")
           }
         }
+    </script>
+
+    <script>
+          $(document).ready( function() {
+
+            $('.gif').gifplayer();
+
+            setTimeout(function(){
+              $('.share').fadeIn('slow');
+            }, 1000);
+
+          });
     </script>
 
 </body>

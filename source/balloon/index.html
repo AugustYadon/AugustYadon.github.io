@@ -17,7 +17,6 @@
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/jquery.gifplayer.js"></script>
 
-
     <!-- Custom CSS -->
     <link href="/css/business-casual.css" rel="stylesheet">
     <link href="/css/auggodoggo.css" rel="stylesheet">
@@ -27,7 +26,6 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 
 </head>
-
 <body>
     <div id="subnav" class="hiddennav" style="height: 80px" ></div>
     <!-- Navigation -->
@@ -133,7 +131,7 @@
                         <br>
 
                         <p>One notable thing you can see in this picture is how small the bones are. The ends don't even touch. This is because I'm mostly using <i>automatic weighting</i> and if the bones are smaller, the edges are more evenly weighted around the bone. This makes for easy animation when we need a body of water to jiggle around a central point. You can make animations in blender, but you'll want to use Mechanim&copy; in Unity to fine tune things. Either way its just a matter of making the bones scale and rotate in a way that looks satisfying. Once you've got that done, you'll have a pretty juicy looking balloon.</p>
-                         <img class="gif" data-gif="/img/balloon/jiggle.gif" src="/img/balloon/jiggle.png" />
+                        <img class="gif" data-gif="/img/balloon/jiggle.gif" src="/img/balloon/jiggle.png" />
 
                         <h3 style="color: black">Particle System</h3>
                         <p>We'll want to create a popping animation to transition between a "<i>thrown</i> state" and a "<i>popped</i> state". The popped state won't have anything rendered at all, we'll just pretend that the water and the remaining rubber flew everywhere. The unity particle system is great for making animations like this, and it's usually necessary if you want to polish your game. There are several layers to our "sploosh" animation. There's the spray of water as it mists into the air, as well as the thicker explosion of water near the center. There's also a very quick flash of red balloon rubber. If you'd like to learn more about making particle systems <a href="https://www.youtube.com/watch?v=rR_bm8f8rVE">here</a> is where I learned a lot.</p>
@@ -176,8 +174,8 @@
                         <br>
                         <h3 style="color: black">Where to start</h3>
                         <div class="col-lg-8">
-                        <p>SteamVR has a plugin for Unity where they provide some C# example scripts that save a lot of effort and time. If you're writing your code in C# from scratch then you're wasting a lot of time. Instead I suggest altering the provided scripts to your needs. In our case we're simply taking advantage of the basic <i>Throwable.cs</i> and it's easy to access <i>OnPickup()</i> and <i>OnDrop()</i> events to call our own functions when the player grabs or lets go of the balloons.</p>
-                        <p><b>OnPickUp()</b> calls a behavior function called SpawnBalloon(). This is because the balloon starts and ends in a sleep/popped state where it is an invisible object waiting to be picked up.</p>
+                        <p>SteamVR has a plugin for Unity where they provide some C# example scripts that save a lot of effort and time. If you're writing your code in C# from scratch then you're wasting a lot of time. Instead I suggest altering the provided scripts to your needs. In our case we're simply taking advantage of the basic <i>Throwable.cs</i> and it's easy to access <i>OnPickup()</i> and <i>OnDrop()</i> events to call our own functions when the player grabs or lets go of the balloons. If you're making a VR game, you should study these scripts to understand how they're working. I go into more detail on VR interaction in the VR-Util guide.</p>
+                        <p><b>OnPickUp()</b> calls a behavior function called SpawnBalloon(). This is because the balloon starts and ends in a sleep/popped state where it is an invisible object in a "balloon basket" waiting to be picked up.</p>
                         <p><b>OnDrop()</b> calls a behavior function called Throw(). This sets the balloon into a state where it knows that it has been thrown and it's only waiting for a collision to <i>pop</i> it.</p>
                         <p><b>Jiggle()</b> Triggers a jiggling animation on all of the fake balloons in the bucket to make it look like you interacted with the bucket itself.</p>
                         <p> Now I'll show you some of the code as examples</p>
@@ -196,20 +194,21 @@
                                     <code  contenteditable="true" tabindex="0" spellcheck="false"
                                     >public void SpawnBalloon()
 {
-    popped = false;
-    thrown = false; anim.SetBool(thrown_bool, false);
-    balloon_renderer.enabled = true;
-    pop.SetActive(false);
+    popped = false; //used to keep track of if the balloon is currently in a popped state
+    thrown = false; anim.SetBool(thrown_bool, false); //used keep track of if the balloon is in a thrown state and the same thing but for the animator's use
+    balloon_renderer.enabled = true; //Show the balloon 
+    pop.SetActive(false); //deactivate popping so that it can be reactivated and "play on awake"
 }
 
 public void Throw()
 {
-    thrown = true;
-    rb.isKinematic = false;
-    rb.angularVelocity = Random.insideUnitSphere * rb.velocity.sqrMagnitude/10f;
-    anim.SetBool(thrown_bool, true);
-    anim.SetBool(smoothside_bool, false);
-    anim.SetBool(knotside_bool, false);
+    thrown = true; //used to keep track of if the balloon is currently in a thrown state
+    anim.SetBool(thrown_bool, true); //same thing but for the animator
+    anim.SetBool(smoothside_bool, false); //make sure balloon is not sloping to one side or another while thrown
+    anim.SetBool(knotside_bool, false); // ||
+
+    rb.isKinematic = false; //let the physics engine move the balloon non-kinematically 
+    rb.angularVelocity = Random.insideUnitSphere * rb.velocity.sqrMagnitude/10f; //give it some random spin, this is satisfying
 }</code>
                                 </pre>
                             </figure>
@@ -221,11 +220,11 @@ public void Throw()
                                     <code  contenteditable="true" tabindex="0" spellcheck="false"
                                     >private void OnTriggerEnter(Collider col)
 {
-    if (!popped && thrown)
+    if (!popped && thrown) //on collision, check whether or not balloon is in a poppable state
     {
-        popped = true; thrown = false; anim.SetBool(thrown_bool, false);
-        StartCoroutine(Pop());
-        RecieveDamage rd = col.GetComponent<RecieveDamage>();
+        popped = true; thrown = false; anim.SetBool(thrown_bool, false); //update what state the balloon is in with bools and the animator
+        StartCoroutine(Pop()); //we use a coroutine, this is just an asynchronous function that allows us to pop and then move the object when the balloon is finished popping.
+        RecieveDamage rd = col.GetComponent<RecieveDamage>(); //this looks for a script that would indicate that this is an enemy or destructible object.
         if (rd) { rd.Damage(); }
     }
 
@@ -233,7 +232,7 @@ public void Throw()
 
 IEnumerator Pop()
 {
-    pop.SetActive(true);
+    pop.SetActive(true); //
     popsound.Play();
     yield return null;
 
@@ -248,6 +247,12 @@ IEnumerator Pop()
 }</code>
                                 </pre>
                             </figure>
+                        <p>Below you can hear the audio sound that is played. Satisfying.</p>
+
+                        <audio class="img-center" controls>
+                            <source src="/audio/splashballoon.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
 
                         <h3 style="color: black">jiggling with animation layers</h3>
                         <p></p>
@@ -322,6 +327,53 @@ IEnumerator Pop()
             $(this).ekkoLightbox();
         });
         $.fn.ekkoLightbox.defaults;
+    </script>
+
+    <script type="text/javascript">
+    (function()
+    {
+        for(var tags = ['main','figure','figcaption'], i = 0; i < tags.length; i ++)
+        {
+            document.createElement(tags[i]);
+        }
+    })();
+    </script>
+
+    <script type="text/javascript">
+        (function()
+        {
+            if(typeof(window.getComputedStyle) == 'undefined') 
+            { 
+                return; 
+            }
+            
+            var pre = document.getElementsByTagName('pre');
+            
+            for(var len = pre.length, i = 0; i < len; i ++)
+            {
+                var code = pre[i].getElementsByTagName('code').item(0);
+                if(!code)
+                {
+                    code = pre[i].getElementsByTagName('samp').item(0);
+                    if(!code)
+                    {
+                        continue;
+                    }
+                }
+                
+                var column = document.createElement('div');
+                column.setAttribute('aria-hidden', 'true');
+                
+                for(var n = 0; n < code.innerHTML.split(/[\n\r]/g).length; n ++)
+                {
+                    column.appendChild(document.createElement('span'));
+                }
+                
+                pre[i].insertBefore(column, code);
+                pre[i].className = 'line-numbers';
+            }   
+        
+        })();
     </script>
 
     <script type="text/javascript">

@@ -152,7 +152,7 @@
 
                         <br>
                         <p>Layering and taking the extra time to tweak your particle systems can make parts of your game stand out in a memorable, striking way. This makes a massive difference to the look of the game, for little cost. <br>
-                            <hr><hr>
+                           <br>
                     </div>
                 </div>
                 <br/>
@@ -186,11 +186,11 @@
                         <br>
                         
                         <h3 style="color: black">Grabbing and Throwing</h3>
-                            <figure>
-                                <figcaption id="example1-caption">Spawn() and Throw()</figcaption>
-                                <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
-                                    <code  contenteditable="true" tabindex="0" spellcheck="false"
-                                    >public void SpawnBalloon()
+                        <figure>
+                            <figcaption id="example1-caption">Spawn() and Throw()</figcaption>
+                            <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
+                                <code  contenteditable="true" tabindex="0" spellcheck="false"
+                                >public void SpawnBalloon()
 {
     popped = false; //used to keep track of if the balloon is currently in a popped state
     thrown = false; anim.SetBool(thrown_bool, false); //used keep track of if the balloon is in a thrown state and the same thing but for the animator's use
@@ -212,17 +212,17 @@ public void Throw()
                             </figure>
                         <br>
                         <h3 style="color: black">Popping correctly</h3>
-                            <figure>
-                                <figcaption id="example1-caption">Pop()</figcaption>
-                                <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
-                                    <code  contenteditable="true" tabindex="0" spellcheck="false"
-                                    >private void OnTriggerEnter(Collider col)
+                        <figure>
+                            <figcaption id="example1-caption">Pop()</figcaption>
+                            <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
+                                <code  contenteditable="true" tabindex="0" spellcheck="false"
+                                >private void OnTriggerEnter(Collider col)
 {
     if (!popped && thrown) //on collision, check whether or not balloon is in a poppable state
     {
         popped = true; thrown = false; anim.SetBool(thrown_bool, false); //update what state the balloon is in with bools and the animator
         StartCoroutine(Pop()); //we use a coroutine, this is just an asynchronous function that allows us to pop and then move the object when the balloon is finished popping.
-        RecieveDamage rd = col.GetComponent<RecieveDamage>(); //this looks for a script that would indicate that this is an enemy or destructible object.
+        RecieveDamage rd = col.GetComponent<<i></i>RecieveDamage>(); //this looks for a script that would indicate that this is an enemy or destructible object.
         if (rd) { rd.Damage(); }
     }
 
@@ -243,8 +243,23 @@ IEnumerator Pop()
 
     this.transform.position = barrel_script.balloon_slot.transform.position;
 }</code>
-                                </pre>
-                            </figure>
+                            </pre>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<br><br><br>
+
+    <div class="container">
+        <div class="row">
+            <h2 class="intro-text text-left" id="auggoH2">Haptics</h2>
+            <div class="box">
+                <div class="col-lg-12 ">
+                    <div class="row">
+
+                        <h3 style="color: black">Playing satisfying audio clips</h3>
                         <p>Below you can hear the audio sound that is played. Satisfying.</p>
 
                         <audio class="img-center" controls>
@@ -252,8 +267,15 @@ IEnumerator Pop()
                             Your browser does not support the audio element.
                         </audio>
 
-                        <h3 style="color: black">jiggling with animation layers</h3>
+                        <h3 style="color: black">Jiggling with animation layers</h3>
+                        <p>When you create a jiggle animation, you'll need to have an animation that can show the balloon jiggling without overriding any other animation states that are currently being used. For example we can used Unity's Mechanim to create animation layers to have the states blend. Say that you have an animation that stretches the balloon out one way or another and you also want to control when it jiggles separately. Well you can do that with layers. Since we're going to control jiggling independently of other animation states, we put it on it's own layer, and set it as an <i>additive</i> layer. We can then choose how much of that layer is blended.</p>
+                        <img class="gif" data-mode="video" data-mp4="https://i.imgur.com/TZ4ydys.mp4" src="/img/balloon/jiggleblend.jpg" /> 
+                        <p>If we only ever have one continuous jiggling animation, we can make the balloon infinitely jiggle on this layer and then change to layer weight to control how much jiggling gets blended in to the end result. This can be accessed and changed at runtime through code but above we can see the effect it will have by using the UI.</p>
                         <p></p>
+
+
+                        
+
                 </div>
             </div>
         </div>
@@ -262,7 +284,7 @@ IEnumerator Pop()
 
     <div class="container">
         <div class="row">
-            <h2 class="intro-text text-left" id="auggoH2">Interaction with the SteamVR Plugin for holding/sloping/jiggling</h2>
+            <h2 class="intro-text text-left" id="auggoH2">Polishing with Spawn Basket and environment interaction</h2>
             <div class="box">
                 <div class="col-lg-12 ">
                     <div class="row">
@@ -274,9 +296,12 @@ IEnumerator Pop()
                         <div class="col-sm-6">
                             <div class="row">
                                 
-                        <h3 style="color: black">haptics - vibrations, sounds, jiggling</h3>
-                        <p>interaction with other objects, respawn</p>
-                                <p>Take it a step further - Damage Transfer</p>
+                                <h3 style="color: black">Spawn Basket</h3>
+                                <p>The spawn basket </p>
+
+                                <h3 style="color: black">Environment interactions</h3>
+                                <p>Damage Enemies</p>
+                                <p>You could also make other scripts "recieve damage" to melt sand or otherwise alter the environment.</p>
                             </div>
                         </div>
                     </div>

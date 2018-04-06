@@ -12,10 +12,8 @@
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Gif Stuff  -->
+    <!-- Gif CSS  -->
     <link rel="stylesheet" type="text/css" href="/css/gifplayer.css">
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.gifplayer.js"></script>
 
     <!-- Custom CSS -->
     <link href="/css/business-casual.css" rel="stylesheet">
@@ -104,7 +102,9 @@
             </div>
         </div>
     </div>
-
+<br> 
+<br>   
+<br>
     <div class="container">
         <div class="row">
             <h2 class="intro-text text-left" id="auggoH2">Creating the look</h2>
@@ -159,8 +159,9 @@
             </div>
         </div>
     </div>
-    
-    
+<br> 
+<br>   
+<br>
     <div class="container">
         <div class="row">
             <h2 class="intro-text text-left" id="auggoH2">Behavior Programming</h2>
@@ -268,42 +269,264 @@ IEnumerator Pop()
                         </audio>
 
                         <h3 style="color: black">Jiggling with animation layers</h3>
-                        <p>When you create a jiggle animation, you'll need to have an animation that can show the balloon jiggling without overriding any other animation states that are currently being used. For example we can used Unity's Mechanim to create animation layers to have the states blend. Say that you have an animation that stretches the balloon out one way or another and you also want to control when it jiggles separately. Well you can do that with layers. Since we're going to control jiggling independently of other animation states, we put it on it's own layer, and set it as an <i>additive</i> layer. We can then choose how much of that layer is blended.</p>
-                        <img class="gif" data-mode="video" data-mp4="https://i.imgur.com/TZ4ydys.mp4" src="/img/balloon/jiggleblend.jpg" /> 
-                        <p>If we only ever have one continuous jiggling animation, we can make the balloon infinitely jiggle on this layer and then change to layer weight to control how much jiggling gets blended in to the end result. This can be accessed and changed at runtime through code but above we can see the effect it will have by using the UI.</p>
-                        <p></p>
+                        <p>When you create a jiggle animation, you'll need to have an animation that can show the balloon jiggling without overriding any other animation states that are currently being used. For example we can used Unity's Mechanim to create animation layers to have the states blend. Say that you have an animation that stretches the balloon out one way or another and you also want to control when it jiggles separately. Well you can do that with layers. Since we're going to control jiggling independently of other animation states, we put it on it's own layer, and set it as an <i>additive</i> layer. We can then choose how much of that layer is blended.</p><br>
+                        <img class="gif" data-mode="video" data-mp4="https://i.imgur.com/TZ4ydys.mp4" src="/img/balloon/jiggleblend.jpg" /> <br>
+                        <p>If we only ever have one continuous jiggling animation, we can make the balloon infinitely jiggle on this layer and then change the layer weight to control how much jiggling gets blended in to the end result. This can be accessed and changed at runtime through code but above we can see the effect it will have by using the UI.</p>
+                        <p>I'll show you our update loop for the balloon and you can see how we determine how much and how long we want to jiggle it.</p>
+                        <figure>
+                            <figcaption id="example1-caption">Update() - Part 1 - Jiggle weight</figcaption>
+                            <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
+                                <code  contenteditable="true" tabindex="0" spellcheck="false"
+                                >void Update() {
+    if (!popped && !thrown)
+    {
+        //calculate velocity and acceleration 
+        current_pos = transform.position; 
+        current_vel = (current_pos - last_pos) / Time.deltaTime;
+        accel = (Vector3.Distance(last_vel, current_vel) * accel_factor) / Time.deltaTime;
+        
+        //Jiggle if an accel threshold is surpassed
+        if (accel > accel_threshold) { jiggle_layer_weight = 0.7f; }
 
+        //decrement jiggling until it's back to 0
+        jiggle_layer_weight = Mathf.Clamp(jiggle_layer_weight - (.8f * Time.deltaTime), 0, 0.7f);
+        anim.SetLayerWeight(1, jiggle_layer_weight);
+        
+        //prepare values for next frame
+        last_pos = current_pos;
+        last_vel = current_vel;</code>
+                            </pre>
+                        </figure>
+                        <p>Since we move the balloon kinematically (by parenting it to the hand), we cannot get the velocity from the rigidbody, so we need to calculate it on our own with simple math and a few variables to keep track of displacement every frame. With this, we also calculate acceleration. If you recall, forces act on bodies in motion as a result of acceleration, so we'll only want to jiggle when there is a force jiggling the ballon (which is going to happen when the balloon moves or stops moving suddenly). When the acceleration surpasses a certain threshold we define, we can set the blend weight of our jiggling layer. We don't want this jiggling to turn off instantaneously, so we slowly decrease it until it is back to zero.</p>
+                        <h3 style="color: black">Haptic Jiggle Vibration</h3>
+                        <p>We already have a float variable <i>jiggle_layer_weight</i> that keeps track of how much our ballon is jiggling. If we use SteamVR's built in controller-vibration functions, it will be relatively easy to make it feel like the balloon is vibrating in your hands. Because we're using SteamVR's <i>Throwable.cs</i> script, we only have to access the correct hand and call a public function on it's <i>Hand.cs</i> Script. In the code below we've created a global variable, <i>hand</i>, that keeps track of which hand is holding the balloon. You'll want to set it when you grab the balloon and set it back to null when you let go as seen below. When you would update the animation weight, you'll also vibrate the controller by a propoertional amount. That's all there is to it. Such an easy step for what it accomplishes.</p>
 
+                        <figure>
+                            <figcaption id="example1-caption">Haptic Vibration Code Additions</figcaption>
+                            <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
+                                <code  contenteditable="true" tabindex="0" spellcheck="false"
+                                >   //add these two lines to SpawnBalloon()
+    if (Player.instance.leftHand.currentAttachedObject == this.gameObject) { hand = Player.instance.leftHand; }
+    else if (Player.instance.rightHand.currentAttachedObject == this.gameObject) { hand = Player.instance.rightHand; }
+    
+    //put this in Throw()
+    hand = null;
+
+    //put this in Update() 
+    if(hand && jiggle_layer_weight > 0) {hand.controller.TriggerHapticPulse((ushort)(jiggle_layer_weight*1000f)); }</code>
+                            </pre>
+                        </figure>
+                        <br>
+                        <hr>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <h3 style="color: black">Deformation with Animation Layers</h3>
+                                <p>The balloon now jiggles when you shake it and gives you some physical feedback. Great, we like this. The last bit will seal the deal, and make the balloon a satisfying bit of VR experience. In this part we'll make sure the balloon deforms somewhat realistically based on how you're holding it and the effects of gravity. Lets take another look at the Update() function that we used earlier. We'll add the following lines that reference the Animator's other layer. This is why we have layers, so that we can deform the balloon and ensure that the deformations are a base animation and that jiggling is an additive animation.</p>
+                            </div>
                         
-
+                            <div class="col-lg-7">
+                                <img class="gif" data-mode="video" data-mp4="https://i.imgur.com/x2biFTs.mp4" src="/img/balloon/jiggle-hand.png" /> 
+                            </div>
+                        </div>
+                        <br><br>
+                        <figure>
+                            <figcaption id="example1-caption">Update() - Part 2 - Orientation Deform</figcaption>
+                            <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
+                                <code  contenteditable="true" tabindex="0" spellcheck="false"
+                                >        if (this.transform.forward.y > 0.15f)
+        {
+            anim.SetBool(smoothside_bool, true);
+            anim.SetBool(knotside_bool, false);
+        }
+        else if (this.transform.forward.y < -0.15f)
+        {
+            anim.SetBool(smoothside_bool, false);
+            anim.SetBool(knotside_bool, true);
+        }
+        else
+        {
+            anim.SetBool(smoothside_bool, false);
+            anim.SetBool(knotside_bool, false);
+        }
+    }
+}</code>
+                            </pre>
+                        </figure>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                             <h3 style="color: black">Animator Variables</h3>
+                            <p>Alone, this code senses what the upward component of our normalized <i>forward</i> vector points either up or down by a certain amount (0.15). It then sets state variables in the animator so that we can control the animations based on it's state. Is the knot side facing downward or is the smooth side facing downward or are they both pretty balanced? In these images you can see the parameters section of the animator is where we define the variables that we're referencing in our scripts. </p>
+                            <br>
+                            <h3 style="color: black">Animator State Transitions</h3>
+                            <p>To show the primary logic drivers in the animators state machine, we'll look at the transition definitions in the third picture. You can find this view by clicking on one of the arrows between two states and then setting it up from there. If you have no transitions defined you have to create transitions.</p>
+                            <br><br><br>
+                            <h3 style="color: black">Animator State Diagram</h3>
+                            <p>You can also see a state diagram that is extrordinarily simple since every since state can transition to every other state and all states are mutually exclusive at any one point in time. If you've been a software developer you can probably do a lot of this on your own without the UI based tools I present here. I'm showing you this because I did that for a year or two when I started out but I've learned that the more complex animations become more manageable with this sort of UI so long as you're not doing anything completely different than what this was made for.</p>
+                        </div>
+                        
+                        <div class="col-lg-6" style="border-left: thin solid #444;">
+                            <div class="row"><div class="img-center img-responsive"><img style="border-color: #444; border-width: 2px; border-style: solid" class="img-center img-responsive" src="/img/balloon/state-vars.png" /> </div></div> <br>
+                            <div class="row"><div class="img-center img-responsive"><img style="max-height: 400px; border-color: #444; border-width: 2px; border-style: solid" class="img-center img-responsive" src="/img/balloon/state-transition.png" /> </div></div> <br>
+                            <div class="row"><div class="img-center img-responsive"><img style="max-height: 150px; border-color: #444; border-width: 2px; border-style: solid" class="img-center img-responsive" src="/img/balloon/states.png" /> </div></div> <br>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-
+<br>
+<br>
+<br>
+<br>
     <div class="container">
         <div class="row">
             <h2 class="intro-text text-left" id="auggoH2">Polishing with Spawn Basket and environment interaction</h2>
             <div class="box">
                 <div class="col-lg-12 ">
                     <div class="row">
-                        <div class="col-sm-3">
+                        <div class="col-sm-6">
                             <div class="row">
-                            <br>pic
+                                <h3 style="color: black">Spawn Basket</h3>
+                                <p>I may have already mentioned this above, but when you've got a useable item like these water balloons, you don't want to instantiate a new prefab every single time the player grabs one, and you don't want to have a million instances of balloons laying around. The proper setup is keeping a few balloons in a deactivated state somewhere and activating them when they player needs one. This is why we have the <i>popped</i> state. </p>
+                                <p>When the balloon is sitting in this basket, it is invisible and it has a collider that allows us to <i>spawn</i> the balloon. If you return to the code snippet above, spawning the balloon does a few things including enabling the renderer. This basket is also a reference to where the balloon should return once it finishes popping so that we can grab it again.</p> 
+
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="row">
-                                
-                                <h3 style="color: black">Spawn Basket</h3>
-                                <p>The spawn basket </p>
-
-                                <h3 style="color: black">Environment interactions</h3>
-                                <p>Damage Enemies</p>
-                                <p>You could also make other scripts "recieve damage" to melt sand or otherwise alter the environment.</p>
+                            <div class="row"><br><br>
+                            <img style="border-color: #444; border-width: 2px; border-style: solid" class="img-center img-responsive" src="/img/balloon/barreljiggle.png" />
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <h3 style="color: black">Upgrade idea</h3>
+                                <p>Since we only have two hands and we may want more buckets, we could rework this so that there are colliders on each basket that move the balloon into position and allow you to grab them so that we could have only two balloons present in the scene at any time rather than 2 per bucket. This is an extra exercise for you, and I may update it if I find it neccesary during development. Right now, I can't imagine having a few extra deactivated balloons causing any problems, but optimization is always fun if you have time.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row"><br><br><br>
+                            <img style="border-color: #444; border-width: 2px; border-style: solid" class="img-center img-responsive" src="/img/balloon/barrel-grab-jiggle.gif" />
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <h3 style="color: black">Environment interactions</h3>
+                                <p>In Plunker these water balloons were first thought up to be weapons against sand creatures. I had created a gun to kill large enemy creatures but quickly realized that I wanted them to be made of sand. I didn't feel like shooting sand with a gun was fun or satisfying, and a friend of mine threw out the idea that I should use water instead of bullets. So here I am with awesome balloons. I've reworked the minigun turret to have larger barrels and shoot balloons as well. Also Satisfying. The last bit of development I'd like to walk you through is how to make the balloons interact with specific game objects that are meant to do something when they are hit.</p>
+
+                                <h3 style="color: black">Sending and Recieving Damage</h3>
+                                <p>In order to execute a function upon colliding with an object you'll need to create a universal script that has a few universal functions to recieve damage. This will be a script that defines the skeleton of our <i>base class</i>. This portion of game dev is really fun because we get to take advantage of polymorphism. We can then specify another class specifically for our sand creature that will override our original functions so that no matter what is taking damage, the balloon can reference any class that derives from <i>RecieveDamage</i>.</p>
+                                
+                                <h3 style="color: black">Polymorphism</h3>
+                                <p>Just to clear up what I mean by example: when the balloon collides with anything, we'll check if there is a script of type<<i>RecieveDamage</i>>. If there is a script of type<<i>SandBoy_RecieveDamage</i>> or type<<i>BreakableCrate_RecieveDamage</i>>, we will get a reference to them as long as they derive from type<<i>RecieveDamage</i>>. We'll be able to call public functions that appear in the base class. So if we call <i>SendDamage(500)</i> on the script, it may reduce the Sand Creatures health, or it could break a breakable box, depending on the overridden functions we write in the derived classes.I won't go into anymore detail here. </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row"><br><br><br>
+                            <img style="border-color: #444; border-width: 2px; border-style: solid" class="img-center img-responsive" src="/img/balloon/barreljiggle.gif" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p>Here we see the base class defined with only one <i>public virtual void</i> function. This makes our jobs easier if we make this function warn us that we're using it since our scripts will likely not want to reference this base class (although if we had a common piece of code we could put it in here and refernce it in the override.</p>
+                        <figure>
+                            <figcaption id="example1-caption">RecieveDamage.cs</figcaption>
+                            <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
+                                <code  contenteditable="true" tabindex="0" spellcheck="false"
+                                >public class RecieveDamage : MonoBehaviour 
+{    
+    public virtual void Damage()
+    {
+        Debug.LogError(gameObject.name + "Has an undefined Damage() function.");
+    }
+}
+</code>
+                            </pre>
+                        </figure>
+
+
+                        <br>
+                        <p>Next we see the subclass in our other script which has a little extra to show off why you may want to do this. I've defined an enum to contain specific places where the sandboy can be hit depending on which collider gets hit. I've chosen to serialize the field so that on the sand boy prefab I can put on of these scripts on each body part and set whether it's the head, leg, arms, etc. This way I can set it in the UI without leaving it accessible for code to access it as public. I've uysed a switch-case statement for my own readability to determine what should be done based on which part was hit. I have animations for the SandBoy to react when he is hit on different body parts, and its primary script keeps track of its health.</p>
+                        <figure>
+                            <figcaption id="example1-caption">RecieveDamage_Sandboy.cs</figcaption>
+                            <pre aria-describedby="example1-description" aria-labelledby="example1-caption">
+                                <code  contenteditable="true" tabindex="0" spellcheck="false"
+                                >public enum DamageZone { Head, Body, L_Arm, R_Arm, L_Leg, R_Leg }
+
+public class RecieveDamage_Sandboy : RecieveDamage
+{
+    [SerializeField] DamageZone damage_zone;
+    SandBoy sb;
+
+    private void Start()
+    {
+        sb = transform.root.GetComponent<<i></i>SandBoy>();
+        if (sb == null) { Debug.Log("Sandboy Script not found from Damage script attached to: " + this.name); }
+    }
+
+    public override void Damage()
+    {
+        switch (damage_zone)
+        {
+            case DamageZone.Head:
+                sb.Damage(66);
+                sb.anim.SetTrigger("Headshot");
+                return;
+            case DamageZone.Body:
+                sb.Damage(33);
+                sb.anim.SetTrigger("Bodyshot");
+                return;
+            case DamageZone.L_Leg:
+                sb.Damage(25);
+                sb.anim.SetTrigger("Bodyshot");
+                return;
+            case DamageZone.R_Leg:
+                sb.Damage(25);
+                sb.anim.SetTrigger("Bodyshot");
+                return;
+            case DamageZone.L_Arm:
+                sb.Damage(25);
+                sb.anim.SetTrigger("Arm_L_shot");
+                return;
+            case DamageZone.R_Arm:
+                sb.Damage(25);
+                sb.anim.SetTrigger("Arm_R_shot");
+                return;
+            default:
+                sb.Damage(33);
+                sb.anim.SetTrigger("Bodyshot");
+                return;
+        }
+    }
+}</code>
+                            </pre>
+                        </figure>
+                        <p> I honestly could go deeper and continue writing about every facet of this entire game forever, but then I may never finish the game itself. This is the stopping point for now; I hope you learned a lot from following along and feel free to use whatever you can grab from this in any way you'd like, commercial or otherwise. Unless you're a dirty asset flipper and you're literally releasing a game where you hold and throw water balloons at walls. In which case I can't imagine it would sell well and I'm not worried about it hurting my project. Cheers.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+<br>
+<br>
+<br>
+    <div class="container">
+        <div class="row">
+            <h2 class="intro-text text-left" id="auggoH2">Q&A</h2>
+            <div class="box">
+                <div class="col-lg-12 ">
+                    <div class="row" style="font-size:16px">
+                        <img class="img-responsive img-center" style="max-height: 400px;" src="/img/augdoglc.png" \>
+                        <p>
+                            If you felt any part of this guide was awkwardly paced, or hard to follow, please send me an email at <b>August@AuggoDoggoGames.com</b> and give me a chance to clear it up and improve at sharing my code creations. In the future, this is where I'll post answers to specific questions that aren't simply answered by updating a portion of the guide.
+                        </p>
                     </div>
                 </div>
                 <br/>
@@ -322,23 +545,12 @@ IEnumerator Pop()
         </div>
     </footer>
 
+    <!--  GIF js    -->
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.gifplayer.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
-
-    <!-- ekko -->
-    <script src="/js/ekko-lightbox.min.js"></script>
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
-    <script type="text/javascript">
-        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-            event.preventDefault();
-            $(this).ekkoLightbox();
-        });
-        $.fn.ekkoLightbox.defaults;
-    </script>
 
     <!-- code display stuff -->
     <script type="text/javascript">

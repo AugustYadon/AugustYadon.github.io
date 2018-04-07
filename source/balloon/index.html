@@ -89,11 +89,13 @@
                         <p>
                             When you shake a balloon it should jiggle, it should deform from the water sinking on one side or the other based on gravity and how the player is tilting it, and it should pop in a satisfying way. Water balloons are satisfying to pop. Keep that in mind when you're designing things based on 'satisfying feelings', what is it that is satisfying, what is supposed to be enjoyable about this thing? 
                         </p>
-                        <p>In this section I'm going to walk you through the parts of the water balloons in Plunker in 3 sections. 
-                            <ul style="font-size: 14px">
-                                <li>Creating the model, animations, and particle effects</li>
-                                <li>Interaction with the SteamVR Plugin for holding/sloping/jiggling</li>
-                                <li>Pop, respawn, throw, and deal damage to other objects</li>
+                        <p>In this section I'm going to walk you through the parts of the water balloons in Plunker in 5 sections. 
+                            <ul style="font-size: 24px">
+                                <li><a style="text-shadow: 1px 1px 1px rgba(0,0,0,0.3); font-weight: 650; color: #000;" href="#look">Creating the Look</a></li>
+                                <li><a style="text-shadow: 1px 1px 1px rgba(0,0,0,0.3); font-weight: 650; color: #000;" href="#ohbehave">Behavior Programming</a></li>
+                                <li><a style="text-shadow: 1px 1px 1px rgba(0,0,0,0.3); font-weight: 650; color: #000;" href="#haptic">Haptic feedback</a></li>
+                                <li><a style="text-shadow: 1px 1px 1px rgba(0,0,0,0.3); font-weight: 650; color: #000;" href="#spawn">Spawning</a></li> 
+                                <li><a style="text-shadow: 1px 1px 1px rgba(0,0,0,0.3); font-weight: 650; color: #000;" href="#envir">Environment Interations</a></li>
                             </ul>
                         </p>
                     </div>
@@ -102,6 +104,7 @@
             </div>
         </div>
     </div>
+<hr style="width: 0%" id="look">
 <br> 
 <br>   
 <br>
@@ -159,10 +162,11 @@
             </div>
         </div>
     </div>
+<hr style="width: 0%" id="ohbehave">
 <br> 
 <br>   
 <br>
-    <div class="container">
+    <div class="container" >
         <div class="row">
             <h2 class="intro-text text-left" id="auggoH2">Behavior Programming</h2>
             <div class="box">
@@ -251,9 +255,11 @@ IEnumerator Pop()
             </div>
         </div>
     </div>
-<br><br><br>
-
-    <div class="container">
+<hr style="width: 0%" id="haptic">
+<br>
+<br>
+<br>
+    <div class="container" >
         <div class="row">
             <h2 class="intro-text text-left" id="auggoH2">Haptics</h2>
             <div class="box">
@@ -376,11 +382,11 @@ IEnumerator Pop()
             </div>
         </div>
     </div>
+<hr style="width: 0%" id="spawn">
 <br>
 <br>
 <br>
-<br>
-    <div class="container">
+    <div class="container" >
         <div class="row">
             <h2 class="intro-text text-left" id="auggoH2">Polishing with Spawn Basket and environment interaction</h2>
             <div class="box">
@@ -391,30 +397,19 @@ IEnumerator Pop()
                                 <h3 style="color: black">Spawn Basket</h3>
                                 <p>I may have already mentioned this above, but when you've got a useable item like these water balloons, you don't want to instantiate a new prefab every single time the player grabs one, and you don't want to have a million instances of balloons laying around. The proper setup is keeping a few balloons in a deactivated state somewhere and activating them when they player needs one. This is why we have the <i>popped</i> state. </p>
                                 <p>When the balloon is sitting in this basket, it is invisible and it has a collider that allows us to <i>spawn</i> the balloon. If you return to the code snippet above, spawning the balloon does a few things including enabling the renderer. This basket is also a reference to where the balloon should return once it finishes popping so that we can grab it again.</p> 
-
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="row"><br><br>
-                            <img style="border-color: #444; border-width: 2px; border-style: solid" class="img-center img-responsive" src="/img/balloon/barreljiggle.png" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="row">
                                 <h3 style="color: black">Upgrade idea</h3>
                                 <p>Since we only have two hands and we may want more buckets, we could rework this so that there are colliders on each basket that move the balloon into position and allow you to grab them so that we could have only two balloons present in the scene at any time rather than 2 per bucket. This is an extra exercise for you, and I may update it if I find it neccesary during development. Right now, I can't imagine having a few extra deactivated balloons causing any problems, but optimization is always fun if you have time.</p>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="row"><br><br><br>
-                            <img style="border-color: #444; border-width: 2px; border-style: solid" class="img-center img-responsive" src="/img/balloon/barrel-grab-jiggle.gif" />
+                            <div class="row"><br><br>
+                            <img class="gif" data-mode="video" data-mp4="https://i.imgur.com/jg2IWjY.mp4" src="/img/balloon/spawnballoon.jpg" /> <br>
                             </div>
                         </div>
                     </div>
-                    <br><br>
-                    <div class="row">
+                    <hr style="width: 0%" id="envir">
+                    <br><hr><br>
+                    <div class="row" >
                         <div class="col-sm-6">
                             <div class="row">
                                 <h3 style="color: black">Environment interactions</h3>
@@ -428,8 +423,8 @@ IEnumerator Pop()
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="row"><br><br><br>
-                            <img style="border-color: #444; border-width: 2px; border-style: solid" class="img-center img-responsive" src="/img/balloon/barreljiggle.gif" />
+                            <div class="row" ><br><br><br><br><br>
+                            <img class="gif" data-mode="video" data-mp4="https://i.imgur.com/714STKq.mp4" src="/img/balloon/kill-enemy.jpg" /> <br>
                             </div>
                         </div>
                     </div>
@@ -507,7 +502,11 @@ public class RecieveDamage_Sandboy : RecieveDamage
 }</code>
                             </pre>
                         </figure>
-                        <p> I honestly could go deeper and continue writing about every facet of this entire game forever, but then I may never finish the game itself. This is the stopping point for now; I hope you learned a lot from following along and feel free to use whatever you can grab from this in any way you'd like, commercial or otherwise. Unless you're a dirty asset flipper and you're literally releasing a game where you hold and throw water balloons at walls. In which case I can't imagine it would sell well and I'm not worried about it hurting my project. Cheers.
+                        <p> I honestly could go deeper and continue writing about every facet of this entire game forever, but then I may never finish the game itself. This is the stopping point for now; I hope you learned a lot from following along and feel free to use whatever you can grab from this in any way you'd like, commercial or otherwise. Unless you're a dirty asset flipper and you're literally releasing a game where you hold and throw water balloons at walls. In which case I can't imagine it would sell well and I'm not worried about it hurting my project. Cheers.</p>
+
+                        <h3 style="color: black">Resources</h3>
+                        <p><a style="text-decoration: underline;" href="/downloads/BalloonAssets/BalloonAssets.zip">BalloonAssets.zip</a><br>
+                        If you're going to use my source code for your project or even poke around in it, please read through the rest of this walkthrough. It will save you time to understand it before you drag and drop it into your project. Ideally, you'll take pieces that you want and make a very modified version once you understand exactly what all of the parts do. I want to educate rather than give away free code, but again, you're free to do whatever you want with this, commercial or otherwise! If you'd like to make it rain, here is my money catching bucket. <a style="text-decoration: underline;" href="https://www.paypal.me/AuggoDoggo/5">https://www.paypal.me/AuggoDoggo/5</a></p>
                     </div>
                 </div>
             </div>

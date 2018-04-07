@@ -85,12 +85,25 @@
                         <h3 style="color: black">Features</h3>
                         <p>This code builds a network of connected nodes that are processed as waypoints for the fastest path from node <i>A</i> to node <i>B</i>. Every single path from every node to every other node will be stored in an array. This way, you can pre-process the fastest paths and then look them up often without burning processing power. Almost immediately after booting, you can query the <i>Node Network</i> for the fastest path between two transforms that can readily see one of the nodes. In other words, if your player is in a maze, running from enemies, the enemy can call NodeNetwork.FastestPath(Player.transform, Enemy.transform) some raycasting will be done to determine which nodes are visible to the player character and the enemy character. The output is an array of waypoints that you can use in your enemy script.
                         </p>
+
+                        <p>In this section I'm going to walk you through Pathfinding algorithms in Plunker in 5 sections. 
+                            <ul style="font-size: 24px">
+                                <li><a style="text-shadow: 1px 1px 1px rgba(0,0,0,0.3); font-weight: 650; color: #000;" href="#theory">Theory</a></li>
+                                <li><a style="text-shadow: 1px 1px 1px rgba(0,0,0,0.3); font-weight: 650; color: #000;" href="#application">Application</a></li>
+                                <li><a style="text-shadow: 1px 1px 1px rgba(0,0,0,0.3); font-weight: 650; color: #000;" href="#beam">Beam Casting</a></li>
+                                <li><a style="text-shadow: 1px 1px 1px rgba(0,0,0,0.3); font-weight: 650; color: #000;" href="#dijkstra">Dijkstra</a></li> 
+                                <li><a style="text-shadow: 1px 1px 1px rgba(0,0,0,0.3); font-weight: 650; color: #000;" href="#runtime">Runtime Access</a></li>
+                            </ul>
+                        </p>
                     </div>
                 </div>
                 <br/>
             </div>
         </div>
     </div>
+<hr style="width: 0%" id="theory">
+<br>
+<br>  
 <br>
    <div class="container">
         <div class="row">
@@ -112,9 +125,10 @@
             </div>
         </div>
     </div>
-
+<hr style="width: 0%" id="application">
 <br>
-
+<br>  
+<br>
    <div class="container">
         <div class="row">
             <h2 class="intro-text text-left" id="auggoH2">Application</h2>
@@ -156,6 +170,10 @@ DijkNode[,] network;
                         <p><img class="img-responsive img-center" alt="Creating empty game objects to serve as nodes - pink cubes added to them for visibility" style="max-height: 450px; border-style: solid; border-width: 2px;" src="/img/pathfinding/connectednodes.png" />
                         </p>
                         <hr>
+                        <hr style="width: 0%" id="beam">
+                        <br>
+                        <br>  
+                        <br>
                         <h3 style="color: black">Beam Casting (Wide Ray Casting)</h3>
                         <p> If we simply ray cast from node to node, we will have a connection, but when we think further about what this connection means, then we see some problems with this approach. A ray cast from one point to another identifies that an infinitely thin space exists between two nodes, but as far as we know it could be a pinhole, which is not going to be a path at all unless your AI character is a tiny fly or a speck of dust. Of course for the case of carefully setting up your own nodes, you can easily say, "hey I'll never do anything stupid or lazy like that, I'll put my nodes exactly where they need to go". Even so, we'll be efficiently raycasting a lot to find our character the correct closest nodes, so let’s use this function I've cooked up for easy checks for connections that are wide enough for our characters to get through. 
                         </p>
@@ -242,7 +260,11 @@ DijkNode[,] network;
     }</code>
                                 </pre>
                             </figure>
-                        </p><br>
+                        </p>
+                        <hr style="width: 0%" id="dijkstra">
+<br>
+<br>  
+<br>
                         <h3 style="color: black">Applying Dijkstra</h3><p>
                             At this stage, we have information and can easily plug everything into a Dijkstra style fastest path algorithm. I'll paste this gif again in hopes that you see the steps in both the gif and the code.
                             <img class="img-responsive img-center" style="max-height: 600px; border-style: solid; border-width: 2px;" src="/img/pathfinding/dijkstra.gif" \>
@@ -307,9 +329,10 @@ DijkNode[,] network;
             </div>
         </div>
     </div>
-
+<hr style="width: 0%" id="runtime">
 <br>
-
+<br>  
+<br>
     <div class="container">
         <div class="row">
             <h2 class="intro-text text-left" id="auggoH2">Using the code at runtime</h2>
@@ -396,7 +419,12 @@ DijkNode[,] network;
                                 <source src="/audio/benny-hill.mp3" type="audio/mpeg">
                                 Your browser does not support the audio element.
                         </audio>
-                        
+                        <br><br>
+                    </div>
+                    <div class="col-lg-12 style="font-size:16px">
+                        <h3 style="color: black">Resources</h3>
+                        <p><a style="text-decoration: underline;" href="/downloads/NodeNetworkAssets/NodeNetwork.cs">NodeNetwork.cs</a><br>
+                        If you're going to use my source code for your project or even poke around in it, please read through the rest of this walkthrough. It will save you time to understand it before you drag and drop it into your project. Ideally, you'll take pieces that you want and make a very modified version once you understand exactly what all of the parts do. I want to educate rather than give away free code, but again, you're free to do whatever you want with this, commercial or otherwise! If you'd like to make it rain, here is my money catching bucket. <a style="text-decoration: underline;" href="https://www.paypal.me/AuggoDoggo/5">https://www.paypal.me/AuggoDoggo/5</a></p>
                     </div>
                 <br/>
             </div>

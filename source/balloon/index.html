@@ -276,7 +276,7 @@ IEnumerator Pop()
 
                         <h3 style="color: black">Jiggling with animation layers</h3>
                         <p>When you create a jiggle animation, you'll need to have an animation that can show the balloon jiggling without overriding any other animation states that are currently being used. For example we can used Unity's Mechanim to create animation layers to have the states blend. Say that you have an animation that stretches the balloon out one way or another and you also want to control when it jiggles separately. Well you can do that with layers. Since we're going to control jiggling independently of other animation states, we put it on it's own layer, and set it as an <i>additive</i> layer. We can then choose how much of that layer is blended.</p><br>
-                        <img class="gif" data-mode="video" data-mp4="https://i.imgur.com/TZ4ydys.mp4" src="/img/balloon/jiggleblend.jpg" /> <br>
+                        <img class="gif" data-mode="video" data-mp4="/img/balloon/jiggleblend.mp4" src="/img/balloon/jiggleblend.jpg" /> <br>
                         <p>If we only ever have one continuous jiggling animation, we can make the balloon infinitely jiggle on this layer and then change the layer weight to control how much jiggling gets blended in to the end result. This can be accessed and changed at runtime through code but above we can see the effect it will have by using the UI.</p>
                         <p>I'll show you our update loop for the balloon and you can see how we determine how much and how long we want to jiggle it.</p>
                         <figure>
@@ -332,7 +332,7 @@ IEnumerator Pop()
                             </div>
                         
                             <div class="col-lg-7">
-                                <img class="gif" data-mode="video" data-mp4="https://i.imgur.com/x2biFTs.mp4" src="/img/balloon/jiggle-hand.png" /> 
+                                <img class="gif" data-mode="video" data-mp4="/img/balloon/jiggle-hand.mp4" src="/img/balloon/jiggle-hand.png" /> 
                             </div>
                         </div>
                         <br><br>
@@ -403,7 +403,7 @@ IEnumerator Pop()
                         </div>
                         <div class="col-sm-6">
                             <div class="row"><br><br>
-                            <img class="gif" data-mode="video" data-mp4="https://i.imgur.com/jg2IWjY.mp4" src="/img/balloon/spawnballoon.jpg" /> <br>
+                            <img class="gif" data-mode="video" data-mp4="/img/balloon/spawnballoon.mp4" src="/img/balloon/spawnballoon.jpg" /> <br>
                             </div>
                         </div>
                     </div>
@@ -424,7 +424,7 @@ IEnumerator Pop()
                         </div>
                         <div class="col-sm-6">
                             <div class="row" ><br><br><br><br><br>
-                            <img class="gif" data-mode="video" data-mp4="https://i.imgur.com/714STKq.mp4" src="/img/balloon/kill-enemy.jpg" /> <br>
+                            <img class="gif" data-mode="video" data-mp4="/img/balloon/kill-enemy.mp4" src="/img/balloon/kill-enemy.jpg" /> <br>
                             </div>
                         </div>
                     </div>

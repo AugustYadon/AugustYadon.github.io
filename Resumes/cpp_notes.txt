@@ -1,0 +1,38 @@
+Pointer cheatsheet
+------------------
+float* p    p is address
+*p          *p is value at address p
+
+float x     x is value
+&x			&x gives address for x
+
+
+Endian Notes
+------------------
+little endian
+00 01 = 8
+least sig >> most sig
+little end >> big end
+
+big endian
+00 01 = 1
+most sig >> least sig
+bigend >> little end
+
+one reason for using little endian, which my computer uses, is that if you're downcasting, you can just reference the first bytes that you need (rather than moving the pointer to the last couple bytes), and clip off the rest
+
+int x = 0000000016 
+ushort y = (ushort)x 
+
+
+Unions
+--------------------
+unions are structures that hold multiple datatypes in the same space
+
+if you have 
+Union {
+	int a;
+	char[5] b;
+	int64 c;
+}
+then it's size is the size of the longest member and any value stored to it is stored accross all of the types

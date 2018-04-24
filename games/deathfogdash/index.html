@@ -24,7 +24,14 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
-
+    <title>Unity WebGL Player | Death Fog Dash</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>  
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebGL.json", {onProgress: UnityProgress});
+    </script>
 </head>
 <body>
     <div id="subnav" class="hiddennav" style="height: 80px" ></div>
@@ -68,144 +75,66 @@
             </div>
     </nav>
 
-    <title>Auggo Doggo | Games</title>
-	
-	<!-- /.container  PLunker-->
     <div class="container">
         <div class="row">
-		    <h2 class="intro-text text-left" id="auggoH2"><a href="/games/plunker/">Plunker - 2017-2018(Ongoing)</a></h2>
-            <div class="box">
-                <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <img class="img-responsive img-left game-list" style="max-height: 200px" src="/img/games_page_plunker.png" />
-                        </div>
-						<!-- PLACEHOLDER TEXT BELOW -->
-						<div class="col-sm-6">
-                            <div class="row">
-							<p><br><strong>A</strong>n instant Auggo Doggo classic, where the player is forced to read their surroundings (and their spy watch) for clues about an ambiguous terrorist attack. Try to kill as few people as possible. <p>To read more, watch a trailer, and <a href="/games/plunker/">download the free demo, click here</a>.</p>
-                            </div>
-                        </div>	
-						
-                    </div>
-                </div>
-                <br/>
-            </div>
+        <h2 class="intro-text text-left" id="auggoH2">Death Fog Dash - Ludum Dare 41</h2>
+            <div  style="height: 750px;"></div>
+          <div class="col-lg-12">
         </div>
-
     </div>
-<br><br>	
-    <!-- /.container -->
-    <div class="container">
-        <div class="row">
-            <h2 class="intro-text text-left" id="auggoH2"><a href="/games/deathfogdash">Death Fog Dash - Ludum Dare Game Jam Submission - April, 2018</a></h2>
-            <div class="box">
-                <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col-sm-6">
-                             <a href="/games/deathfogdash"><img class="img-responsive img-center" style="max-height: 600px; border-width: 3px; border-style: solid; border-color: black;" src="/img/deathfog.png" /></a>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="row">
-                            <br><br><p>A survival/spelling game where you have to make your way through a deserted city to escape a deadly fog. As you spell words and run further you get more points, but beware, the fog moves faster and the words become longer!</p>
-                            <p>Feeling curious? Go play in the embeded WebGL build on <a href="/games/deathfogdash">the games page</a>!</p>
-                            </div>
-                        </div>                      
-                    </div>
-                    <br/>
-                </div>
-                <br/>
-            </div>
+    
+    <div class="container" style="width: 100%;">
+      
+      <div class="row">
+        <div class="webgl-content" style="width: 80%;">
+          <div id="gameContainer" style="width: 100%;"></div>
+          <div class="footer">
+            <div class="webgl-logo"></div>
+            <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+            <div class="title">Death Fog Dash</div>
+          </div>
         </div>
-
+      </div>
     </div>
-<br><br>
-    <!-- /.container -->
+
+
+
+                           
+    <br/><br><br><br>
     <div class="container">
         <div class="row">
-		    <h2 class="intro-text text-left" id="auggoH2"><a href="/games/">Sweepyheads - 2015-2016</a></h2>
+        <h2 class="intro-text text-left" id="auggoH2">Death Fog Bash - Ludum Dare 41</h2>
             <div class="box">
                 <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col-sm-4">
-                             <img class="img-responsive img-center game-list" style="border-width: 3px; border-style: solid;" src="/img/games_page_sweepy.png" />
-                        </div>
-                   
-						<!-- PLACEHOLDER TEXT BELOW -->
-						<div class="col-sm-6">
-                            <div class="row">
-							<p>A colorful 3D platformer based on a character with a broom for a head. This was a wonderful ecclectic box of game mechanics and interesting characters. I learned many interesting facets of 3D game development through this, becoming obsessed with solving one design problem after another. The project as a whole revealed itself to be much larger than originally planned and I learned a lot about architecting realistic goals and project scopes because of this.</p>
-                            </div>
-                        </div>						
-                    </div>
-                    <br/>
-                </div>
-                <br/>
-            </div>
-        </div>
+                  <div class="row text-center">
+                      <div class="col-lg-4 text-center" style="margin: auto;">
+                          <a href="https://auggodoggo.itch.io/plunker" target="_blank" >
+                              <img class="img-responsive text-center"  src="/img/itch.png" style="max-height: 300px; padding-top: 20%; padding-left: 20%; padding-right: 20%; padding-bottom: 10%;margin: auto;"/></a>
+                              <p><a style="font-size: 1.1em; text-align: center;" href="https://auggofacts.itch.io/death-fog-dash" target="_blank">Download Free on Itch.io</a></p>
+                      </div>
 
-    </div>
-<br><br>
-    <!-- /.container -->
-    <div class="container">
-        <div class="row">
-			<h2 class="intro-text text-left" id="auggoH2">Twitch Game - Late 2016</h2>
-            <div class="box">
-                <div class="col-lg-12">
-                    <!--hr>
-                    <h2 class="intro-text text-center"><strong>Twitch Game</strong></h2>
-                    <hr-->
-                    <div class="row">
-                        <div class="col-sm-4">
-                             <img class="img-responsive img-center game-list" style=" border-style: none;" src="/img/games_page_twitchgame.png" />
-                        </div>
-				   <!-- PLACEHOLDER TEXT BELOW -->
-						<div class="col-sm-6">
-                            <div class="row game-list">
-							     <p>A 3D action/wave-based-fps in a procedural maze. Users on twitch can spawn various objects, enemies, and can influence the game. If I was trying to make a smash hit, this would have probably been my best chance when I made it back in 2016 before you saw other people start trying to find ways to involve Twitch chat in their games. I succeeded in the hard parts but was not interested in finishing it because I finally bought my first VR headset </p>
-                            </div>
-                        </div>	
-						
-                    </div>
-                    <br/>
-                </div>
-                <br/>
-            </div>
-        </div>
+                      <div class="col-lg-4 auggo_text" style="max-height: 300px; margin: auto;">
+                          <a href="/games"><img class="img-responsive" style="max-height: 300px; margin: auto;" src="/img/dog.png"/></a>
+                          <p><a  style="font-size: 1.1em; text-align: center;" href="/games">Auggo Doggo Games</a></p>
+                      </div>
 
-    </div>
-<br><br>
-    <!-- /.container -->
-    <div class="container">
-        <div class="row">
-		    <h2 class="intro-text text-left" id="auggoH2">Bubble Hockey - 2014-2015</h2>
-            <div class="box">
-                <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <img class="img-responsive img-center game-list" style="border-width: 3px; border-style: solid;" src="/img/games_page_bubblehockey.png" />
-                        </div>
-				   <!-- PLACEHOLDER TEXT BELOW -->
-						<div class="col-sm-6">
-                            <div class="row">
-							<p>A 3D simulation of table hockey (bubble hockey). (Converting to VR in progress)</p>
-                            </div>
-                        </div>	
-                    </div>
-                    <br/>
+                      <div class="col-lg-4 text-center" style="margin: auto;">
+                          <a  href="https://www.twitch.tv/theartifacts"><img class="img-responsive" style="max-height: 300px; padding-top: 10px; padding-bottom: 10px; margin: auto;" src="/img/llimb.png"/></a>
+                          <p class="auggo_text" style="font-size: 1.5em; text-align: center;"><a  style="font-size: 1.1em; text-align: center;" href="https://www.twitch.tv/theartifacts">LLimb-Pixel</a></p>
+                      </div>
+                  </div>
                 </div>
-                <br/>
             </div>
         </div>
     </div>
 
 
-   
+
+
+
+
     
 
-
- 
     <footer>
         <div class="container">
             <div class="row">

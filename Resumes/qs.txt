@@ -1,0 +1,74 @@
+ASK CLARIFYING QUESTIONS! Oculus has an ambiguous environment. Therefore, some of the questions that will be asked may be vague. Keep this in mind and make sure to ask clarifying questions and push back if necessary, so that you make sure you are answering the correct question that the interviewer is asking.
+
+Be honest and open.  If you don’t know the answer to a question or you’re not 100% sure, that’s ok!  Better to be transparent than “fake it ‘til you make it”
+
+Speak clearly and think out loud! (This will help us assess your problem-solving abilities and gather a better picture of how you think through things)
+
+Recall recent situations that show favorable behaviors or actions, especially involving work experience, leadership, teamwork, initiative, and problem solving.
+
+Prepare short descriptions of each situation; be ready to give details if asked (This will make it easier for you to stay on track with your answers)
+
+Be sure the outcome or result reflects positively on you (even if the result itself was not favorable).
+
+Vary your examples; when applicable, try not to take them all from just one area or project.
+
+
+
+
+
+
+============================
+Plunker / Death Fog Dash
+----------------------------
+	Most Challenging
+	What I learned
+	Most Interesting
+	Hardest Bug
+		Everything was Very slow in the front end of the Airplane in Plunker
+	Enjoyed Most
+		Talk about showing off my game at PAX - receiving feedback
+	Conflicts with Teammates
+	work experience
+	leadership
+	teamwork
+	initiative
+	problem solving
+============================
+Nimblefish
+----------------------------
+	Most Challenging
+	What I learned
+	Most Interesting
+	Hardest Bug
+	Enjoyed Most
+	Conflicts with Teammates
+	leadership/teamwork - Teaching Sarah and Fatima
+	initiative - Creating heartbear code
+	problem solving - 
+============================
+General Dynamics
+----------------------------
+	Most Challenging
+	What I learned
+	Most Interesting
+	Hardest Bug
+	Enjoyed Most
+	Conflicts with Teammates
+	work experience
+	leadership
+	teamwork
+	initiative
+	problem solving
+============================
+General questions
+----------------------------
+
+Why do you want to work here?
+	I worked in San Francisco for 4 years and (in 2015~2016) I used to go to some monthly/bi monthly VR meetups and see presentations of VR/AR tech. It was really cool but I never Demoed the Rift or Vive because the lines were extremely long and there was other stuff to try. I liked what I tried but brushed it off as something that would be cool in 10 years time if they figure out how to make it more emmersive. Finally tried Oculus at PAX Prime/PAX Dev 2016 and bought a headset 2 weeks later. Ever since, I've wanted to be immensely involved in VR in any way that I can. Oculus is by far the coolest company I could work with to be so involved in the future of such an amazing technology. Oculus Start, Oculus LaunchPad, Oculus Go (I know it's a growing technology, so i like that Oculus is trying a lot of different things and seeing what works to get the most people possible in VR).
+
+How much experience
+	work - 5 years of professional experience - 4 at SF companies - 1.5 self employed
+
+
+-----------------------------
+Philosophy

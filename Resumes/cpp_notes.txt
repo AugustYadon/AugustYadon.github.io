@@ -36,3 +36,84 @@ Union {
 	int64 c;
 }
 then it's size is the size of the longest member and any value stored to it is stored accross all of the types
+
+
+Values
+------------
+SHRT_MAX	Maximum value for a variable of type short.	32767
+USHRT_MAX	Maximum value for a variable of type unsigned short.	65535 (0xffff)
+INT_MIN	Minimum value for a variable of type int .	–2147483647 – 1
+INT_MAX	Maximum value for a variable of type int .	2147483647
+
+
+Initialize!!!
+--------------
+int total_moves = 0;
+if you don't initialize, you get whatever was there in memory before!
+
+
+Vector.push_back() //add entry to the end of a Vector 
+
+string(char[]) creates string from char[]
+
+https://codelab.interviewbit.com/problems/nested_cmpl3/
+
+
+MAPS
+------------------
+std::map<std::string, int> mapOfWords;
+    
+    if(mapOfWords.insert(std::make_pair("earth", 1)).second == false)
+    {
+        std::cout<<"Element with key 'earth' not inserted because already existed"<<std::endl;
+    }
+    mapOfWords["earth"] = 4; // this will update the entry where .insert will return false and leave what was there
+
+REMEMBER .second is the success bool
+
+
+SETS
+-----
+same as Maps but only a key value, not a pair
+set.erase(val) removes it from the set, also "pops" it
+set<int> i;
+to return a value:
+	return *i.begin();
+
+SWAP
+-----------------
+std::swap(x,y); 
+
+
+SORT VECTOR
+-----------------
+sort(A.begin(), A.end());
+
+
+
+BITWISE OPERATIONS
+----------------
+xor  result ^= x;
+flips all bits associated with x, good way to check if x exists twice;
+
+AND result &= x;
+
+OR result |= x;
+
+NOT ~ 
+
+NAND  ~(a & b) 
+with three operands would look like 
+        ~(a & b & c) 
+      ~a | ~b | ~c. 
+
+
+
+STRINGS
+----------------
+std::string str = ???;
+for(char& c : str) {
+    do_things_with(c);
+}
+
+return_value += (int)(c - 'A') + 1;      

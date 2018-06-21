@@ -42,8 +42,8 @@ Values
 ------------
 SHRT_MAX	Maximum value for a variable of type short.	32767
 USHRT_MAX	Maximum value for a variable of type unsigned short.	65535 (0xffff)
-INT_MIN	Minimum value for a variable of type int .	–2147483647 – 1
-INT_MAX	Maximum value for a variable of type int .	2147483647
+INT_MIN		Minimum value for a variable of type int .	–2147483647 – 1
+INT_MAX		Maximum value for a variable of type int .	2147483647
 
 
 Initialize!!!
@@ -198,3 +198,7 @@ volatile keyword informs the compiler that a variable may change without the com
 extern "C"
 ---------------
 can represent and call C language code in C++
+
+Deferred Lighting
+---------------
+Deferred Lighting makes the scene render all pixels without illumination (which is fast), and with extra information (at a cost of low overhead), it calculates the illumination step only for the pixels of the screen buffer (which is less than all pixels processed for each element). This technique allow much more light instances in the project.

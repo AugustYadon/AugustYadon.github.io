@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Auggo's Power Hour Playlist Maker</title>
+
+  </head>
+
+  <body>
+    <script src="spotify-player.js"></script>
+</body>
+
+
+<footer>    
+	<script>
+		window.onSpotifyWebPlaybackSDKReady = () => {
+		  // You can now initialize Spotify.Player and use the SDK
+		  	play({
+				playerInstance: new Spotify.Player({ name: "durpy" }),
+			  	spotify_uri: 'spotify:track:7xGfFoTpQ2E7fRF5lN10tr',
+			});
+		};
+
+
+		const play = ({
+		  spotify_uri,
+		  playerInstance: {
+		    _options: {
+		      getOAuthToken,
+		      id
+		    }
+		  }
+		}) => {
+		  getOAuthToken(access_token => {
+		    fetch('https://api.spotify.com/v1/me/player/play', {
+		      method: 'PUT',
+		      body: JSON.stringify({ uris: [spotify_uri] }),
+		      headers: {
+		        'Content-Type': 'application/json',
+		        'Authorization': `Bearer ${access_token}`
+		      },
+		    });
+		  });
+		};
+
+
+		var pausednow = false;
+		function pausebutton(){
+			pausednow = !pausednow;
+			if(pausednow){
+				player.pause().then(() => {
+		  		console.log('Resumed!');
+				});
+			}
+			else{	
+				player.resume().then(() => {
+				  console.log('Resumed!');
+				});
+			}
+		}	
+
+	</script>
+</footer>
+</html>

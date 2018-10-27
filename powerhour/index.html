@@ -29,7 +29,7 @@
   <input type="button" value="skiptotwenty" onclick="skiptotwenty();">
   <input type="button" value="get_info" onclick="getinfo();">
   <input type="button" value="log info" onclick="loginfo();">
-
+    <input type="button" value="beginPowerHour" onclick="beginPowerHour();">
 
 
     <div class="navbar navbar-default" role="navigation">
@@ -77,7 +77,7 @@
 
         <hr />
 
-        <h2>My playlists</h2>
+        <!--h2>My playlists</h2>
         <ul data-bind="foreach: playlists">
           <li class="media playlist">
             <div class="media-left">
@@ -89,7 +89,7 @@
                <input type="button" value="Clear Power Hour" onclick="pausePowerHour();">
             </div>
           </li>
-        </ul>
+        </ul -->
 
         <button id="login-button" class="btn btn-primary" data-bind="click: logout">Log out from Spotify</button>
       </div>
@@ -105,6 +105,14 @@
     <script src="bower_components/spotify-web-api-js/src/spotify-web-api.js"></script>
     <script src="js/oauth-config.js"></script>
     <script src="js/oauth-manager.js"></script>
+    <audio id="audio" src="http://www.soundjay.com/button/beep-07.wav" autoplay="false" ></audio>
+  
+    <script>
+    function playSound() {
+          var sound = document.getElementById("audio");
+          sound.play();
+      }
+    </script>
     <script src="js/main.js"></script>
 
     <script type="text/javascript">
@@ -229,7 +237,16 @@
 
       function beginPowerHour(spotify_uris)
       {
-        skipper = setInterval(function(){ SkipToNextSong(); }, 60000);
+        var counter = 0;
+        playSound();
+        SkipToNextSong(); 
+
+        skipper = setInterval(function(){ 
+          counter++;
+          if (counter >= 60){clearInterval(skipper);}
+          SkipToNextSong(); 
+          playSound();
+        }, 60000);
         
         // play({
         //   playerInstance: player,

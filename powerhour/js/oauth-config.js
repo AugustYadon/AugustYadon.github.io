@@ -4,11 +4,11 @@ var OAuthConfig = (function() {
 
   /* replace these values with yours obtained in the
   "My Applications" section of the Spotify developer site */
-  var clientId = '59d50f7e590b45e09b28574d86b56d06';
+  var clientId = '4a8875631f9145bc846b13c7c4d150e5';
   var redirectUri = 'http://localhost:8000/callback.html';
 
-  if (location.href.indexOf('http://jmperezperez.com') === 0) {
-    redirectUri = 'http://jmperezperez.com/spotify-web-api-start-template/callback.html';
+  if (location.href.indexOf('http://www.auggodoggogames.com') === 0) {
+    redirectUri = 'http://www.auggodoggogames.com/powerhour/callback.html';
   }
 
   var host = /http[s]?:\/\/[^/]+/.exec(redirectUri)[0];

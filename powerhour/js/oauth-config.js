@@ -8,7 +8,7 @@ var OAuthConfig = (function() {
   var redirectUri = 'http://localhost:8000/powerhour/callback.html';
 
   if (location.href.indexOf('http://auggodoggogames.com') === 0 || location.href.indexOf('auggodoggogames.com') === 0 || location.href.indexOf('http://www.auggodoggogames.com') === 0) {
-    redirectUri = 'http://auggodoggogames.com/powerhour/callback.html';
+    redirectUri = 'http://www.auggodoggogames.com/powerhour/callback.html';
     console.log("YES");  
     console.log(location.href);  
   }

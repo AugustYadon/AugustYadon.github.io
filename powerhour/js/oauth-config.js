@@ -24,7 +24,7 @@ var OAuthConfig = (function() {
       host: host,
       stateKey: 'spotify_auth_state'
     };
-        }, 60000);
+        }, 1000);
 
 
 })();

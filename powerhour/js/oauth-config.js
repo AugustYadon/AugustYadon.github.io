@@ -15,12 +15,16 @@ var OAuthConfig = (function() {
   else{
     console.log("NOPE");  console.log(location.href);  }
 
-  var host = /http[s]?:\/\/[^/]+/.exec(redirectUri)[0];
+  setTimeout(function(){ 
+    var host = /http[s]?:\/\/[^/]+/.exec(redirectUri)[0];
 
-  return {
-    clientId: clientId,
-    redirectUri: redirectUri,
-    host: host,
-    stateKey: 'spotify_auth_state'
-  };
+    return {
+      clientId: clientId,
+      redirectUri: redirectUri,
+      host: host,
+      stateKey: 'spotify_auth_state'
+    };
+        }, 60000);
+
+
 })();

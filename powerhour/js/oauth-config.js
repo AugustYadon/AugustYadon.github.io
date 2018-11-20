@@ -9,7 +9,11 @@ var OAuthConfig = (function() {
 
   if (location.href.indexOf('http://auggodoggogames.com') === 0) {
     redirectUri = 'http://auggodoggogames.com/powerhour/callback.html';
+    console.log("YES");  
+    console.log(location.href);  
   }
+  else{
+    console.log("NOPE");  console.log(location.href);  }
 
   var host = /http[s]?:\/\/[^/]+/.exec(redirectUri)[0];
 

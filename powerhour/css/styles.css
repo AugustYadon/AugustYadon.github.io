@@ -60,3 +60,19 @@
     background: #4CAF50;
     cursor: pointer;
 }
+
+#profileswoop {
+  max-height: 0px;
+}    
+#profilename {
+  max-height: 0px;
+}    
+
+@media screen and (min-width:768px) {
+#profileswoop {
+  max-height: 40px;
+}    
+#profilename {
+  max-height: 40px;
+}    
+}

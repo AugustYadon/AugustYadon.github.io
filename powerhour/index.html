@@ -15,6 +15,8 @@
     <!-- Custom styles for this template -->
     <link href="css/styles.css" rel="stylesheet">
 
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -26,13 +28,7 @@
   </head>
 
   <body>
-  <input type="button" value="skiptotwenty" onclick="skiptotwenty();">
-  <input type="button" value="get_info" onclick="getinfo();">
-  <input type="button" value="log info" onclick="loginfo();">
-    <input type="button" value="beginPowerHour" onclick="beginPowerHour();">
-
-
-    <div class="navbar navbar-default" role="navigation">
+    <div style="border-radius: 0px; ;background: rgb(32, 33, 35); border: none;" class="navbar navbar-default" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -41,11 +37,38 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><span>Auggo's Power Hour</span></a>
+          <a class="navbar-brand" href="https://en.wikipedia.org/wiki/Power_hour"><span style="color: white; font-family:'Oswald'; font-size: 1.6em">Drink on brother</span></a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Home</a></li>
+            <!-- ko ifnot: isLoggedIn -->
+              <li class="active">
+                <div id="login" style="max-height: 50px;">
+                  <div data-bind="if: loginErrorMessage">
+                    <div class="alert alert-danger" data-bind="text: loginErrorMessage"></div>
+                  </div>
+                  <button id="login-button" style="color: white; background: transparent;border: none; margin-top: 15px; font-family:'Oswald'" class="btn btn-primary" data-bind="click: login">Log in to Spotify</button>
+                </div>
+              </li>
+            <!-- /ko -->
+            <!-- ko if: isLoggedIn -->
+              <li class="active">
+                <div id="loggedin">
+                  <div data-bind="with: user">
+                    <div>
+                      <img style="padding-top: 2px;max-height: 50px; clip-path: circle(23px at center); " data-bind="attr: {src: images[0].url}">
+                      <img style="margin-bottom: -54px; margin-left: -40px;max-height: 30px; position: absolute; filter: brightness(125%);" src="/img/swoopyarrow.jpg">      
+                      <div style="margin-bottom: -80px; margin-left: -130px;max-height: 30px; position: absolute; padding-top: 15px;"><span data-bind="text: display_name"></span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="active">
+                <div id="loggedin" style="max-height: 50px;">
+                  <button id="login-button" style="color: white; background: transparent;border: none; margin-top: 15px; font-family:'Oswald'" data-bind="click: logout">Log out</button>
+                </div>
+              </li>
+            <!-- /ko -->
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -53,32 +76,39 @@
 
     <div class="container">
 
-      <div class="starter-template">
-        <h1>Auggo's Power hour</h1>
-        <p class="lead">This website looks great.</p>
-      </div>
-
-      <!-- ko ifnot: isLoggedIn -->
-      <div id="login">
-        <div data-bind="if: loginErrorMessage">
-          <div class="alert alert-danger" data-bind="text: loginErrorMessage"></div>
-        </div>
-        <button id="login-button" class="btn btn-primary" data-bind="click: login">Log in with Spotify</button>
-      </div>
-      <!-- /ko -->
-
       <!-- ko if: isLoggedIn -->
-      <div id="loggedin">
-        <div data-bind="with: user">
-          <h1>Logged in as <span data-bind="text: display_name"></span></h1>
-          <img data-bind="attr: {src: images[0].url}">
+        <div id="loggedin">
+        <br />
+        <br />
+<!--           <input class="btn btn-primary" style="background-color: rgb(51, 210, 99); border-color: rgb(40, 200, 104)" type="button" value="skiptotwenty" onclick="skiptotwenty();">
+          <input class="btn btn-primary" style="background-color: rgb(51, 210, 99); border-color: rgb(40, 200, 104)" type="button" value="get_info" onclick="getinfo();">
+          <input class="btn btn-primary" style="background-color: rgb(51, 210, 99); border-color: rgb(40, 200, 104)" type="button" value="log info" onclick="loginfo();"> -->
+         
+         <!-- SETTINGS -->
+        <div>
+          <div style="background-color:rgb(32, 33, 35); font-family:'Oswald'; height: 30px"><span style="position:relative; color:white; font-family:'Oswald'; font-size: 1.6em">Settings</span></div>
 
+
+          <!--SLIDER -->
+          <div class="slidecontainer">
+            <span style="color:rgb(32, 33, 35); font-family:'Oswald'; font-size: 1.6em">Beep volume</span>
+            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+          </div>
+          <hr>
         </div>
 
-        <hr />
-
-        <!--h2>My playlists</h2>
-        <ul data-bind="foreach: playlists">
+         <!-- CONTROLS -->
+         <div>
+          <div style="background-color:rgb(32, 33, 35); font-family:'Oswald'; height: 30px"><span style="position:relative; color:white; font-family:'Oswald'; font-size: 1.6em">Controls</span></div>
+          <br>
+          <input class="btn btn-primary" style="background-color: rgb(51, 210, 99); border-color: rgb(40, 200, 104);" type="button" value="Begin Power Hour" onclick="beginPowerHour();">
+          <input class="btn btn-primary" style="background-color: rgb(51, 210, 99); border-color: rgb(40, 200, 104)" type="button" value="Pause" onclick="PausePowerHour();">
+          <input class="btn btn-primary" style="background-color: rgb(51, 210, 99); border-color: rgb(40, 200, 104)" type="button" value="End" onclick="StopPowerHour();">
+        </div>
+        <hr>
+        <!-- Playlists -->
+        <h2>My playlists</h2>
+        <ul style="background: radial-gradient(rgba(32, 33, 35,0.4), rgba(0,0,0,0) 70%);" data-bind="foreach: playlists">
           <li class="media playlist">
             <div class="media-left">
               <img data-bind="attr: {src: images.length ? images[0].url : ''}" width="200" height="200" />
@@ -89,9 +119,8 @@
                <input type="button" value="Clear Power Hour" onclick="pausePowerHour();">
             </div>
           </li>
-        </ul -->
+        </ul>
 
-        <button id="login-button" class="btn btn-primary" data-bind="click: logout">Log out from Spotify</button>
       </div>
       <!-- /ko -->
     </div>

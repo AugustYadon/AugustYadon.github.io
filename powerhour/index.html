@@ -17,6 +17,8 @@
 
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
 
+    <!-- SEARCH ICON -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -75,33 +77,58 @@
     </div>
 
     <div class="container">
+
+      <!-- INTRO GREETING -->
       <!-- ko ifnot: isLoggedIn -->
       <br><br><br><br><br><br><br><br>      <br><br><br><br><br><br><br><br>
       <p style="font-size:1.4em; font-family:'Oswald'">Beer has always, since the dawn of time, been man's primary source of sustenance. Alongside every magnificent triumph, and through every great struggle, man has endured with a frosty lite pilsner in hand. For this, among many other reasons, I say: <br>
         <div style="color: rgb(51, 210, 99);font-size:1.6em;"><b> Drink on brother.</b></div></p>
       <p style="font-size:2em; font-family:'Oswald'"> -Sir David Attenborough</p>
-      <!-- <img src="/img/steelbarrels.jpg" style="max-width: 120%; height: auto; position: sticky; bottom: 0px; "> -->
       <!-- /ko -->
 
+
+
       <!-- ko if: isLoggedIn -->
-        <div id="loggedin">
-        <br />
-        <br />
-<!--           <input class="btn btn-primary" style="background-color: rgb(51, 210, 99); border-color: rgb(40, 200, 104)" type="button" value="skiptotwenty" onclick="skiptotwenty();">
-          <input class="btn btn-primary" style="background-color: rgb(51, 210, 99); border-color: rgb(40, 200, 104)" type="button" value="get_info" onclick="getinfo();">
-          <input class="btn btn-primary" style="background-color: rgb(51, 210, 99); border-color: rgb(40, 200, 104)" type="button" value="log info" onclick="loginfo();"> -->
+        <div id="loggedin"><br /><br />
          
          <!-- SETTINGS -->
         <div>
           <div style="background-color:rgb(32, 33, 35); font-family:'Oswald'; height: 30px"><span style="position:relative; color:white; font-family:'Oswald'; font-size: 1.6em">Settings</span></div>
 
+        <div class="container-fluid">
 
-          <!--SLIDER -->
-          <div class="slidecontainer">
-            <span style="color:rgb(32, 33, 35); font-family:'Oswald'; font-size: 1.6em">Beep volume</span>
-            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-          </div>
-          <hr>
+            <div class="row">
+              <div class="col-lg-4 col-md-4">
+                <!-- Rounded toggle -->
+                <span style="color:rgb(32, 33, 35); font-family:'Oswald'; font-size: 1.6em;line-height: 2em;">Minute Beep [On/Off]</span><br>
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="switcher round"></span>
+                </label>
+              </div>
+              <hr class="visible-xs visible-sm">
+              <!--VOLUME SLIDER -->
+              <div class="col-lg-4 col-md-4"><div class="slidecontainer">
+                <span style="color:rgb(32, 33, 35); font-family:'Oswald'; font-size: 1.6em; line-height: 2em; ">Beep volume</span>
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+              </div></div>
+              <hr class="visible-xs visible-sm">
+              <div class="col-lg-4 col-md-4">
+                <span style="color:rgb(32, 33, 35); font-family:'Oswald'; font-size: 1.6em">Beep Style</span><br>
+                <div style="padding-top: 12px">
+                  <select>
+                    <option value="volvo">Beep</option>
+                    <option value="saab">Boop</option>
+                    <option value="opel">Blam</option>
+                    <option value="audi">Womp</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+        </div>
+              <hr class="visible-xs visible-sm">
+              <br class="visible-md visible-lg">
         </div>
 
          <!-- CONTROLS -->
@@ -111,10 +138,51 @@
           <input class="btn btn-primary" style="background-color: rgb(51, 210, 99); border-color: rgb(40, 200, 104);" type="button" value="Begin Power Hour" onclick="beginPowerHour();">
           <input class="btn btn-primary" style="background-color: rgb(51, 210, 99); border-color: rgb(40, 200, 104)" type="button" value="Pause" onclick="pausePowerHour();">
           <input class="btn btn-primary" style="background-color: rgb(51, 210, 99); border-color: rgb(40, 200, 104)" type="button" value="End" onclick="stopPowerHour();">
+          <form class="example" style="margin:auto;max-width:300px">
+            <input type="text" placeholder="Search for song..." name="search2">
+            <button type="button"><i class="fa fa-search"></i></button>
+          </form>
+<!--           <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+            <input type="text" placeholder="Search for song..." name="search2">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form> -->
         </div>
+
+
+
+         <!-- INFO VIEWER -->
+
+          <br>
+          <div style="background-color:rgb(32, 33, 35); font-family:'Oswald'; height: 30px"><span style="position:relative; color:white; font-family:'Oswald'; font-size: 1.6em">Currenly Playing</span></div>
+          <br>
+          <div class="container-fluid">
+
+              <div class="row">
+                <div class="col-lg-4 col-md-4">
+                  <!-- Current Song -->
+                  <span style="color:rgb(32, 33, 35); font-family:'Oswald'; font-size: 1.6em;line-height: 2em;">Current Song</span><br>
+                  <span style="color:rgb(32, 33, 35); font-family:'Oswald'; font-size: 1.6em;line-height: 2em;">Song - Artist - Album - Year </span><br>
+                </div>
+                <hr class="visible-xs visible-sm">
+                <!--VOLUME SLIDER -->
+                <div class="col-lg-4 col-md-4"><div class="slidecontainer">
+                  <span style="color:rgb(32, 33, 35); font-family:'Oswald'; font-size: 1.6em; line-height: 2em; ">From - Playlist/Radio/Discover</span>
+                  <span style="color:rgb(32, 33, 35); font-family:'Oswald'; font-size: 1.6em; line-height: 2em; ">Album Artwork Here</span>
+                </div></div>
+                <hr class="visible-xs visible-sm">
+                <div class="col-lg-4 col-md-4">
+                  <span style="color:rgb(32, 33, 35); font-family:'Oswald'; font-size: 1.6em; line-height: 2em; ">Time Remaining in Power hour</span>
+                  <span style="color:rgb(32, 33, 35); font-family:'Oswald'; font-size: 1.6em; line-height: 2em; "># of Beers consumed here</span>
+                </div>
+              </div>
+
+          </div>
+
+
+
         <hr>
         <!-- Playlists -->
-        <h2>My playlists</h2>
+        <span style="font-family:'Oswald'; font-size: 3em">My playlists</span>
         <ul style="background: radial-gradient(rgba(32, 33, 35,0.4), rgba(0,0,0,0) 70%);" data-bind="foreach: playlists">
           <li class="media playlist">
             <div class="media-left">
@@ -141,7 +209,7 @@
     <script src="bower_components/spotify-web-api-js/src/spotify-web-api.js"></script>
     <script src="js/oauth-config.js"></script>
     <script src="js/oauth-manager.js"></script>
-    <audio id="audio" src="http://www.soundjay.com/button/beep-07.wav" autoplay="false" ></audio>
+    <audio id="audio" src="http://www.soundjay.com/button/beep-07.wav" ></audio>
   
     <script>
     function playSound() {

@@ -1,0 +1,34 @@
+Animation Fixer (For Broken Links)
+
+Summary
+The intended use of this tool is to fix animations by allowing the user to automatically and visually choose new GameObjects in the scene hierarchy to fix broken links in the animation (represented by the infamous yellow “(missing!)” text in the animation window in front of each property with broken links. I want to point out that this has been tested and works with Unity 5.6 and Unity 2019.
+
+Important to Know Before Use
+All .anim files that are worked on by this script are backed up early on and the backed up .anim will be in the same directory and have a .backup suffix. Delete it if you would like at any time.
+This script works on plain text versions of the .anim file. 
+Meaning that Project Settings > Editor > Asset Serialization > Mode must be set to "Force Text"
+.anim file references are stored as relative links based on the animator component transform as the root transform. This tool edits the actual .anim file. This means that if you have moved a GameObject in the hierarchy under some other object that is now scaled, then the keyframes may be using values in the wrong scale and your animations may need to be adjusted. That’s not part of this asset sadly, that’s a more complex issue that changes based on different scenarios.
+Unity sometimes takes time to read and write updates to the .anim file that were made in the Animation window... If you see a delay in your changes taking place you can try CTRL+S (twice) or even manually right-click > refreshing in the Project window.
+!Disconnected! is a reserved prefix that will fuck your shit up if you name your game object that. Why would you do that?
+GameObjects with illegal characters in their name will not be processed by this script but they will still exist in the anim file. I just didn't want to write that part because why are you using exclamation marks in your names.
+If I were to spend more time on this, I may rethink some of the ways that I stored and cycled through data but its always a balance of time, readability, optimizations, and functionality. Feel free to upgrade, there are great optimizations that can be made if ever actually needed...
+
+How to Use
+Did you read the section above yet? It’s not much and it’s all important info. Ok, great.
+Step 1) -- Add Component to Animator
+Navigate to your Animator GameObject in the Scene Hierarchy where the AnimationClips will be used. Add the FixAnimation Component. (Images Below)
+  
+
+Step 2) – Choose Animation Clip
+Choose the AnimationClip you’d like to work with. If it does not have any properties or keyframes, then the Script may not pickup any properties. If however, you recently made this animation, you may just need to CTRL+S a few times and then refresh the script with the settings gear in the top right. The object names on the left are what is hardcoded into the .anim file, the changeable Objects to the right of them are the Objects that match. If the box is empty, that means that it is your job to locate the object that you want to fit there. One other significant benefit of this asset is the ability to set a null value in any of these boxes to keep the keyframes and disconnect references. It’s equivalent to commenting out part of your animation. Very useful in certain scenarios. 
+
+
+Step 3) – AutoFix Explained
+Checking the Autofix box will add one step to the reading/processing step. When the .anim file is read in, It will check for GameObjects at the path specified in the file. If something is there, then it will link it. If however there is nothing there then the autofix will make it search the entire hierarchy for a GameObject with the same name. If there is one and only one match, it will assume that the object associated is the missing link and will use that.
+
+Step 4) – Drag in Transforms and Submit Changes
+Drag and drop GameObjects from the scene hierarchy into the boxes associated with any incorrect or missing reference links. When you’re satisfied and there are no issues. You must click submit and then CTRL+S if you want the changes to propogate through. There may also be a wait for Unity to pull the changes from the file depending on the Unity version that you’re using. You can also click Refresh to see that changes pushed through into the files.
+
+Contact me or look at my website
+My direct contact for asset based questions is AugustYadon@case.edu. If you’d like to look at the most up to date Q&A and Known Issues, I will track them at my company website. http://www.auggodoggogames.com/assets/animationfixer/
+

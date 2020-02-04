@@ -1,0 +1,32 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    min-height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color:#202830;
+    color:#ffffff;
+    font-size:1.25em;
+    display:grid;
+    justify-content:center;
+    align-content:center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+cancvas {
+    border: 1px solid #f00;
+}
+
+span {
+    font-style: italic;
+}

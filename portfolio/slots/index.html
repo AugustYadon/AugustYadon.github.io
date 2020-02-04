@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width"/>
+    <title>Auggo Slotto</title>
+    <link rel="stylesheet" href="app.css" type="text/css" />
+    <script src="app.js"></script>
+</head>
+<body>
+    <input type="button" value="Spin" onclick="Spin()"></input>    
+    <input type="button" value="Switch Game" onclick="ToggleSlots()"></input>
+    <form>
+        <fieldset>
+            <p>
+                <label>Select Prize</label>
+                <select id="selectPrize">
+                    <option value="-1">Random</option>
+                    <option value="0">one</option>
+                    <option value="1">two</option>
+                    <option value="2">three</option>
+                    <option value="3">four</option>
+                    <option value="4">five</option>
+                    <option value="5">six</option>
+                    <option value="6">seven</option>
+                    <option value="7">eight</option>
+                </select>
+            </p>
+        </fieldset>
+    </form>
+    <canvas id="maincanvas"></canvas>
+
+    <img src="/images/symbol1.png" id="symbol1" style="display:none" />
+    <img src="/images/symbol2.png" id="symbol2" style="display:none" />
+    <img src="/images/symbol3.png" id="symbol3" style="display:none" />
+    <img src="/images/background.png" id="bgImage" style="display:none" />
+    <img src="/images/arrow.png" id="arrow" style="display:none" />
+</body>
+</html>
